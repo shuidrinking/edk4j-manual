@@ -108,8 +108,8 @@ table tr td {
 }
 /*滚动条里面小方块*/
 ::-webkit-scrollbar-thumb {
-	border-radius: 0.03rem;
-	background-color: #a7d6ff;
+	border-radius: 0.02rem;
+	background-color: #d8d8d8;
 }
 /*滚动条里面轨道*/
 ::-webkit-scrollbar-track {

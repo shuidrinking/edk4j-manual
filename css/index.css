@@ -45,8 +45,7 @@ table tr td {
 	border: 0;
 	display:block;
 	line-height:0.4rem;
-	border-bottom:0.01rem solid #5d7e8d;
-	background: linear-gradient(360deg, #90c8e9, #dce7fa 100%); /* 标准的语法 90度表示从左到右*/
+	border-bottom:0.01rem solid #e5e5e5;
 }
 #logo{
 	height: 0.3rem;
@@ -93,11 +92,10 @@ table tr td {
 	height:100%;
 	background-attachment:fixed;
 	background-position:left bottom;
-	border-right:0.01rem solid #5d7e8d;
+	border-right:0.01rem solid #e5e5e5;
 	position:fixed;
 	left:0;
 	transition: left 0.2s linear 0s;
-	background: linear-gradient(90deg, #f1faff, #cee8f8 50%); /* 标准的语法 90度表示从左到右*/
 }
 .menuDivHidden{
 	border:0;
@@ -107,7 +105,7 @@ table tr td {
 	height:100%;
 	background-attachment:fixed;
 	background-position:left bottom;
-	border-right:0.01rem solid #5d7e8d;
+	border-right:0.01rem solid #e5e5e5;
 	position:fixed;
 	left:-4.2rem;
 	transition: left 0.2s linear 0s;
@@ -178,5 +176,5 @@ table tr td {
 	background-position: center center;
 	background-size: auto;
 	transition: all 0.2s linear 0s;
-	opacity: 0.1;
+	opacity: 0.2;
 }
