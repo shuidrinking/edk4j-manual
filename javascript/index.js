@@ -356,6 +356,8 @@ function init(){
 		{"menuCode":"m25","parentMenuCode":"0","showText":"25、热部署开发工具","url":"#"},
 		{"menuCode":"m25-1","parentMenuCode":"m25","showText":"25.1、热部署api","url":"view/25/25.1.html"},
 		{"menuCode":"m25-2","parentMenuCode":"m25","showText":"25.2、热部署bpm","url":"view/25/25.2.html"},
+		{"menuCode":"m92","parentMenuCode":"0","showText":"92、附录：升级jdk","url":"#"},
+		{"menuCode":"m92-1","parentMenuCode":"m92","showText":"92.1、springboot2.7.x+jdk17或更高","url":"view/92/92.1.html"},
 		{"menuCode":"m93","parentMenuCode":"0","showText":"93、附录：运行监控","url":"#"},
 		{"menuCode":"m93-1","parentMenuCode":"m93","showText":"93.1、druid内置的监控配置","url":"view/93/93.1.html"},
 		{"menuCode":"m94","parentMenuCode":"0","showText":"94、附录：spring-boot知识点","url":"#"},
