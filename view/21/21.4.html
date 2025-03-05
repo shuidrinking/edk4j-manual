@@ -17,7 +17,7 @@
 </head>
 <body onload="init();">
 	<div id="title" class="titleDiv">
-		21.4、mvn打包跳过test
+		21.4、mvn打包跳过test、生成doc
 	</div>
 	<div class="tabTitleDiv">不做test，且不打包test下的代码</div>
 	<div class="tabTitleLine"></div>
@@ -50,5 +50,13 @@
 </pre>
 	</div>
 	
+	<div class="tabTitleDiv">跳过自动生成javadoc</div>
+	<div class="tabTitleLine"></div>
+	<div class="contentDiv">
+		<pre class="prettyprint lang-properties" id="codeShow1" style="font-weight:bold;color:#3f7f5f;">
+#mvn打包命令中加入参数
+-Djava.doc.skip=true
+		</pre>
+	</div>
 </body>
 </html>

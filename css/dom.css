@@ -64,10 +64,11 @@ body {
 	font-size: var(--body-font-size);
 	line-height: 100%;
 	font-family: "Verdana","微软雅黑","宋体";
-	counter-reset: filedSets 0 stepsCounterSN 0;
+	counter-reset: filedSets 0 stepsCounterSN 0 orderSn 0;
 	letter-spacing: 0.01rem;
 	color: #5e5e5e;
 }
+
 img {
 	border: 0;
 	max-width:98%;
@@ -797,4 +798,12 @@ tbody tr:hover td {
 	background-image: url(../image/icons/listx.png);
 	background-position: 0.1rem;
 	background-repeat: no-repeat;
+}
+/*有序列表*/
+.ordered-list>*{
+	font-size:0.16rem;
+}
+.ordered-list>*:before{
+	content: "（ " counter(orderSn) " ） ";
+	counter-increment: orderSn 1;
 }

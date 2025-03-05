@@ -3,7 +3,9 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link type="text/css"  rel="stylesheet" href="../../css/dom.css"/>
+	<link type="text/css"  rel="stylesheet" href="../../css/sdTabControl.css"/>
 	<script type="text/javascript" src="../../javascript/core/domUtil.js"></script>
+	<script type="text/javascript" src="../../javascript/components/SDTabControl.js"></script>
 	<script type="text/javascript" src="../../javascript/components/google-code-prettify/prettify.js"></script>
 	<script type="text/javascript" src="../../javascript/components/google-code-prettify/util.js"></script>
 	<link rel="stylesheet" href="../../javascript/components/google-code-prettify/prettify.css" type="text/css"/>
@@ -16,77 +18,73 @@
 </head>
 <body onload="init();">
 	<div id="title" class="titleDiv">
-		22.3.8、附录：可复用的流程操作的js脚本
+		22.3.8、附录：工作流前端开发套路
 	</div>
-	<div class="contentDiv">
-		<pre class="prettyprint lang-javascript" id="codeShow1" style="font-weight:bold;font-size:0.14rem;line-height:0.26rem;font-family: 'Verdana','微软雅黑','宋体';">
+	<div style="margin:0.05rem;">
+		<div id="tabs" class="sd_tab">
+			<div class="sd_tab_in" onclick="SDTab.altTab(document.getElementById('tabs'), document.getElementById('tabContents'),1);">前端开发套路</div>
+			<div class="sd_tab_out" onclick="SDTab.altTab(document.getElementById('tabs'), document.getElementById('tabContents'),2);">自动生成的html内容</div>
+			<div class="sd_tab_out" onclick="SDTab.altTab(document.getElementById('tabs'), document.getElementById('tabContents'),3);">SDWorkflowUtil提供的变量和函数</div>
+		</div>
+		<div id="tabContents" class="tabContentDiv">
+			<div>
+				<div class="subTitleDiv addArrow">流程各环节的工作页面中引入SDWorkflowUtil.js脚本</div>
+				<div class="subContentDiv ordered-list">
+					引入SDWorkflowUtil.js后，会启用SDWorkflowUtil组件，该组件的功能：
+					<div>自动将工作流的dom组件植入到页面中</div>
+					<div>提供工作流的功能函数</div>
+					<div>无需在功能页面为工作流编写页面组件或脚本，除非需要覆盖增强SDWorkflowUtil中的函数</div>
+				</div>
+			</div>
+			<div style="display:none">
+				<div class="subTitleDiv addArrow">无论在edit页面还是在auth页面，工作流的前端dom组件都一致，内容包括：</div>
+				<div class="subContentDiv ordered-list">
+					<div>工单编号、“流转历史”按钮</div>
+					<div>当前节点处理意见输入框</div>
+					<div>到达下一节点的所有路由对应的操作按钮（例如：同意、拒绝、中止流程等）</div>
+				</div>
+			</div>
+			<div style="display:none">
+				<div class="subTitleDiv addArrow">下面这些函数都是SDWorkflowUtil组件提供的，你可以在功能页面的js中覆盖重写这些函数，以便添加定制内容</div>
+				<pre class="prettyprint lang-javascript" id="codeShow1" style="font-weight:bold;font-size:0.14rem;line-height:0.26rem;font-family: 'Verdana','微软雅黑','宋体';">
 /**
- * 生成流程操作按钮
- * 其中调用ajax注册在webapp/javascript/config/workflow.mvc.config.js文件中
- * @returns
+ * 工作流上下文变量，页面加载时会自动赋值，在功能页面中可直接使用
  */
-function createProcessOperationButtons(taskId){
-	top.sdMasker.progress.show();
-	Server.jsonAjax("wf.queryOperationsForTask", {"taskId":taskId} ,function(data){
-		top.sdMasker.progress.hidden();
-		if(data.resultCode!="0"){
-			alert(data.resultMessage);
-			return;
-		}
-		else{
-			if(!data.processOperationList || data.processOperationList.length==0){
-				$("operationTd").innerHTML = "<label style='color:#ff0000;'>没有可用操作，无法继续处理流程！</label>";
-				return;
-			}
-			var operationHtml = "";
-			//可以在operationHtml里添加一些流程图外的个性化按钮
-			for(var i = 0; i &lt; data.processOperationList.length; i++){
-				operationHtml += "&lt;div class='button deepRedButton' onclick=\"dealTask('"
-				                     + data.processOperationList[i].id +"', '"
-				                     + data.processOperationList[i].name 
-				                     +"')\" style='margin-right:0.1rem;'&gt;"
-				                     + data.processOperationList[i].name 
-				                     +"&lt;/div&gt;";
-			}
-			//如果是授权页面，放开下面这句，添加一个“返回”按钮，使页面返回到“待办任务”
-			//operationHtml += "&lt;div class='button lightRedButton' onclick=\"window.location.replace('../workflowModule/GTask.html')\"&gt;返回&lt;/div&gt;";
-			$("operationTd").innerHTML = operationHtml;
-		}
-	});
-}
-		</pre>
-	</div>
-	<div class="contentDiv">
-		<pre class="prettyprint lang-javascript" id="codeShow2" style="font-weight:bold;font-size:0.14rem;line-height:0.26rem;font-family: 'Verdana','微软雅黑','宋体';">
+SDWorkflowUtil.context={
+	appNo : null,
+	taskId : null,
+	pageAfterDeal : null
+};
+
 /**
- * 流转流程，无论点击哪个流程操作的按钮，都调用该函数，引擎中会根据routeId进行流转
- * 其中调用ajax注册在webapp/javascript/config/workflow.mvc.config.js文件中
+ * 生成流程操作按钮，需要个性化按钮时，在页面上重写本函数
+ * @param ${string} 任务id，用于查询当前节点可操作按钮
+ * @param ${boolean} 是否添加“返回”到待办任务页面default=true
  */
-function dealTask(routeId, outcomeRouteName){
-	var comment = $("auditMessageTA").value;
-	if(!comment){
-		alert("请填写审批意见");
-		return;
-	}
-	var param={
-		"taskId":taskId,
-		"outcomeRouteName":routeId,
-		"comment":comment
-	};
-	top.sdMasker.progress.show();
-	Server.jsonAjax("wf.completeTask", param ,function(data){
-		top.sdMasker.progress.hidden();
-		if(data.resultCode=="0"){
-			parent.Dialog.alert("已“"+outcomeRouteName+"”！",function(){
-				window.location.replace("/"+Server.projectName+"/view/workflowModule/GTask.html");
-			});
-		}
-		else{
-			alert(data.resultMessage);
-		}
-	});
-}
-		</pre>
+SDWorkflowUtil.createProcessOperationButtons=function(taskId, addReturnBtn=true){...}
+/**
+ * 办理当前节点
+ * @param ${string} 流转到下一节点的路由id
+ * @param ${string} 流转到下一节点的路由的名称（与按钮上的文字相同）
+ */
+SDWorkflowUtil.dealTask = function(routeId, outcomeRouteName){...}
+/**
+ * 查看审批历史
+ * @param ${number} 顶边距，单位：像素
+ * @param ${number} 左边距，单位：像素
+ */
+SDWorkflowUtil.viewHistory = function(top=200, left=100){...}
+/**
+ * 当编辑页面提交更新后，更新数据和流程dom元素
+ * edk4j的工作流规范中，新建流程交易会将appNo和taskId都返回
+ * 在业务数据的edit页面的submit回调函数成功发起流程后需要调用本函数
+ * @param ${string} 工单编号
+ * @param ${string} 任务id
+ */
+SDWorkflowUtil.refreshModelAndView=function(appNo, taskId){...}
+				</pre>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

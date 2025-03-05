@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css"  rel="stylesheet" href="../../css/dom.css"/>
+	<script type="text/javascript" src="../../javascript/core/domUtil.js"></script>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/prettify.js"></script>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/util.js"></script>
+	<link rel="stylesheet" href="../../javascript/components/google-code-prettify/prettify.css" type="text/css"/>
+	<script type="text/javascript">
+		function init(){
+			PR.prettyPrint();
+		}
+	</script>
+</head>
+<body onload="init();">
+	<div id="title" class="titleDiv">
+		21.9、必须要将个别二进制内容的静态文件打包到jar时怎么办
+	</div>
+	<div class="tabTitleDiv">方案一：pom中申明排除二进制文件，打包后再用jar命令将二进制文件合并进去</div>
+	<div class="tabTitleLine"></div>
+	<div class="contentDiv">
+		使用maven要将静态文件也打包到jar包时，如果静态文件中存在非文本内容的文件，如字体文件、证书文件等，可能会遇到异常 MalformedInputException。这通常是由于 Maven 在资源处理（filtering）过程中错误地尝试对二进制文件进行文本编码处理导致的。需要在静态文件申明中排除这些文件。
+	</div>
+	<pre class="prettyprint lang-xml" id="codeShow1" style="font-weight:bold;color:#3f7f5f;">
+&lt;build&gt;
+	&lt;resources&gt;
+		&lt;resource&gt;
+				&lt;directory&gt;src/main/webapp&lt;/directory&gt;
+				&lt;targetPath&gt;static&lt;/targetPath&gt;
+				&lt;filtering&gt;true&lt;/filtering&gt;
+				&lt;includes&gt;
+					&lt;include&gt;**/**&lt;/include&gt;
+				&lt;/includes&gt;
+				&lt;excludes&gt;
+					&lt;!-- 排除二进制文件，如：字体文件、证书文件、excel模板等 --&gt;
+					&lt;exclude&gt;**/*.woff&lt;/exclude&gt;
+					&lt;exclude&gt;**/*.ttf&lt;/exclude&gt;
+					&lt;exclude&gt;**/*.ico&lt;/exclude&gt;
+					&lt;exclude&gt;**/*.p12&lt;/exclude&gt;
+				&lt;/excludes&gt;
+			&lt;/resource&gt;
+	&lt;/resources&gt;
+&lt;/build&gt;
+	</pre>
+	<pre>
+#局部更新jar中文件的手法：将要更新的文件，按jar内的目录结构，把最外层文件夹复制到与jar平级，执行更新脚本
+jar uvf xxxx.jar 单个文件在jar内的相对路径
+
+#例：
+#	当前所在位置
+#		|__project.jar
+#		|__static
+#			|__xxxx
+#				|__A.woff
+#更新jar里woff文件，这样写：
+jar -uvf project.jar static/xxxx/A.woff static/xxxx/A.woff
+	</pre>
+	<div class="tabTitleDiv">方案二：调整静态资源位置</div>
+	<div class="tabTitleLine"></div>
+	<div class="contentDiv">
+		将所有静态资源文件保存到特定目录：src/main/resources/META-INF/resources<br>
+		使用maven插件处理静态资源
+	</div>
+	<pre class="prettyprint lang-xml" id="codeShow2" style="font-weight:bold;color:#3f7f5f;">
+&lt;build&gt;
+	&lt;plugins&gt;
+		&lt;plugin&gt;
+			&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+			&lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+			&lt;version&gt;${maven-compiler-plugin.version}&lt;/version&gt;
+			&lt;configuration&gt;
+				&lt;source&gt;${java.version}&lt;/source&gt;
+				&lt;target&gt;${java.version}&lt;/target&gt;
+				&lt;encoding&gt;${project.build.encoding}&lt;/encoding&gt;
+			&lt;/configuration&gt;
+		&lt;/plugin&gt;
+		&lt;plugin&gt;
+			&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+			&lt;artifactId&gt;maven-resources-plugin&lt;/artifactId&gt;
+			&lt;version&gt;3.3.1&lt;/version&gt;
+			&lt;configuration&gt;
+				&lt;encoding&gt;${project.build.encoding}&lt;/encoding&gt;
+				&lt;charset&gt;${project.build.encoding}&lt;/charset&gt;
+			&lt;/configuration&gt;
+		&lt;/plugin&gt;
+	&lt;/plugins&gt;
+&lt;/build&gt;
+	</pre>
+</body>
+</html>
