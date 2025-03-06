@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css"  rel="stylesheet" href="../../css/dom.css"/>
+	<script type="text/javascript" src="../../javascript/core/domUtil.js"></script>
+</head>
+<body >
+	<div id="title" class="titleDiv">
+		6.2、在你的IDE中为toString方法新增一个模板
+	</div>
+	<div class="subTitleDiv addArrow">
+		打开实体类，按住 alt+shift+s，如果快捷键与其他软件冲突时，在类上点右键，选择"Source -> Generate toString"
+	</div>
+	<div class="subTitleDiv addArrow">
+		在弹出窗口中将Code style修改为StringBuilder/StringBuffer
+	</div>
+	<div class="subContentDiv">
+		<img src="../../image/business/5/5.12.2-1.png"/>
+	</div>
+	<div class="subTitleDiv addArrow">
+		在弹出窗口中点“Edit”按钮
+	</div>
+	<div class="subTitleDiv addArrow">
+		在弹出的窗口中点击New按钮
+	</div>
+	<div class="subContentDiv">
+		<img src="../../image/business/5/5.12.2-2.png"/>
+	</div>
+	<div class="subContentDiv">
+		将name设置为json，或者你自己想起什么名字都可以
+	</div>
+	<div class="subContentDiv">	
+		将Pattern修改为 :<label style="font-weight:bold;">{"${member.name()}" : "${member.value}", "${otherMembers}"}</label>
+	</div>
+	<div class="subContentDiv">	
+		这样修改后，对实体类再生成toString方法，选择Json模板时，运行结果就是标准的json格式，这对于日志打印等场景是非常好的
+	</div>
+</body>
+</html>

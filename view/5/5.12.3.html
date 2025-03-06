@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css"  rel="stylesheet" href="../../css/dom.css"/>
+	<script type="text/javascript" src="../../javascript/core/domUtil.js"></script>
+</head>
+<body >
+	<div id="title" class="titleDiv">
+		6.3、业务模块文件结构规范
+	</div>
+	<div class="subTitleDiv addArrow">
+		（1）业务模块都各自有一个模块命名的包
+	</div>
+	<div class="subTitleDiv addArrow">
+		（2）所有业务模块包都放在 com.yourcompany.youproject.business 包下
+	</div>
+	<div class="subTitleDiv addArrow">
+		（3）每个模块包里又会按功能细化成具体包，标准结构如下：	
+	</div>
+	<div class="subContentDiv">
+				&nbsp;&nbsp;&nbsp;&nbsp;someModule<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;	├─action 该模块的action类<br/>
+		<div style="color:#848181;">
+				&nbsp;&nbsp;&nbsp;&nbsp;	├─repository<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;	│&nbsp;&nbsp;&nbsp;&nbsp;├─entity 放该模块的数据库实体类<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;	│&nbsp;&nbsp;&nbsp;&nbsp;├─mapper 放该模块的mapper接口（不用mapper.xml时）<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;	│&nbsp;&nbsp;&nbsp;&nbsp;└─specification 放该模块的hibernateRepository特殊条件查询器<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;	├─service<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;	│&nbsp;&nbsp;&nbsp;&nbsp;└─implement<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;	└─web<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├─presenter 放定制的RequestPresenter<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ioEntity 如果跟前台交互需要输入输出实体类时保存在这里<br/>
+		</div>
+		上面标灰色的目录，是使用传统开发方式进行开发时的结构，在edk项目中一般不需要<br>
+		开发人员以后必须严格按照（3）中的规范组织代码文件，严禁随意建立随意放<br/>
+		edk4j-demos的business下一个模板的压缩包，解压后修改功能模块名称，就可以直接复制到你的项目中了
+	</div>
+</body>
+</html>

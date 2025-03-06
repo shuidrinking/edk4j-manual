@@ -16,7 +16,12 @@
 </head>
 <body onload="init();">
 	<div id="title" class="titleDiv">
-		5.2.2、api配置文件
+		5.2.2、接口定义文件（api文件）
+	</div>
+	<div class="subTitleDiv">
+		<label style="color:#ff8600">文件用途：</label>用于保存接口定义的配置；<br>
+		<label style="color:#ff8600">配置原则：</label>一个api文件中，可以定义多个接口，可以将一组或者一个模块的接口放到一个文件里。<br>
+		<label style="color:#ff8600">XML格式内容：</label>edk4j中的接口定义在api文件中，在edk4j工作台中该文件以绘图方式为开发者呈现，该文件的内容是xml格式的，你可以使用xml编辑器打开。下面是对xml内容的说明。
 	</div>
 	<div class="subTitleDiv addArrow">
 		（1）所有交易的对外url配置建议使用restfull风格，不要带后缀（当然了，特殊需求或者接口，可以带上以好分辨，带后缀本身没任何问题，只要你喜欢，你可以带任何后缀，这个没任何规则限制）。

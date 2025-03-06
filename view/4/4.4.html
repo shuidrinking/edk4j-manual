@@ -3,76 +3,29 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link type="text/css"  rel="stylesheet" href="../../css/dom.css"/>
-	<link rel="stylesheet" href="../../javascript/components/google-code-prettify/prettify.css" type="text/css"/>
 	<script type="text/javascript" src="../../javascript/core/domUtil.js"></script>
-	<script type="text/javascript" src="../../javascript/components/google-code-prettify/prettify.js"></script>
-	<script type="text/javascript" src="../../javascript/components/google-code-prettify/util.js"></script>
-	<script type="text/javascript">
-		function init(){
-			PR.prettyPrint();
-		}
-	</script>
 </head>
-<body onload="init()">
+<body>
 	<div id="title" class="titleDiv">
-		4.4、三步开发Hello World案例
+		4.4、创建edk4j项目
 	</div>
-	<div class="subTitleDiv" style="text-indent:0.32rem;">
-		按照前面章节的讲解，创建一个新的edk4j项目，就可以开发这个入门案例。只需做完3个开发组件，就可以完成。
+	<div class="addArrow subTitleDiv" style="text-indent:unset;">
+		edk4j项目也是标准的maven项目，对于项目的编译、打包发布都遵从maven规范。
 	</div>
-	<div class="subTitleDiv" style="text-indent:0.32rem;">
-		部分文件需要参考样例项目中的内容，请先自行下载解压<a href="javascript:window.open('../102/102.1.html', null, getWindowOpenFeature(200,200));" style="margin:0 0.1rem;">edk4j-demos</a>
-	</div>
-	<div class="subTitleDiv addArrow">
-		第1步、编写Mvc配置文件
+	<div class="addArrow subTitleDiv" style="text-indent:unset;">
+		创建edk4j项目的方法有3种：
 	</div>
 	<div class="subContentDiv">
-		参考文件：${edk4j样例项目根目录}/src/main/resources/edk4j/api/helloEdk/helloDemos.api
-		<br/>
-		<label style="background-color:#ffff00;">请自行在<a href="javascript:window.open('../102/102.1.html', null, getWindowOpenFeature(200, 200));">edk4j技术点样例项目</a>中阅读该文件</label>
-	</div>
-	<div class="subTitleDiv addArrow">
-		第2步：编写Action类
-	</div>
-	<div class="subContentDiv addBorder">
-		<pre class="prettyprint language-java" id="codeShow1" style="font-weight: bold; font-size: 0.14rem; line-height: 0.26rem; font-family: Verdana, 微软雅黑, 宋体;">
-package com.edk4j.edk4jdemos.action;
-
-import com.edk4j.core.businessprocessmanage.BusinessAction;
-import com.edk4j.core.datastructure.Context;
-import com.edk4j.core.exception.TranFailException;
-/*
- * 自行在edk4j样例项目中阅读
- * 文件位置：{edk4j样例项目根目录}/src/main/java/com/edk4j/edk4jdemos/action/HelloEdk.java
- */
-public class HelloEdk extends BusinessAction{
-	@Override
-	public String execute(Context context) throws TranFailException {
-		try {
-			//取得前端输入的字段
-			String userName = (String) context.getDataValue("userName");
-			//生成欢迎语
-			String welcomeWorld = userName+"，欢迎您使用edk4j平台进行开发";
-			//将欢迎语设置到context中
-			context.setDataValue("welcomeWorld", welcomeWorld);
-		}
-		catch(TranFailException e) {
-			throw e;
-		}
-		catch(Exception e) {
-			throw new TranFailException("xxxxx交易异常", e);
-		}
-		return OK;
-	}
-}
-		</pre>
-	</div>
-	<div class="subTitleDiv addArrow">
-		第3步：编写Bpm配置文件
-	</div>
-	<div class="subContentDiv">
-		参考文件：${edk4j样例项目根目录}/src/main/resources/edk4j/bpm/helloEdk/helloDemos.bpm<br/>
-		<label style="background-color:#ffff00;">请自行在<a href="javascript:window.open('../102/102.1.html', null, getWindowOpenFeature(200, 200));">edk4j技术点样例项目</a>中阅读该文件</label>
+		<div class="item">
+			方法1：使用edk4j可视化开发IDE，切换到“edk4j可视化开发”视图，然后在“新建”菜单中选择“edk4j Project”
+		</div>
+		<img src="../../image/business/3/3.4-1.png" style="margin:0 auto;display:table-cell;"/>
+		<div class="item">
+			方法2：使用eclipse新建maven项目，然后右键该项目，选择“添加edk4j项目支持”
+		</div>
+		<div class="item">
+			方法3：使用eclipse新建maven项目，然后依照“edk4j项目代码结构”的规范，人工补充缺失的目录和文件
+		</div>
 	</div>
 </body>
 </html>

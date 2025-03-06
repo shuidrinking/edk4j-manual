@@ -3,15 +3,76 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link type="text/css"  rel="stylesheet" href="../../css/dom.css"/>
+	<link rel="stylesheet" href="../../javascript/components/google-code-prettify/prettify.css" type="text/css"/>
 	<script type="text/javascript" src="../../javascript/core/domUtil.js"></script>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/prettify.js"></script>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/util.js"></script>
+	<script type="text/javascript">
+		function init(){
+			PR.prettyPrint();
+		}
+	</script>
 </head>
-<body >
+<body onload="init()">
 	<div id="title" class="titleDiv">
-		4.5、在网页中提交测试运行
+		4.5、三步开发Hello World案例
 	</div>
-	<div class="subTitleDiv">
-		<a href="javascript:window.open('../102/102.1.html', null, getWindowOpenFeature(200, 200));">edk4j技术点样例项目</a>中提供了一个样例测试文件，参考其中的文件：src/main/webapp/native/view/helloEdk/helloEdk.html<br/>
+	<div class="subTitleDiv" style="text-indent:0.32rem;">
+		按照前面章节的讲解，创建一个新的edk4j项目，就可以开发这个入门案例。只需做完3个开发组件，就可以完成。
 	</div>
-	<img src="../../image/business/4/4.2-1.png" style="margin:0 auto;display:table-cell;"/>
+	<div class="subTitleDiv" style="text-indent:0.32rem;">
+		也可以参考平台为大家准备的样例项目中的内容，请先自行下载解压<a href="javascript:window.open('../102/102.1.html', null, getWindowOpenFeature(200,200));" style="margin:0 0.1rem;">edk4j-demos</a>
+	</div>
+	<div class="subTitleDiv addArrow">
+		第1步：编写Action类
+	</div>
+	<div class="subContentDiv addBorder">
+		<pre class="prettyprint language-java" id="codeShow1" style="font-weight: bold; font-size: 0.14rem; line-height: 0.26rem; font-family: Verdana, 微软雅黑, 宋体;">
+package com.edk4j.edk4jdemos.action;
+
+import com.edk4j.core.businessprocessmanage.BusinessAction;
+import com.edk4j.core.datastructure.Context;
+import com.edk4j.core.exception.TranFailException;
+/*
+ * 自行在edk4j样例项目中阅读
+ * 文件位置：{edk4j样例项目根目录}/src/main/java/com/edk4j/edk4jdemos/action/HelloEdk.java
+ */
+public class HelloEdk extends BusinessAction{
+	@Override
+	public String execute(Context context) throws TranFailException {
+		try {
+			//取得前端输入的字段
+			String userName = (String) context.getDataValue("userName");
+			//生成欢迎语
+			String welcomeWorld = userName+"，欢迎您使用edk4j平台进行开发";
+			//将欢迎语设置到context中
+			context.setDataValue("welcomeWorld", welcomeWorld);
+		}
+		catch(TranFailException e) {
+			throw e;
+		}
+		catch(Exception e) {
+			throw new TranFailException("xxxxx交易异常", e);
+		}
+		return OK;
+	}
+}
+		</pre>
+	</div>
+	<div class="subTitleDiv addArrow">
+		第2步：开发业务逻辑
+	</div>
+	<div class="subContentDiv">
+		创建一个业务逻辑构件（bpm文件），在其中新增一个业务逻辑，在业务逻辑中通过“自定义Action”引入刚编写好的HelloEdk类<br>
+		可参考edk4j-demos样例项目中的文件：src/main/resources/edk4j/bpm/helloEdk/helloDemos.bpm<br/>
+	</div>
+	<div class="subTitleDiv addArrow">
+		第3步、开发接口（api文件）并使该接口调用刚写好的业务逻辑
+	</div>
+	<div class="subContentDiv">
+		新建一个接口定义构件api文件，在其中定义一个接口，访问地址为“/helloDemos/helloEdk”<br>
+		在api编辑器中导入刚写好的业务逻辑构件，并将本api关联指向它<br>
+		可参考edk4j-demos样例项目中的文件：src/main/resources/edk4j/api/helloEdk/helloDemos.api
+	</div>
 </body>
 </html>
