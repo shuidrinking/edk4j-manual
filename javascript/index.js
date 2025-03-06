@@ -192,7 +192,7 @@ function init(){
 		{"menuCode":"m5-12-6","parentMenuCode":"m5-12","showText":"5.12.6、代码排版规范","url":"view/5/5.12.6.html"},
 		{"menuCode":"m5-12-7","parentMenuCode":"m5-12","showText":"5.12.7、版本提交规范","url":"view/5/5.12.7.html"},
 		{"menuCode":"m5-12-8","parentMenuCode":"m5-12","showText":"5.12.8、edk4j中的开发约定","url":"view/5/5.12.8.html"},
-		{"menuCode":"m6","parentMenuCode":"0","showText":"6、一键生成增删改查功能构件","url":"#"},
+		{"menuCode":"m6","parentMenuCode":"0","showText":"6、一键生成增删改查前后台套件","url":"#"},
 		{"menuCode":"m6-1","parentMenuCode":"m6","showText":"6.1、功能位置及操作说明","url":"view/6/6.1.html"},
 		{"menuCode":"m6-2","parentMenuCode":"m6","showText":"6.2、生成构件-无工作流","url":"view/6/6.2.html"},
 		{"menuCode":"m6-3","parentMenuCode":"m6","showText":"6.3、生成构件-有工作流","url":"view/6/6.3.html"},
