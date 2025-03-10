@@ -203,10 +203,29 @@ Client.remove = function(element) {
 /**
  * 窗口滚动到指定的元素位置，类似页面上的<a href="#id">
  */
-Client.windowScrollTo = function(element) {
-	var x = element.x ? element.x : element.offsetLeft;
-	var y = element.y ? element.y : element.offsetTop;
-	window.scrollTo({left: x, top: y, behavior: "smooth"});
+Client.windowScrollTo = function(elementOrId, _containner=window) {
+	if(!elementOrId){
+		return;
+	}
+	let element = null;
+	if(typeof(elementOrId)==="string"){
+		element = document.getElementById(elementOrId);
+		if(!element){
+			return;
+		}
+	}
+	else if(elementOrId instanceof HTMLElement){
+		element = elementOrId;
+	}
+	else{
+		return;
+	}
+	let x = element.x ? element.x : element.offsetLeft;
+	let y = element.y ? element.y : element.offsetTop;
+	if(y>50){
+		y -=50;
+	}
+	_containner.scrollTo({left: x, top: y, behavior: "smooth"});
 }
 /**
  * 拖动某元素
