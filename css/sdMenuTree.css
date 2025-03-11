@@ -42,47 +42,34 @@
  .treeControlOpenFolder{
 	display:inline-block;
 	width: 0;
-    height: 0;
-    margin: 0.12rem 0.13rem -0.03rem 0;
-    border: 0.05rem solid transparent;
-    border-top-color: #003366;
-    border-top-width: 0.08rem;
+	height: 0;
+	margin: 0.12rem 0.13rem -0.03rem 0;
+	border: 0.05rem solid transparent;
+	border-top-color: #003366;
+	border-top-width: 0.08rem;
 }
 .treeControlCloseFolder{
 	display:inline-block;
 	width: 0;
-    height: 0;
-    margin: 0.12rem 0.1rem 0 0;
-    border: 0.05rem solid transparent;
-    border-left-color: #003366;
-    border-left-width: 0.08rem;
+	height: 0;
+	margin: 0.12rem 0.1rem 0 0;
+	border: 0.05rem solid transparent;
+	border-left-color: #003366;
+	border-left-width: 0.08rem;
 } */
-.treeControlOpenFolder{
+.treeControlFolder{
 	display:inline-block;
-	width: 0;
-    height: 0;
-    /* margin: 0.12rem 0.13rem -0.03rem 0; */
-    margin: 0.15rem 0.13rem -0.03rem -0.03rem;
-    border: 0.05rem solid transparent;
-    border-left-color: #003366;
-    border-left-width: 0.08rem;
-    transition:0.2s;
-    transform:rotate(90deg);
-}
-.treeControlCloseFolder{
-	display:inline-block;
-	width: 0;
-    height: 0;
-    margin: 0.12rem 0.1rem 0 0;
-    border: 0.05rem solid transparent;
-    border-left-color: #003366;
-    border-left-width: 0.08rem;
-    transition:0.2s;
-    transform:rotate(0deg);
+	clip-path: polygon(0 0, 0% 100%, 85% 50%);
+	width: 0.1rem;
+	height: 0.1rem;
+	background-color: #003366;
+	margin: 0.16rem 0.15rem 0 0.02rem;
+	transition:0.2s;
+	transform:rotate(0deg);
 }
 .treeControlItem{
 	display:inline-block;
-	margin: 0.12rem 0.16rem 0.03rem 0.02rem;
+	margin: 0.16rem 0.2rem 0.03rem 0.02rem;
 	width: 0.05rem;
 	height: 0.05rem;
 	border: 0;
