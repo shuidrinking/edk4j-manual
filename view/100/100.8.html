@@ -2,108 +2,81 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<script type="text/javascript" src="../../javascript/core/domUtil.js"></script>
-	<script type="text/javascript" src="../../javascript/components/google-code-prettify/prettify.js"></script>
-	<script type="text/javascript" src="../../javascript/components/google-code-prettify/util.js"></script>
 	<link type="text/css"  rel="stylesheet" href="../../css/dom.css"/>
-	<link rel="stylesheet" href="../../javascript/components/google-code-prettify/prettify.css" type="text/css"/>
-	<script type="text/javascript">
-		function init(){
-			//CodePrettyUtil.escapeInnerHTML('codeShow1', 'codeShow1');
-			PR.prettyPrint();
-		}
-	</script>
-</head>
-<body onload="init();">
+	<link type="text/css"  rel="stylesheet" href="../../css/sdTabControl.css"/>
+	<link type="text/css"  rel="stylesheet" href="../../css/sdImageViewer.css"/>
+	<script type="text/javascript" src="../../javascript/core/domUtil.js"></script>
+	<script type="text/javascript" src="../../javascript/components/SDTabControl.js"></script>
+	<script type="text/javascript" src="../../javascript/components/SDImageViewer.js"></script>
 </head>
 <body >
 	<div id="title" class="titleDiv">
-		100.8、项目中定义action原型
+		100.8、bpm文件编辑技巧
 	</div>
-	<div class="contentDiv">
-		<div style="text-indent:0.32rem;">
-			edk4j平台中内置的action，是一些“通用性高的”、“不包含具体业务运算”的基础性action，因此，在项目实施过程中，需要总结提炼出一些个性化的，“对于项目本身具有通用性”的action，便于开发人员直接使用。
+	<div style="margin:0.05rem;">
+		<div id="tabs" class="sd_tab">
+			<div class="sd_tab_in" onclick="SDTab.altTab(document.getElementById('tabs'), document.getElementById('tabContents'),1);">编辑模块信息</div>
+			<div class="sd_tab_out" onclick="SDTab.altTab(document.getElementById('tabs'), document.getElementById('tabContents'),2);">新增数据域字段</div>
+			<div class="sd_tab_out" onclick="SDTab.altTab(document.getElementById('tabs'), document.getElementById('tabContents'),3);">设置输入域</div>
+			<div class="sd_tab_out" onclick="SDTab.altTab(document.getElementById('tabs'), document.getElementById('tabContents'),4);">设置输出域</div>
+			<div class="sd_tab_out" onclick="SDTab.altTab(document.getElementById('tabs'), document.getElementById('tabContents'),5);">Action属性值设置</div>
+			<div class="sd_tab_out" onclick="SDTab.altTab(document.getElementById('tabs'), document.getElementById('tabContents'),6);">编辑路由条件</div>
+			<div class="sd_tab_out" onclick="SDTab.altTab(document.getElementById('tabs'), document.getElementById('tabContents'),7);">“自定义action”</div>
 		</div>
-		<div style="text-indent:0.32rem;">
-			ide插件中对“项目定义action原型”有良好支持，具体套路如下：<br/>
+		<div id="tabContents" class="tabContentDiv">
+			<div>
+				<div class="subTitleDiv addArrow">一个模块由一组业务逻辑构成，我们可以编辑模块的id以及名称</div>
+				<img src="../../image/business/100/100.7-1.1.png"/>
+			</div>
+			<div style="display:none;">
+				<div class="subTitleDiv addArrow">可以直接新增，也可以从数据字典中选择</div>
+				<img src="../../image/business/100/100.7-2.1.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:40%;"/>
+				<img src="../../image/business/100/100.7-2.2.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:40%;"/>
+				<div class="subTitleDiv addArrow">也可以从数据字典中选择新增</div>
+				<img src="../../image/business/100/100.7-2.3.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:40%;"/>
+				<img src="../../image/business/100/100.7-2.4.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:40%;"/>
+				<div class="subTitleDiv addArrow">可以为数据域中的listx或mapx添加子元素</div>
+				<img src="../../image/business/100/100.7-2.5.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:40%;"/>
+			</div>
+			<div style="display:none;">
+				<div class="subTitleDiv addArrow">点击“新增”按钮，会弹出选择框，从上下文context中进行选择。对于DataCell类型的“输入”字段，可设置校验规则</div>
+				<img src="../../image/business/100/100.7-3.1.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:30%;"/>
+				<img src="../../image/business/100/100.7-3.2.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:30%;"/>
+				<img src="../../image/business/100/100.7-3.3.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:30%;"/>
+			</div>
+			<div style="display:none;">
+				<div class="subTitleDiv addArrow">点击“新增”按钮，会弹出选择框，从上下文context中进行选择。</div>
+				<img src="../../image/business/100/100.7-4.1.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:30%;"/>
+				<img src="../../image/business/100/100.7-4.2.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:30%;"/>
+				<img src="../../image/business/100/100.7-4.3.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:30%;"/>
+			</div>
+			<div style="display:none;">
+				<div class="subTitleDiv addArrow">
+					编辑具体action中的某个属性值，有三种输入方式：（1）“直接输入”；（2）“下拉框选择”；（3）“弹出大编辑窗口”。<br>
+				</div>
+				<div class="subTitleDiv addArrow">
+					当弹出大的编辑窗口时，你可以根据需要，向内容中插入“context中数据域的id”，这在设置某些直接需要数据域id的字段、编辑list类型的属性、编辑“数据库操作”系列action的属性时非常有用，
+					需要注意的是，当选择完数据域ID后，分隔符等占位包装符你要核对修正。
+				</div>
+				<img src="../../image/business/100/100.7-5.1.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:30%;"/>
+				<img src="../../image/business/100/100.7-5.2.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:30%;"/>
+				<img src="../../image/business/100/100.7-5.3.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:30%;"/>
+			</div>
+			<div style="display:none;">
+				<div class="subTitleDiv addArrow">
+					双击路由线路，可在properties编辑页中编辑路由属性，同样可以直接编辑，或者点击右侧按钮弹出大编辑窗口。<br>
+				</div>
+				<div class="subTitleDiv addArrow">
+					在弹出窗口编辑时，可以参考aviator表达式写法。
+				</div>
+				<img src="../../image/business/100/100.7-6.1.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:40%;"/>
+				<img src="../../image/business/100/100.7-6.2.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:40%;"/>
+			</div>
+			<div style="display:none;">
+				<div class="subTitleDiv addArrow">向逻辑中添加“自定义action”时，会弹出选择框，你可以输入action名称进行选择，支持正则表达式模型查询</div>
+				<img src="../../image/business/100/100.7-7.1.png" />
+			</div>
 		</div>
-	</div>
-	
-	<div class="tabTitleDiv">第1步：找到Action原型配置文件</div>
-	<div class="tabTitleLine"></div>
-	<div class="contentDiv">
-		操作成功后，在自动为项目中创建的文件中，找到<label style="background-color:#00ff00">edk4jIdeSupport</label>文件夹<br/>
-		<img src="../../image/business/100/100.8-1.png"/><br/>
-	</div>
-	<div class="tabTitleDiv">第2步：学习编辑规则</div>
-	<div class="tabTitleLine"></div>
-	<div class="contentDiv">
-		编辑<label style="background-color:#00ff00">edk4jIdeSupport</label>文件夹中的<label style="background-color:#ffff00">actionPrototype.xml</label>文件，该文件就是“定义action原型”的配置文件，语法规则在文件中有说明：<br/>
-		 （1 ）标签的配置关系如下：<br/>
-		<pre class="prettyprint lang-xml" id="codeShow1" style="font-weight:bold;font-size:0.14rem;line-height:0.26rem;font-family: 'Verdana','微软雅黑','宋体';">
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;!DOCTYPE xml&gt;
-&lt;actionSet&gt; &lt;!--根节点，只能有1个--&gt;
-	&lt;actionGroup&gt; &lt;!--action分组，可以多组并行--&gt;
-		&lt;actionPrototype&gt; &lt;!--具体action，可以多个并行--&gt;
-			&lt;property/&gt; &lt;!--action的属性，可以没有或者有多个属性--&gt;
-		&lt;/actionPrototype&gt;
-	&lt;/actionGroup&gt;
-&lt;/actionSet&gt;
-		</pre>
-			（2）&lt;actionSet&gt;是根标签，内部可以放多个&lt;actionGroup&gt;标签，每个组件分组定义为一个&lt;actionGroup&gt;<br/>
-			（3）&lt;actionGroup&gt;标签中值能放&lt;actionPrototype&gt;标签，每个action定义为一个&lt;actionPrototype&gt;标签<br/>
-			（4）&lt;actionPrototype&gt;标签中只能放&lt;property&gt;标签，每个属性定义为一个&lt;property&gt;标签<br/>
-			（5）配置action时，设置&lt;actionPrototype&gt;标签的icon属性，设置后该图片会体现在编辑器中，你可以参考“action原型定义可用icon清单.xlsx”中的内置图片<br/>
-					也可以自己制作png图片(48*16，左边至少24px空白），保存到edk4jIdeSupport/icons文件夹中，然后将icon的属性设置为 icon="icons/自制作图片.png"。<br/>
-			【配置模板 】<br/>
-			<pre class="prettyprint lang-xml" id="codeShow2" style="font-weight:bold;font-size:0.14rem;line-height:0.26rem;font-family: 'Verdana','微软雅黑','宋体';">
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;!DOCTYPE xml&gt;
-&lt;actionSet&gt;
-	&lt;actionGroup label="分组名称" icon="icons/subFolderLevel1.png或者其他已经预置的图片【可为空】"&gt;
-		&lt;actionPrototype 
-			label="组件名称" 
-			description="组件的概要解释说明或算法说明【可为空】" 
-			instanceId="【可为空】添加到流程图后步骤的默认id值"
-			instanceLabel="【可为空】添加到流程图后步骤的默认label属性值"
-			className="组件实现类的完整类名"
-			icon="【可为空】icons/图片名称.png" 
-			bigIcon="【可为空】icons/图片名称.png，如果这个字段不为空，则在流程图中会显示大图"
-			rgb="【可为空】该action的默认颜色，rgb格式：int1, int2, int3，你可以在ide中先编辑一下颜色再抄出来" 
-		&gt;
-			&lt;property
-				id="属性id"
-				label="属性名称"
-				description="属性的详细解释，例如用途，配置规范等等"
-				type="该属性在Action类中的成员变量类型，取值范围normal/list，【可为空】"
-				defaultValue="该属性是成员变量的默认值，如果这里设置了，那么在IDE中设计时，该成员变量就会被赋予默认值，知道你改变它【可为空】"
-				valueOption="当该属性设置后，IDE中设置该成员变量的值时，就会从下拉框中进行选择，格式为value1;....valueN，也就是说多个选项值用分号隔离，ide中会自动将这个表达式解析成下拉框"
-				needDialog="当在IDE中编辑该属性时，是否弹出对话框进行编辑，取值范围true/false，默认为false，【可为空】"
-				nullable="是否允许为空，取值范围true/false，默认为true"
-				readOnly="是否只读，取值范围true/false，默认为false，当为true时在IDE中不能编辑该属性"
-			/&gt;
-			[
-			其他&lt;property&gt;
-			]
-		&lt;/actionPrototype&gt;
-		[
-		其他&lt;actionPrototype&gt;
-		]
-	&lt;/actionGroup&gt;
-	[
-	其他&lt;actionGroup&gt;
-	]
-&lt;/actionSet&gt;
-			</pre>
-	</div>
-	<div class="tabTitleDiv">第3步：实际操作</div>
-	<div class="tabTitleLine"></div>
-	<div class="contentDiv">
-		3.1、写个Action，制作个icon图片，编辑一下actionPrototype.xml：<br/>
-		<img style="margin-left:3rem;" src="../../image/business/100/100.8-3.png"/><br/><br/>
-		3.2、在bpm编辑器中使用：<br/>
-		<img style="margin-left:3rem;" src="../../image/business/100/100.8-2.png"/>
 	</div>
 </body>
 </html>

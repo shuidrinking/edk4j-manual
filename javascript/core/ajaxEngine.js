@@ -144,10 +144,45 @@ Server.doSearch = function(ajaxRegistId, jsonDataObject , callBackFunction, asyn
 	}
 	Request.send(JSON.stringify(jsonDataObject));
 }
-
 /**
- * 放弃ajax请求
+ * 动态加载html以及脚本文件，脚本可以为空
+ * @param {HTMLElement} _containner：容器对象
+ * @param {string} pagepath：页面路径
+ * @param {boolean} async：是否异步加载，默认为true, 可选值true/false，false时同步加载
+ * @param {number} timeout million seconds 超时时间毫秒数，默认10000
+ * @returns {XMLHttpRequest} xhrInstance
  */
-Server.abort=function(){
-	XMLHttpRequest.abort();
+Server.loadResource = function(_containner, pagepath, async=true, timeoutMs=10000){
+	let Request = Server.getXMLHttpRequest();
+	//let header = Request.getAllResponseHeaders();
+	Request.timeout=timeoutMs;
+	
+	Request.onerror = function(message){
+		console.error(message);
+		_containner.innerHTML = "error !";
+	}
+	Request.onabort = function(){
+		_containner.innerHTML = "request has been aborted !";
+	}
+	Request.ontimeout = function(){
+		_containner.innerHTML = "request time out !";
+	}
+	//监听 readyState 属性变化
+	Request.onreadystatechange=function(){
+		//只处理通信已完成的状态，其他工作阶段时不做处理
+		if(Request.readyState==4){
+			if(Request.status!=200){
+				console.error(Request);
+				_containner.innerHTML = "error !";
+				return;
+			}
+			//渲染内容
+			let htmlContent = Request.responseText;
+			_containner.innerHTML = htmlContent;
+		}
+	}
+	let htmlFileUrl = pagepath;
+	Request.open("GET", htmlFileUrl, async);
+	Request.send();
+	return Request;
 }

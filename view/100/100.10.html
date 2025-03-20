@@ -2,32 +2,66 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link type="text/css"  rel="stylesheet" href="../../css/dom.css"/>
 	<script type="text/javascript" src="../../javascript/core/domUtil.js"></script>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/prettify.js"></script>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/util.js"></script>
+	<link type="text/css"  rel="stylesheet" href="../../css/dom.css"/>
+	<link rel="stylesheet" href="../../javascript/components/google-code-prettify/prettify.css" type="text/css"/>
+	<script type="text/javascript">
+		function init(){
+			//CodePrettyUtil.escapeInnerHTML('codeShow1', 'codeShow1');
+			PR.prettyPrint();
+		}
+	</script>
 </head>
-<body >
+<body onload="init();">
 	<div id="title" class="titleDiv">
-		100.10、双击、右键、功能按钮
+		100.10、项目中定义数据域字典
 	</div>
-	<div class="contentDiv" style="text-indent:0.32rem;">
-		<a style="font-weight:bold;">▶&nbsp;&nbsp;（1）</a>在可视化编辑器中，
-		“逻辑索引”中的具体业务逻辑、“业务逻辑”中的action、连线、“上下文定义”中的某个字段定义，等等，
-		<br/>所有可看见的标的物，你都可以尝试“双击”，一般都会弹出相应的编辑框或修改框。如果“双击”达不到你想要的预期，你再通过“右键”或者“功能按钮”进行操作。
+	<div class="contentDiv">
+		<div style="text-indent:0.32rem;">
+			即使你的项目中没有配置“数据域字典”的配置文件，当从“数据域字典”中选择字段时，你仍然会看到一些内置的字段定义，是一些“基础常见的字段”、因此，在项目实施过程中，需要总结提炼出一些个性化的，“对于项目本身具有通用性”的字段定义，便于开发人员直接使用。
+		</div>
+		<div style="text-indent:0.32rem;">
+			ide插件中对“数据域字典”有良好支持，具体套路如下。
+		</div>
+		
 	</div>
-	<div class="contentDiv" style="text-indent:0.32rem;">
-		<a style="font-weight:bold;">▶&nbsp;&nbsp;（2）</a>对于“业务明细”中的action，双击时首先会在Properties透视图中列出其可编辑的属性<br/>
-		如果项目中有该action的源代码，则还会打开这个action类。
+	<div class="tabTitleDiv">第1步：找到数据字典配置文件</div>
+	<div class="tabTitleLine"></div>
+	<div class="contentDiv">
+		<a style="font-weight:bold;">▶&nbsp;&nbsp;（1）按照前面的章节内容，为项目“添加edk4j项目支持”</a><br/>
+		操作成功后，在自动为项目中创建的文件中，找到<label style="background-color:#00ff00">edk4jIdeSupport</label>文件夹<br/>
+		<img src="../../image/business/100/100.8-1.png"/><br/>
 	</div>
-	<div class="contentDiv" style="text-indent:0.32rem;">
-		<a style="font-weight:bold;">▶&nbsp;&nbsp;（3）</a>在打开的bpm文件中，点击“逻辑索引”，双击具体的业务逻辑，则“数据域”和“逻辑流明细”中的内容都会切换到这个业务逻辑。
+	<div class="tabTitleDiv">第2步：学习编辑规则</div>
+	<div class="tabTitleLine"></div>
+	<div class="contentDiv">
+		编辑<label style="background-color:#00ff00">edk4jIdeSupport</label>文件夹中的<label style="background-color:#ffff00">domainDictionary.xml</label>文件，该文件就是“数据域字典”的配置文件，语法规则在文件中有说明：<br/>
+			 （1 ）标签的配置关系如下：<br/>
+			 <pre class="prettyprint lang-xml" id="codeShow1" style="font-weight:bold;font-size:0.14rem;line-height:0.26rem;font-family: 'Verdana','微软雅黑','宋体';">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE xml&gt;
+&lt;domainDataPrototype&gt; &lt;--根节点，只能有1个--&gt;
+	&lt;businessModule&gt; &lt;!--字段分组，数量不限，可以有多组，一般按功能、模块等纬度进行分组--&gt;
+		&lt;!--对下面的dataCell、mapx以及listx定义，跟写在context里时一样，数量也同样不限--&gt;
+		&lt;dataCell/&gt; &lt;!--与context中的dataCell写法一致--&gt;
+		&lt;listx&gt; &lt;!--与context中的listx写法一致，没有listx时就别写了--&gt;
+			&lt;mapx&gt; &lt;!--与context中的mapx写法一致，该节点可以不定义，也就是说：listX中的细节可以放空--&gt;
+				&lt;dataCell/&gt;
+			&lt;/mapx&gt;
+		&lt;/listx&gt;
+	&lt;/businessModule&gt;
+&lt;/domainDataPrototype&gt;
+			 </pre>
 	</div>
-	<div class="contentDiv" style="text-indent:0.32rem;">
-		<a style="font-weight:bold;">▶&nbsp;&nbsp;（4）</a>对于“业务明细”中的action，如果项目中有源代码，双击时首先会在Properties透视图中列出其可编辑的属性，其次会打开这个action类。
-	</div>
-	<div class="contentDiv" style="text-indent:0.32rem;">
-		<a style="font-weight:bold;">▶&nbsp;&nbsp;（5）</a>对于api文件中的“具体业务逻辑”引用，双击时会打开其所在的bpm文件<br/>
-		有一点要申明：假设testApi指向testBpm.aBL这个业务逻辑，但是此时，testBpm早就被打开了，而且其中加载的是bBL这个业务逻辑。那么，
-		此时你双击testApi中的业务逻辑流程引用，确实会把视图切换到testBpm文件中，但是其中的内容不会跟着改变，仍然显示的是bBL业务逻辑中的数据。
+	<div class="tabTitleDiv">第3步：实际操作</div>
+	<div class="tabTitleLine"></div>
+	<div class="contentDiv">
+		3.1、配置数据域字典，编辑domainDictionary.xml：<br/>
+		<img style="margin-left:3rem;" src="../../image/business/100/100.9-1.png"/><br/><br/>
+		3.2、在定义数据域时，点击“从字典复制新增”按钮，就可以看到自己定义的字典了：<br/>
+		<img style="margin-left:3rem;" src="../../image/business/100/100.9-2.png"/>
 	</div>
 </body>
 </html>

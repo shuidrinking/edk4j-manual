@@ -1,0 +1,102 @@
+<div id="title" class="titleDiv">
+	2、生成没有工作流的交易构件
+</div>
+<div style="margin:0.05rem;">
+	<div id="tabs" class="sd_tab">
+		<div class="sd_tab_in" onclick="SDTab.altTab(document.getElementById('tabs'), document.getElementById('tabContents'),1);">功能说明</div>
+		<div class="sd_tab_out" onclick="SDTab.altTab(document.getElementById('tabs'), document.getElementById('tabContents'),2);">生成的文件清单</div>
+		<div class="sd_tab_out" onclick="SDTab.altTab(document.getElementById('tabs'), document.getElementById('tabContents'),3);">交易清单</div>
+	</div>
+	<div id="tabContents" class="tabContentDiv">
+		<div>
+			<div class="subTitleDiv addArrow">如图，选择“无需工作流”选项后，为该模型生成的“增、删、改”交易都会直接生效，不需要工作流，无需走审批流程</div>
+			<img src="../../image/business/6/6.2-1.png"  onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;"/><br/>
+		</div>
+		<table class="across" style="display:none;">
+			<colgroup><col style="width:1rem;"/><col style="width:2rem;"/><col style="width:4rem;"/><col/></colgroup>
+			<thead>
+				<tr><th>序号</th><th>文件性质</th><th>功能</th><th>文件</th></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>数据库ddl脚本</td>
+					<td>建表脚本</td>
+					<td>${project}/database/mysql/ddl/create_${模型code}.sql</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td rowspan="2">后台构件</td>
+					<td>增删改查接口定义文件</td>
+					<td>${project}/src/main/resources/edk4j/api/${模块code}/${模型code}.api</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>增删改查业务逻辑文件</td>
+					<td>${project}/src/main/resources/edk4j/bpm/${模块code}/${模型code}.bpm</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td rowspan="2">前端构件</td>
+					<td  rowspan="2">增删改查html网页和配套js</td>
+					<td>${project}/src/main/webapp/view/${模块code}/${模型code}-manage.html</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>${project}/src/main/webapp/javascript/${模块code}/${模型code}-manage.js</td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="across" style="display:none;">
+			<colgroup><col style="width:1rem;"/><col style="width:2rem;"/><col style="width:3rem;"/><col style="width:5rem;"/><col/></colgroup>
+			<thead>
+				<tr><th>序号</th><th>交易名称</th><th>接口</th><th>逻辑id</th><th>交易说明</th></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>新增</td>
+					<td>/${modelCode}/create</td>
+					<td>${modelCode}-manage.create</td>
+					<td></td>
+				</tr>
+			</tbody>
+			<tbody>
+				<tr>
+					<td>2</td>
+					<td>修改</td>
+					<td>/${modelCode}/update</td>
+					<td>${modelCode}-manage.update</td>
+					<td></td>
+				</tr>
+			</tbody>
+			<tbody>
+				<tr>
+					<td>3</td>
+					<td>删除</td>
+					<td>/${modelCode}/destory</td>
+					<td>${modelCode}-manage.delete</td>
+					<td></td>
+				</tr>
+			</tbody>
+			<tbody>
+				<tr>
+					<td>4</td>
+					<td>查询明细</td>
+					<td>/${modelCode}/fetch-detail</td>
+					<td>${modelCode}-manage.queryDetail</td>
+					<td></td>
+				</tr>
+			</tbody>
+			<tbody>
+				<tr>
+					<td>5</td>
+					<td>查询列表</td>
+					<td>/${modelCode}/query-list</td>
+					<td>${modelCode}-manage.queryList</td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

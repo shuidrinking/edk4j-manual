@@ -4,79 +4,56 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link type="text/css"  rel="stylesheet" href="../../css/dom.css"/>
 	<link type="text/css"  rel="stylesheet" href="../../css/sdTabControl.css"/>
-	<link type="text/css"  rel="stylesheet" href="../../css/sdImageViewer.css"/>
 	<script type="text/javascript" src="../../javascript/core/domUtil.js"></script>
+	<script type="text/javascript" src="../../javascript/core/ajaxEngine.js"></script>
 	<script type="text/javascript" src="../../javascript/components/SDTabControl.js"></script>
-	<script type="text/javascript" src="../../javascript/components/SDImageViewer.js"></script>
+	<script type="text/javascript">
+		function openPage(url){
+			window.open(url, null, getWindowOpenFeature(100,100));
+		}
+		function loadpage(url){
+			Server.loadResource(document.querySelector("#contentContainnerDiv"), url);
+		}
+		
+		async function loadHTML(url) {
+			try {
+				// 发起 fetch 请求并获取响应体
+				const response = await fetch(url);
+				//response.body instanceof ReadableStream
+				const reader = response.body.getReader();
+				let chunks = [];
+				// 读取数据块
+				while (true) {
+					const { done, value } = await reader.read();
+					if (done) {
+						break;
+					}
+					
+					chunks.push(value);
+				}
+				// 创建一个新的 TextDecoder 实例
+				const decoder = new TextDecoder('utf-8');
+				// 将 Uint8Array 数组转换为字符串
+				const text = decoder.decode(new Uint8Array(chunks.flat()));
+				console.log(text);
+			}
+			catch (error) {
+				console.error('读取数据时出错:', error);
+			}
+		}
+	</script>
 </head>
-<body >
+<body onload="loadpage('./pub.1.html');">
 	<div id="title" class="titleDiv">
-		100.7、bpm文件编辑技巧
+		100.7、一键生成模型的增删改查前后台套件
 	</div>
-	<div style="margin:0.05rem;">
-		<div id="tabs" class="sd_tab">
-			<div class="sd_tab_in" onclick="SDTab.altTab(document.getElementById('tabs'), document.getElementById('tabContents'),1);">编辑模块信息</div>
-			<div class="sd_tab_out" onclick="SDTab.altTab(document.getElementById('tabs'), document.getElementById('tabContents'),2);">新增数据域字段</div>
-			<div class="sd_tab_out" onclick="SDTab.altTab(document.getElementById('tabs'), document.getElementById('tabContents'),3);">设置输入域</div>
-			<div class="sd_tab_out" onclick="SDTab.altTab(document.getElementById('tabs'), document.getElementById('tabContents'),4);">设置输出域</div>
-			<div class="sd_tab_out" onclick="SDTab.altTab(document.getElementById('tabs'), document.getElementById('tabContents'),5);">Action属性值设置</div>
-			<div class="sd_tab_out" onclick="SDTab.altTab(document.getElementById('tabs'), document.getElementById('tabContents'),6);">编辑路由条件</div>
-			<div class="sd_tab_out" onclick="SDTab.altTab(document.getElementById('tabs'), document.getElementById('tabContents'),7);">“自定义action”</div>
-		</div>
-		<div id="tabContents" class="tabContentDiv">
-			<div>
-				<div class="subTitleDiv addArrow">一个模块由一组业务逻辑构成，我们可以编辑模块的id以及名称</div>
-				<img src="../../image/business/100/100.7-1.1.png"/>
-			</div>
-			<div style="display:none;">
-				<div class="subTitleDiv addArrow">可以直接新增，也可以从数据字典中选择</div>
-				<img src="../../image/business/100/100.7-2.1.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:40%;"/>
-				<img src="../../image/business/100/100.7-2.2.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:40%;"/>
-				<div class="subTitleDiv addArrow">也可以从数据字典中选择新增</div>
-				<img src="../../image/business/100/100.7-2.3.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:40%;"/>
-				<img src="../../image/business/100/100.7-2.4.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:40%;"/>
-				<div class="subTitleDiv addArrow">可以为数据域中的listx或mapx添加子元素</div>
-				<img src="../../image/business/100/100.7-2.5.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:40%;"/>
-			</div>
-			<div style="display:none;">
-				<div class="subTitleDiv addArrow">点击“新增”按钮，会弹出选择框，从上下文context中进行选择。对于DataCell类型的“输入”字段，可设置校验规则</div>
-				<img src="../../image/business/100/100.7-3.1.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:30%;"/>
-				<img src="../../image/business/100/100.7-3.2.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:30%;"/>
-				<img src="../../image/business/100/100.7-3.3.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:30%;"/>
-			</div>
-			<div style="display:none;">
-				<div class="subTitleDiv addArrow">点击“新增”按钮，会弹出选择框，从上下文context中进行选择。</div>
-				<img src="../../image/business/100/100.7-4.1.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:30%;"/>
-				<img src="../../image/business/100/100.7-4.2.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:30%;"/>
-				<img src="../../image/business/100/100.7-4.3.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:30%;"/>
-			</div>
-			<div style="display:none;">
-				<div class="subTitleDiv addArrow">
-					编辑具体action中的某个属性值，有三种输入方式：（1）“直接输入”；（2）“下拉框选择”；（3）“弹出大编辑窗口”。<br>
-				</div>
-				<div class="subTitleDiv addArrow">
-					当弹出大的编辑窗口时，你可以根据需要，向内容中插入“context中数据域的id”，这在设置某些直接需要数据域id的字段、编辑list类型的属性、编辑“数据库操作”系列action的属性时非常有用，
-					需要注意的是，当选择完数据域ID后，分隔符等占位包装符你要核对修正。
-				</div>
-				<img src="../../image/business/100/100.7-5.1.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:30%;"/>
-				<img src="../../image/business/100/100.7-5.2.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:30%;"/>
-				<img src="../../image/business/100/100.7-5.3.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:30%;"/>
-			</div>
-			<div style="display:none;">
-				<div class="subTitleDiv addArrow">
-					双击路由线路，可在properties编辑页中编辑路由属性，同样可以直接编辑，或者点击右侧按钮弹出大编辑窗口。<br>
-				</div>
-				<div class="subTitleDiv addArrow">
-					在弹出窗口编辑时，可以参考aviator表达式写法。
-				</div>
-				<img src="../../image/business/100/100.7-6.1.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:40%;"/>
-				<img src="../../image/business/100/100.7-6.2.png" onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:40%;"/>
-			</div>
-			<div style="display:none;">
-				<div class="subTitleDiv addArrow">向逻辑中添加“自定义action”时，会弹出选择框，你可以输入action名称进行选择，支持正则表达式模型查询</div>
-				<img src="../../image/business/100/100.7-7.1.png" />
-			</div>
-		</div>
+	<!--  style="position:fixed;padding:0.05rem 0.2rem;border-radius:0.1rem;right:0.2rem;top:50%;line-height:0.4rem;border: 1px solid #0081b0;" -->
+	<div style="height:0.4rem;line-height:0.4rem;text-align:center;">
+		<a style="margin-right:0.5rem;" href="javascript:loadpage('./pub.1.html')">功能位置及操作说明</a>
+		<a style="margin-right:0.5rem;" href="javascript:loadpage('./pub.2.html')">生成【没有】工作流的交易构件</a>
+		<a href="javascript:loadpage('./pub.3.html')">生成【有】工作流的交易构件</a>
+	</div>
+	<div class="contentDiv" id="contentContainnerDiv">
 	</div>
 </body>
 </html>

@@ -1,0 +1,152 @@
+<div id="title" class="titleDiv">
+	3、生成有工作流的交易构件
+</div>
+<div style="margin:0.05rem;">
+	<div id="tabs" class="sd_tab">
+		<div class="sd_tab_in" onclick="SDTab.altTab(document.getElementById('tabs'), document.getElementById('tabContents'),1);">功能说明</div>
+		<div class="sd_tab_out" onclick="SDTab.altTab(document.getElementById('tabs'), document.getElementById('tabContents'),2);">生成的文件清单</div>
+		<div class="sd_tab_out" onclick="SDTab.altTab(document.getElementById('tabs'), document.getElementById('tabContents'),3);">交易清单</div>
+	</div>
+	<div id="tabContents" class="tabContentDiv">
+		<div>
+			<div class="subTitleDiv addArrow">如图，选择“集成工作流”选项后，为该模型生成的“增、删、改”交易的构件中都加入了工作流元素，需要走审批流程后才能生效。</div>
+			<img src="../../image/business/6/6.3-1.png"  onclick="SDImageViewer.showBigImage(this.src)" style="cursor:pointer;width:50%;"/><br/>
+			<div class="subTitleDiv addArrow">如何为交易指定配套流程、如何设置流程中各节点，请参见第22章节工作流模块的文档</div>
+		</div>
+		<table class="across" style="display:none;">
+			<colgroup><col style="width:1rem;"/><col style="width:2rem;"/><col style="width:4rem;"/><col/></colgroup>
+			<thead>
+				<tr><th>序号</th><th>文件性质</th><th>功能</th><th>文件</th></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>数据库ddl脚本</td>
+					<td>建表脚本</td>
+					<td>${project}/database/mysql/ddl/create_${模型code}.sql</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td rowspan="2">后台构件</td>
+					<td>增删改查接口定义文件</td>
+					<td>${project}/src/main/resources/edk4j/api/${模块code}/${模型code}.api</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>增删改查业务逻辑文件</td>
+					<td>${project}/src/main/resources/edk4j/bpm/${模块code}/${模型code}.bpm</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td rowspan="10">前端构件</td>
+					<td rowspan="2">综合管理html网页和配套js</td>
+					<td>${project}/src/main/webapp/view/${模块code}/model-${模型code}.html</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>${project}/src/main/webapp/javascript/${模块code}/model-${模型code}.js</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td rowspan="2">编辑html页面和配套js（新增或修改时使用）</td>
+					<td>${project}/src/main/webapp/view/${模块code}/edit-${模型code}.html</td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td>${project}/src/main/webapp/javascript/${模块code}/edit-${模型code}.js</td>
+				</tr>
+				<tr>
+					<td>8</td>
+					<td rowspan="2">申请删除流程操作html和配套js</td>
+					<td>${project}/src/main/webapp/view/${模块code}/apply-delete-${模型code}.html</td>
+				</tr>
+				<tr>
+					<td>9</td>
+					<td>${project}/src/main/webapp/javascript/${模块code}/apply-delete-${模型code}.js</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td rowspan="2">新增或修改的授权html页面和配套js</td>
+					<td>${project}/src/main/webapp/view/${模块code}/auth-edit-${模型code}.html</td>
+				</tr>
+				<tr>
+					<td>11</td>
+					<td>${project}/src/main/webapp/javascript/${模块code}/auth-edit-${模型code}.js</td>
+				</tr>
+				<tr>
+					<td>12</td>
+					<td rowspan="2">删除的授权html页面和配套js</td>
+					<td>${project}/src/main/webapp/view/${模块code}/auth-delete-${模型code}.html</td>
+				</tr>
+				<tr>
+					<td>13</td>
+					<td>${project}/src/main/webapp/javascript/${模块code}/auth-delete-${模型code}.js</td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="across" style="display:none;">
+			<colgroup><col style="width:1rem;"/><col style="width:2rem;"/><col style="width:3rem;"/><col style="width:5rem;"/><col/></colgroup>
+			<thead>
+				<tr><th>序号</th><th>交易名称</th><th>接口</th><th>逻辑id</th><th>交易说明</th></tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>提交新增申请</td>
+					<td>/${modelCode}/create</td>
+					<td>${modelCode}-manage.startCreate</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>新增授权落地</td>
+					<td>流程流转交易</td>
+					<td>${modelCode}-manage.finishCreate</td>
+					<td>审批同意时，被工作流流转交易调用</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>申请修改</td>
+					<td>/${modelCode}/update</td>
+					<td>${modelCode}-manage.startUpdate</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>修改授权落地</td>
+					<td>流程流转交易</td>
+					<td>${modelCode}-manage.finishUpdate</td>
+					<td>审批同意时，被工作流流转交易调用</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>删除申请</td>
+					<td>/${modelCode}/destory</td>
+					<td>workflowInstance.createInstanceBL</td>
+					<td>该交易调用工作流模块的公共逻辑</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>删除授权落地</td>
+					<td>流程流转交易</td>
+					<td>${modelCode}-manage.finishDelete</td>
+					<td>审批同意时，被工作流流转交易调用</td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td>查询明细</td>
+					<td>/${modelCode}/query-detail</td>
+					<td>${modelCode}-manage.queryDetail</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>8</td>
+					<td>查询列表</td>
+					<td>/${modelCode}/query-list</td>
+					<td>${modelCode}-manage.queryList</td>
+					<td>综合管理页面会调用本接口</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,636 @@
+3<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css"  rel="stylesheet" href="../../css/dom.css"/>
+	<script type="text/javascript" src="../../javascript/core/domUtil.js"></script>
+</head>
+<body >
+	<div id="title" class="titleDiv">
+		100.12、ide中action的图标替换说明
+	</div>
+	<div class="tabTitleDiv">图标保存位置</div>
+	<p class="tabTitleLine"></p>
+	<div class="contentDiv">
+		 将文件夹“${项目根目录}/edk4jIdeSupport/icons/action”下的同名文件替换即可，或者按照actionProfile.xml中的配置规范对具体action的图标进行配置。
+	</div>
+	<div class="tabTitleDiv">图标规范及自制图标</div>
+	<p class="tabTitleLine"></p>
+	<div class="contentDiv">
+		每个action有2个图标：小图会展示在索引中；如果有大图时，大图会展示在流程图中，否则流程图中使用小图。<br>
+		1.所有图片一律要求.png格式，且背景透明；<br>
+		2.小图大小为  48px*16px， 图片左边至少保留24px为空<br>
+		3.大图大小为  50px*50px<br>
+		4.图标要能尽量代表action功能，它是对action功能是一个直观概括<br>
+		5.图标中是携带“动作”或“功能信息”的，有象征意义的图也可以。但不是简单画个图或者网上找个小图标就能用<br>
+		6.图标颜色不要单一，不要呆板，要精细有质感，不能粗枝大叶<br>
+		7.可在网上找合适的图标，我们可以直接使用，或者照着做。参考网站：<br/>
+		<div style="padding: 0 20px;">
+			<a style="margin-right:10px;" href="https://www.58pic.com/piccate/11-202-0.html" target="_blank">千图网小图标</a>
+			<a style="margin-right:10px;" href="https://icon.52112.com/?b_scene_zt=1&bd_vid=11689335598787753870" target="_blank">寻图标</a>
+			<a style="margin-right:10px;" href="http://sc.chinaz.com/tag_tubiao/Xiao.html" target="_blank">站长工具小图标</a>
+			<a style="margin-right:10px;" href="http://modernuiicons.com/" target="_blank">国外资源，1000多张小图标下载</a>
+			<a style="margin-right:10px;" href="https://www.iconsdb.com/" target="_blank">国外小图标网站</a>
+			<a style="margin-right:10px;" href="https://icomoon.io/app/#/select" target="_blank">国外小图标网站</a><br/>
+			如果在“手机银行”，“支付宝”等APP中看到合适的小图标，也可以截图
+		</div>
+		8.<label style="background-color:#ffff00">集思广益：如果您找到合适的图标样例，发送到shuidrinking@126.com，采纳后，有现金奖励</label><br>
+		9.不要求您做出来，只要您找到样例，我们采纳了就兑现奖励
+	</div>
+	<div class="tabTitleDiv">替换说明</div>
+	<p class="tabTitleLine"></p>
+	<div class="contentDiv">
+		（1）替换那些ide自带的action的图标（也就是在actionPrototype.xml里找不到的那些action）<br>
+		（2）文件命名范式：在actionPrototype.xml中可以进行配置，命名无特殊要求<br>但是对于ide自带的action，也就是在actionPrototype.xml里找不到的那些action，其图片名称需要遵守下面规范：<br>
+		 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;小图名：name.png<br>
+		 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大图名：name@big.png<br>
+		（3）图片替换后，重启eclipse会生效<br>
+		（4）图标效果比对预览（区别在业务逻辑画板中显示的图标是大图还是小图）：<br>
+			 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../image/business/100/classicPreView.png" target="_blank">仅有小图的情况预览</a><br>
+			 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../image/business/100/bigStylePreView.png" target="_blank">大小图并存的情况预览</a><br>
+		（5）如果想在已有项目中看到所有新图标，那么把“${项目根目录}/edk4jIdeSupport/icons/action”目录下的图标都删除，再重启eclipse即可
+	</div>
+	<div class="tabTitleDiv"> 可选套图</div>
+	<p class="tabTitleLine"></p>
+	<div class="contentDiv">
+		此处提供一些美工贡献的可替换套图，供大家依据自己的喜好选用：<br>
+		（1）<a href="../../edk4j-appends/actionIconStyle001.rar" target="_blank" download>可选设置1</a>
+	</div>
+	<div class="tabTitleDiv">已有action图标清单</div>
+	<p class="tabTitleLine"></p>
+	<table class="across">
+		<colgroup>
+			<col style="width:1rem;"/>
+			<col style="width:2rem;"/>
+			<col style="width:3rem;"/>
+			<col style="width:2rem;"/>
+			<col style="width:4rem;"/>
+			<col/>
+		</colgroup>
+		<thead>
+			<tr>
+				<th>序号</th>
+				<th>ide自带小图标</th>
+				<th>图片名称</th>
+				<th>所在分组</th>
+				<th>action名称</th>
+				<th>实现类</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td><img src='../../image/icons/action/a001.png'/></td>
+				<td>a001.png</td>
+				<td>日志组件</td>
+				<td>申明交易日志</td>
+				<td>com.edk4j.core.action.BizLogDefineAction</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td><img src='../../image/icons/action/runlog.png'/></td>
+				<td>runlog.png</td>
+				<td>日志组件</td>
+				<td>打印运行日志</td>
+				<td>com.edk4j.core.action.PrintLogAction</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td><img src='../../image/icons/action/a006.png'/></td>
+				<td>a006.png</td>
+				<td>工具组件</td>
+				<td>获取当前时间</td>
+				<td>com.edk4j.core.action.GetServerTimeAction</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td><img src='../../image/icons/action/a047.png'/></td>
+				<td>a047.png</td>
+				<td>工具组件</td>
+				<td>获取偏移的系统时间</td>
+				<td>com.edk4j.core.action.GetOffsetDateTimeAction</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td><img src='../../image/icons/action/convertdatefmt.png'/></td>
+				<td>convertdatefmt.png</td>
+				<td>工具组件</td>
+				<td>日期格式转换</td>
+				<td>com.edk4j.core.action.DateTimeFormatAction</td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td><img src='../../image/icons/action/a046.png'/></td>
+				<td>a046.png</td>
+				<td>工具组件</td>
+				<td>生成随机字符串</td>
+				<td>com.edk4j.core.action.GenerateRandomStringAction</td>
+			</tr>
+			<tr>
+				<td>7</td>
+				<td><img src='../../image/icons/action/a007.png'/></td>
+				<td>a007.png</td>
+				<td>工具组件</td>
+				<td>抛出异常</td>
+				<td>com.edk4j.core.action.ThrowTranFailExceptionAction</td>
+			</tr>
+			<tr>
+				<td>8</td>
+				<td><img src='../../image/icons/action/a044.png'/></td>
+				<td>a044.png</td>
+				<td>工具组件</td>
+				<td>截取字符串</td>
+				<td>com.edk4j.core.action.GetSubStringAction</td>
+			</tr>
+			<tr>
+				<td>9</td>
+				<td><img src='../../image/icons/action/a039.png'/></td>
+				<td>a039.png</td>
+				<td>工具组件</td>
+				<td>MD5加密字符串</td>
+				<td>com.edk4j.core.action.Md5EncryptDataAction</td>
+			</tr>
+			<tr>
+				<td>10</td>
+				<td><img src='../../image/icons/action/base64enc.png'/></td>
+				<td>base64enc.png</td>
+				<td>工具组件</td>
+				<td>Base64编码</td>
+				<td>com.edk4j.core.action.Base64EncodeAction</td>
+			</tr>
+			<tr>
+				<td>11</td>
+				<td><img src='../../image/icons/action/base64dec.png'/></td>
+				<td>base64dec.png</td>
+				<td>工具组件</td>
+				<td>Base64解码</td>
+				<td>com.edk4j.core.action.Base64DecodeAction</td>
+			</tr>
+			<tr>
+				<td>12</td>
+				<td><img src='../../image/icons/action/aesenc.png'/></td>
+				<td>aesenc.png</td>
+				<td>工具组件</td>
+				<td>AES/CBC/PKCS5Padding加密</td>
+				<td>com.edk4j.core.action.AESEncryptViaCBCAction</td>
+			</tr>
+			<tr>
+				<td>13</td>
+				<td><img src='../../image/icons/action/aesdec.png'/></td>
+				<td>aesdec.png</td>
+				<td>工具组件</td>
+				<td>AES/CBC/PKCS5Padding解密</td>
+				<td>com.edk4j.core.action.AESDecryptViaCBCAction</td>
+			</tr>
+			<tr>
+				<td>14</td>
+				<td><img src='../../image/icons/action/a005.png'/></td>
+				<td>a005.png</td>
+				<td>工具组件</td>
+				<td>整数自增计数器</td>
+				<td>com.edk4j.core.action.IntCounterIncrementAction</td>
+			</tr>
+			<tr>
+				<td>15</td>
+				<td><img src='../../image/icons/action/a043.png'/></td>
+				<td>a043.png</td>
+				<td>工具组件</td>
+				<td>字符串占位符替换</td>
+				<td>com.edk4j.core.action.ReplacePlaceholderAction</td>
+			</tr>
+			<tr>
+				<td>16</td>
+				<td><img src='../../image/icons/action/a042.png'/></td>
+				<td>a042.png</td>
+				<td>工具组件</td>
+				<td>获取中文字符的拼音</td>
+				<td>com.edk4j.core.action.TransChineseWordsToPinyinAction</td>
+			</tr>
+			<tr>
+				<td>17</td>
+				<td><img src='../../image/icons/action/aviator.png'/></td>
+				<td>aviator.png</td>
+				<td>工具组件</td>
+				<td>aviator表达式计算</td>
+				<td>com.edk4j.core.action.ExpressionEvaluatorAction</td>
+			</tr>
+			<tr>
+				<td>18</td>
+				<td><img src='../../image/icons/action/a013.png'/></td>
+				<td>a013.png</td>
+				<td>工具组件</td>
+				<td>调用其他bpm</td>
+				<td>com.edk4j.core.action.CallBpmAction</td>
+			</tr>
+			<tr>
+				<td>19</td>
+				<td><img src='../../image/icons/action/a014.png'/></td>
+				<td>a014.png</td>
+				<td>工具组件</td>
+				<td>共享Context调用其他bpm</td>
+				<td>com.edk4j.core.action.ShareContextToCallBpmAction</td>
+			</tr>
+			<tr>
+				<td>20</td>
+				<td><img src='../../image/icons/action/a002.png'/></td>
+				<td>a002.png</td>
+				<td>数据域组件</td>
+				<td>设置DataCell值</td>
+				<td>com.edk4j.core.action.SetDataCellValueInContextAction</td>
+			</tr>
+			<tr>
+				<td>21</td>
+				<td><img src='../../image/icons/action/a003.png'/></td>
+				<td>a003.png</td>
+				<td>数据域组件</td>
+				<td>置空DataCell</td>
+				<td>com.edk4j.core.action.SetValueToNullAction</td>
+			</tr>
+			<tr>
+				<td>22</td>
+				<td><img src='../../image/icons/action/a037.png'/></td>
+				<td>a037.png</td>
+				<td>数据域组件</td>
+				<td>复制DataCell</td>
+				<td>com.edk4j.core.action.CopyDataCellAction</td>
+			</tr>
+			<tr>
+				<td>23</td>
+				<td><img src='../../image/icons/action/a004.png'/></td>
+				<td>a004.png</td>
+				<td>数据域组件</td>
+				<td>连接DataCell</td>
+				<td>com.edk4j.core.action.ConcatDataCellValueAction</td>
+			</tr>
+			<tr>
+				<td>24</td>
+				<td><img src='../../image/icons/action/a045.png'/></td>
+				<td>a045.png</td>
+				<td>数据域组件</td>
+				<td>比较DataCell</td>
+				<td>com.edk4j.core.action.DataCellCompareAction</td>
+			</tr>
+			<tr>
+				<td>25</td>
+				<td><img src='../../image/icons/action/a051.png'/></td>
+				<td>a051.png</td>
+				<td>数据域组件</td>
+				<td>获取listx总行数</td>
+				<td>com.edk4j.core.action.GetListxSizeAction</td>
+			</tr>
+			<tr>
+				<td>26</td>
+				<td><img src='../../image/icons/action/a050.png'/></td>
+				<td>a050.png</td>
+				<td>数据域组件</td>
+				<td>复制Listx</td>
+				<td>com.edk4j.core.action.CopyListxAction</td>
+			</tr>
+			<tr>
+				<td>27</td>
+				<td><img src='../../image/icons/action/a008.png'/></td>
+				<td>a008.png</td>
+				<td>数据域组件</td>
+				<td>从Listx提取指定行到context</td>
+				<td>com.edk4j.core.action.CutOutDataCellToContextFromListxRowAction</td>
+			</tr>
+			<tr>
+				<td>28</td>
+				<td><img src='../../image/icons/action/setcell.png'/></td>
+				<td>setcell.png</td>
+				<td>数据域组件</td>
+				<td>设置Listx中指定单元格的值</td>
+				<td>com.edk4j.core.action.SetCellValueInListxAction</td>
+			</tr>
+			<tr>
+				<td>29</td>
+				<td><img src='../../image/icons/action/a048.png'/></td>
+				<td>a048.png</td>
+				<td>数据域组件</td>
+				<td>添加context数据域到listx</td>
+				<td>com.edk4j.core.action.AddContextFieldsToListxAction</td>
+			</tr>
+			<tr>
+				<td>30</td>
+				<td><img src='../../image/icons/action/a009.png'/></td>
+				<td>a009.png</td>
+				<td>数据域组件</td>
+				<td>剪切Listx的前指定行</td>
+				<td>com.edk4j.core.action.CutOutSubListOfListxAction</td>
+			</tr>
+			<tr>
+				<td>31</td>
+				<td><img src='../../image/icons/action/a049.png'/></td>
+				<td>a049.png</td>
+				<td>数据域组件</td>
+				<td>Listx数据排序</td>
+				<td>com.edk4j.core.action.SortListxAction</td>
+			</tr>
+			<tr>
+				<td>32</td>
+				<td><img src='../../image/icons/action/a052.png'/></td>
+				<td>a052.png</td>
+				<td>数据域组件</td>
+				<td>listx数据过滤</td>
+				<td>com.edk4j.core.action.ListxFilterAction</td>
+			</tr>
+			<tr>
+				<td>33</td>
+				<td><img src='../../image/icons/action/a010.png'/></td>
+				<td>a010.png</td>
+				<td>数据域组件</td>
+				<td>从json字符串提取数据到context</td>
+				<td>com.edk4j.core.action.CutOutJsonStringFieldsToContextAction</td>
+			</tr>
+			<tr>
+				<td>34</td>
+				<td><img src='../../image/icons/action/a011.png'/></td>
+				<td>a011.png</td>
+				<td>数据域组件</td>
+				<td>将指定数据格式化为json字符串</td>
+				<td>com.edk4j.core.action.FormatDomainDataToJsonAction</td>
+			</tr>
+			<tr>
+				<td>35</td>
+				<td><img src='../../image/icons/action/a012.png'/></td>
+				<td>a012.png</td>
+				<td>数据域组件</td>
+				<td>提取excel内容到Listx</td>
+				<td>com.edk4j.core.action.GetExcelContentToListxAction</td>
+			</tr>
+			<tr>
+				<td>36</td>
+				<td><img src='../../image/icons/action/a053.png'/></td>
+				<td>a053.png</td>
+				<td>数据域组件</td>
+				<td>保存listx到excel</td>
+				<td>com.edk4j.core.action.SaveListxToExcelAction</td>
+			</tr>
+			<tr>
+				<td>37</td>
+				<td><img src='../../image/icons/action/convert.png'/></td>
+				<td>convert.png</td>
+				<td>数据域组件</td>
+				<td>将List对象转化为Listx</td>
+				<td>com.edk4j.core.action.ConvertListToListxAction</td>
+			</tr>
+			<tr>
+				<td>38</td>
+				<td><img src='../../image/icons/action/getconfig.png'/></td>
+				<td>getconfig.png</td>
+				<td>缓存及配置组件</td>
+				<td>读取配置文件中的值</td>
+				<td>com.edk4j.core.action.GetConfigPropertiesValueAction</td>
+			</tr>
+			<tr>
+				<td>39</td>
+				<td><img src='../../image/icons/action/cacheop.png'/></td>
+				<td>cacheop.png</td>
+				<td>缓存及配置组件</td>
+				<td>操作缓存</td>
+				<td>com.edk4j.core.action.CacheOperateAction</td>
+			</tr>
+			<tr>
+				<td>40</td>
+				<td><img src='../../image/icons/action/activemqqueue.png'/></td>
+				<td>activemqqueue.png</td>
+				<td>缓存及配置组件</td>
+				<td>ActiveMq-Queue生产者</td>
+				<td>com.edk4j.core.action.ActiveMQQueueProducerAction</td>
+			</tr>
+			<tr>
+				<td>41</td>
+				<td><img src='../../image/icons/action/activemqtopic.png'/></td>
+				<td>activemqtopic.png</td>
+				<td>缓存及配置组件</td>
+				<td>ActiveMq-Topic生产者</td>
+				<td>com.edk4j.core.action.ActiveMQTopicProducerAction</td>
+			</tr>
+			<tr>
+				<td>42</td>
+				<td><img src='../../image/icons/action/a015.png'/></td>
+				<td>a015.png</td>
+				<td>动态数据域组件</td>
+				<td>保存动态数据</td>
+				<td>com.edk4j.core.action.SaveDynamicDataAction</td>
+			</tr>
+			<tr>
+				<td>43</td>
+				<td><img src='../../image/icons/action/a016.png'/></td>
+				<td>a016.png</td>
+				<td>动态数据域组件</td>
+				<td>提取动态数据</td>
+				<td>com.edk4j.core.action.LoadDynamicDataAction</td>
+			</tr>
+			<tr>
+				<td>44</td>
+				<td><img src='../../image/icons/action/a017.png'/></td>
+				<td>a017.png</td>
+				<td>动态数据域组件</td>
+				<td>清空动态数据</td>
+				<td>com.edk4j.core.action.ClearDynamicDataAction</td>
+			</tr>
+			<tr>
+				<td>45</td>
+				<td><img src='../../image/icons/action/a018.png'/></td>
+				<td>a018.png</td>
+				<td>数据库组件</td>
+				<td>获取序列号</td>
+				<td>com.edk4j.core.repository.jdbc.QuerySequenceAction</td>
+			</tr>
+			<tr>
+				<td>46</td>
+				<td><img src='../../image/icons/action/a019.png'/></td>
+				<td>a019.png</td>
+				<td>数据库组件</td>
+				<td>增删改执行器</td>
+				<td>com.edk4j.core.repository.jdbc.DMLSqlExecuteAction</td>
+			</tr>
+			<tr>
+				<td>47</td>
+				<td><img src='../../image/icons/action/a020.png'/></td>
+				<td>a020.png</td>
+				<td>数据库组件</td>
+				<td>批量增删改执行器</td>
+				<td>com.edk4j.core.repository.jdbc.DMLSqlBatchExecuteAction</td>
+			</tr>
+			<tr>
+				<td>48</td>
+				<td><img src='../../image/icons/action/a021.png'/></td>
+				<td>a021.png</td>
+				<td>数据库组件</td>
+				<td>查询单笔数据明细</td>
+				<td>com.edk4j.core.repository.jdbc.QueryDataDetailUsingSQLAction</td>
+			</tr>
+			<tr>
+				<td>49</td>
+				<td><img src='../../image/icons/action/a022.png'/></td>
+				<td>a022.png</td>
+				<td>数据库组件</td>
+				<td>查询数据列表</td>
+				<td>com.edk4j.core.repository.jdbc.QueryDataListUsingSQLAction</td>
+			</tr>
+			<tr>
+				<td>50</td>
+				<td><img src='../../image/icons/action/a023.png'/></td>
+				<td>a023.png</td>
+				<td>数据库组件</td>
+				<td>分页查询数据列表</td>
+				<td>com.edk4j.core.repository.jdbc.QueryDataListByPageUsingSQLAction</td>
+			</tr>
+			<tr>
+				<td>51</td>
+				<td><img src='../../image/icons/action/a024.png'/></td>
+				<td>a024.png</td>
+				<td>数据库组件</td>
+				<td>Mysql大数据分页查询</td>
+				<td>com.edk4j.core.repository.jdbc.PageQueryViaInnerJoinSQLAction</td>
+			</tr>
+			<tr>
+				<td>52</td>
+				<td><img src='../../image/icons/action/a025.png'/></td>
+				<td>a025.png</td>
+				<td>数据库组件</td>
+				<td>执行存储过程</td>
+				<td>com.edk4j.core.repository.jdbc.ExecuteProcedureAction</td>
+			</tr>
+			<tr>
+				<td>53</td>
+				<td><img src='../../image/icons/action/deletefile.png'/></td>
+				<td>deletefile.png</td>
+				<td>文件处理组件</td>
+				<td>删除文件</td>
+				<td>com.edk4j.core.action.DeleteFileAction</td>
+			</tr>
+			<tr>
+				<td>54</td>
+				<td><img src='../../image/icons/action/docfile.png'/></td>
+				<td>docfile.png</td>
+				<td>文件处理组件</td>
+				<td>处理上传文件</td>
+				<td>com.edk4j.core.action.DealUploadFileAction</td>
+			</tr>
+			<tr>
+				<td>55</td>
+				<td><img src='../../image/icons/action/imagefile.png'/></td>
+				<td>imagefile.png</td>
+				<td>文件处理组件</td>
+				<td>处理上传图片</td>
+				<td>com.edk4j.core.action.DealUploadImageAction</td>
+			</tr>
+			<tr>
+				<td>56</td>
+				<td><img src='../../image/icons/action/a026.png'/></td>
+				<td>a026.png</td>
+				<td>工作流组件</td>
+				<td>调用发起流程的bpm</td>
+				<td>com.edk4j.workflow.action.CallCreateWorkflowInstanceBpmAction</td>
+			</tr>
+			<tr>
+				<td>57</td>
+				<td><img src='../../image/icons/action/a060.png'/></td>
+				<td>a060.png</td>
+				<td>工作流组件</td>
+				<td>查询流程节点的可用操作</td>
+				<td>com.edk4j.workflow.action.QueryOperationsAction</td>
+			</tr>
+			<tr>
+				<td>58</td>
+				<td><img src='../../image/icons/action/a061.png'/></td>
+				<td>a061.png</td>
+				<td>工作流组件</td>
+				<td>完成节点并流转</td>
+				<td>com.edk4j.workflow.action.CompleteTaskAction</td>
+			</tr>
+			<tr>
+				<td>59</td>
+				<td><img src='../../image/icons/action/a033.png'/></td>
+				<td>a033.png</td>
+				<td>工作流组件</td>
+				<td>提取context数据到工单业务数据域</td>
+				<td>com.edk4j.workflow.action.AddDomainDataToWFInstanceDataListAction</td>
+			</tr>
+			<tr>
+				<td>60</td>
+				<td><img src='../../image/icons/action/a034.png'/></td>
+				<td>a034.png</td>
+				<td>工作流组件</td>
+				<td>提取工单业务数据到context</td>
+				<td>com.edk4j.workflow.action.CutOutBusinessDataToContextAction</td>
+			</tr>
+			<tr>
+				<td>61</td>
+				<td><img src='../../image/icons/action/a035.png'/></td>
+				<td>a035.png</td>
+				<td>工作流组件</td>
+				<td>格式化工单数据</td>
+				<td>com.edk4j.workflow.action.FormatListValueInBusinessDataAction</td>
+			</tr>
+			<tr>
+				<td>62</td>
+				<td><img src='../../image/icons/action/a036.png'/></td>
+				<td>a036.png</td>
+				<td>工作流组件</td>
+				<td>反格式化工单数据</td>
+				<td>com.edk4j.workflow.action.UnformatJsonArrayValueInBusinessDataAction</td>
+			</tr>
+			<tr>
+				<td>63</td>
+				<td><img src='../../image/icons/action/a027.png'/></td>
+				<td>a027.png</td>
+				<td>工作流组件</td>
+				<td>创建流程实例</td>
+				<td>com.edk4j.workflow.action.CreateActivitiInstanceAction</td>
+			</tr>
+			<tr>
+				<td>64</td>
+				<td><img src='../../image/icons/action/a054.png'/></td>
+				<td>a054.png</td>
+				<td>网络交互组件</td>
+				<td>FTP文件下载</td>
+				<td>com.edk4j.core.action.FtpDownloadAction</td>
+			</tr>
+			<tr>
+				<td>65</td>
+				<td><img src='../../image/icons/action/a055.png'/></td>
+				<td>a055.png</td>
+				<td>网络交互组件</td>
+				<td>FTP文件上传</td>
+				<td>com.edk4j.core.action.FtpUploadAction</td>
+			</tr>
+			<tr>
+				<td>66</td>
+				<td><img src='../../image/icons/action/starttrack.png'/></td>
+				<td>starttrack.png</td>
+				<td>链路跟踪组件</td>
+				<td>开始跟踪</td>
+				<td>com.edk4j.track.action.TrackStartAction</td>
+			</tr>
+			<tr>
+				<td>67</td>
+				<td><img src='../../image/icons/action/stoptrack.png'/></td>
+				<td>stoptrack.png</td>
+				<td>链路跟踪组件</td>
+				<td>结束跟踪</td>
+				<td>com.edk4j.track.action.TrackEndAction</td>
+			</tr>
+			<tr>
+				<td>68</td>
+				<td><img src='../../image/icons/action/stoptrack2.png'/></td>
+				<td>stoptrack2.png</td>
+				<td>链路跟踪组件</td>
+				<td>结束且上报异常不抛出</td>
+				<td>com.edk4j.track.action.TrackEndNotThrowAction</td>
+			</tr>
+			<tr>
+				<td>69</td>
+				<td><img src='../../image/icons/action/stoptrack3.png'/></td>
+				<td>stoptrack3.png</td>
+				<td>链路跟踪组件</td>
+				<td>结束且上报异常并抛出</td>
+				<td>com.edk4j.track.action.TrackEndAndThrowAction</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
