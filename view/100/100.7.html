@@ -4,54 +4,26 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link type="text/css"  rel="stylesheet" href="../../css/dom.css"/>
 	<link type="text/css"  rel="stylesheet" href="../../css/sdTabControl.css"/>
+	<link type="text/css"  rel="stylesheet" href="../../css/sdImageViewer.css"/>
+	<script type="text/javascript" src="../../javascript/components/SDImageViewer.js"></script>
 	<script type="text/javascript" src="../../javascript/core/domUtil.js"></script>
 	<script type="text/javascript" src="../../javascript/core/ajaxEngine.js"></script>
 	<script type="text/javascript" src="../../javascript/components/SDTabControl.js"></script>
 	<script type="text/javascript">
-		function openPage(url){
-			window.open(url, null, getWindowOpenFeature(100,100));
-		}
-		function loadpage(url){
-			Server.loadResource(document.querySelector("#contentContainnerDiv"), url);
-		}
-		
-		async function loadHTML(url) {
-			try {
-				// 发起 fetch 请求并获取响应体
-				const response = await fetch(url);
-				//response.body instanceof ReadableStream
-				const reader = response.body.getReader();
-				let chunks = [];
-				// 读取数据块
-				while (true) {
-					const { done, value } = await reader.read();
-					if (done) {
-						break;
-					}
-					
-					chunks.push(value);
-				}
-				// 创建一个新的 TextDecoder 实例
-				const decoder = new TextDecoder('utf-8');
-				// 将 Uint8Array 数组转换为字符串
-				const text = decoder.decode(new Uint8Array(chunks.flat()));
-				console.log(text);
-			}
-			catch (error) {
-				console.error('读取数据时出错:', error);
-			}
+		function fillContent(htmlStr){
+			document.querySelector("#contentContainnerDiv").innerHTML=htmlStr;
 		}
 	</script>
 </head>
-<body onload="loadpage('./pub.1.html');">
+<body onload="Server.fetchTextContent('./pub.1.html', fillContent);">
 	<div id="title" class="titleDiv">
 		100.7、一键生成模型的增删改查前后台套件
 	</div>
 	<!--  style="position:fixed;padding:0.05rem 0.2rem;border-radius:0.1rem;right:0.2rem;top:50%;line-height:0.4rem;border: 1px solid #0081b0;" -->
 	<div style="height:0.4rem;line-height:0.4rem;text-align:center;">
-		<a style="margin-right:0.5rem;" href="javascript:loadpage('./pub.1.html')">功能位置及操作说明</a>
-		<a style="margin-right:0.5rem;" href="javascript:loadpage('./pub.2.html')">生成【没有】工作流的交易构件</a>
-		<a href="javascript:loadpage('./pub.3.html')">生成【有】工作流的交易构件</a>
+		<a style="margin-right:0.5rem;" href="javascript:Server.fetchTextContent('./pub.1.html', fillContent)">功能位置及操作说明</a>
+		<a style="margin-right:0.5rem;" href="javascript:Server.fetchTextContent('./pub.2.html', fillContent)">生成【没有】工作流的交易构件</a>
+		<a href="javascript:Server.fetchTextContent('./pub.3.html', fillContent)">生成【有】工作流的交易构件</a>
 	</div>
 	<div class="contentDiv" id="contentContainnerDiv">
 	</div>

@@ -144,45 +144,31 @@ Server.doSearch = function(ajaxRegistId, jsonDataObject , callBackFunction, asyn
 	}
 	Request.send(JSON.stringify(jsonDataObject));
 }
-/**
- * 动态加载html以及脚本文件，脚本可以为空
- * @param {HTMLElement} _containner：容器对象
- * @param {string} pagepath：页面路径
- * @param {boolean} async：是否异步加载，默认为true, 可选值true/false，false时同步加载
- * @param {number} timeout million seconds 超时时间毫秒数，默认10000
- * @returns {XMLHttpRequest} xhrInstance
- */
-Server.loadResource = function(_containner, pagepath, async=true, timeoutMs=10000){
-	let Request = Server.getXMLHttpRequest();
-	//let header = Request.getAllResponseHeaders();
-	Request.timeout=timeoutMs;
-	
-	Request.onerror = function(message){
-		console.error(message);
-		_containner.innerHTML = "error !";
+Server.fetchTextContent = async function (url , callbackFunction, callTheCallbackFunctionAtDown=true) {
+	if(!callbackFunction){
+		callbackFunction=(data)=>{console.log(`Received data :\n${data}`)};
 	}
-	Request.onabort = function(){
-		_containner.innerHTML = "request has been aborted !";
-	}
-	Request.ontimeout = function(){
-		_containner.innerHTML = "request time out !";
-	}
-	//监听 readyState 属性变化
-	Request.onreadystatechange=function(){
-		//只处理通信已完成的状态，其他工作阶段时不做处理
-		if(Request.readyState==4){
-			if(Request.status!=200){
-				console.error(Request);
-				_containner.innerHTML = "error !";
-				return;
-			}
-			//渲染内容
-			let htmlContent = Request.responseText;
-			_containner.innerHTML = htmlContent;
+	const response = await fetch(url);
+	//response.body instanceof ReadableStream
+	const reader = response.body.getReader();
+	const decoder = new TextDecoder('UTF-8');
+	// 读取数据块
+	let chunks = [];
+	while (true) {
+		const { done, value } = await reader.read();
+		if (done) {
+			console.debug("Stream finished.");
+			break;
+		}
+		console.debug(`Received ${value.length} bytes`)
+		if(callTheCallbackFunctionAtDown){
+			chunks.push(decoder.decode(value));
+		}
+		else{
+			callbackFunction(decoder.decode(value));
 		}
 	}
-	let htmlFileUrl = pagepath;
-	Request.open("GET", htmlFileUrl, async);
-	Request.send();
-	return Request;
+	if(callTheCallbackFunctionAtDown){
+		callbackFunction(chunks.join(""));
+	}
 }
