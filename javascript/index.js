@@ -499,21 +499,21 @@ function gotoView(menuCode, _element){
  * 设置菜单显示状态
  * @returns
  */
-var menuExpand=true;
 function toggleMenu(){
-	if(menuExpand){
+	let _arrow=document.querySelector(".arrow");
+	if(_arrow.classList.contains("arrow-left")){
+		$("menuToggleDiv").style.left="0";
+		_arrow.classList.remove("arrow-left");
+		_arrow.classList.add("arrow-right");
 		$("leftDiv").className="menuDivHidden";
-		$("menuToggleDiv").className="showMenuIcon";
-		$("menuToggleDiv").innerHTML="<div class='arrow arrow-right'></div>";
 		$("workAreaDiv").className="workAreaDivMax";
-		menuExpand=false;
 	}
 	else{
+		$("menuToggleDiv").style.left="3.5rem";
+		_arrow.classList.remove("arrow-right");
+		_arrow.classList.add("arrow-left");
 		$("leftDiv").className="menuDivShow";
-		$("menuToggleDiv").className="hideMenuIcon";
-		$("menuToggleDiv").innerHTML="<div class='arrow arrow-left'></div>";
 		$("workAreaDiv").className="workAreaDivMin";
-		menuExpand=true;
 	}
 }
 
