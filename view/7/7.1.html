@@ -14,6 +14,11 @@
 			PR.prettyPrint();
 		}
 	</script>
+	<script type="text/javascript">
+		function openPage(url){
+			window.open(url, null, getWindowOpenFeature(100,100));
+		}
+	</script>
 </head>
 <body onload="init();">
 	<div id="title" class="titleDiv">
@@ -23,9 +28,9 @@
 	<div class="tabTitleLine"></div>
 	<div class="contentDiv">
 		<label style="font-weight:bold;">接口</label>：com.edk4j.core.requestprocess.RequestPresenter
-		<br><label style="font-weight:bold;">配置到哪里</label>：详见前面“edk中的api.xml”小节内容
-		<br><label style="font-weight:bold;">什么用：</label><label style="background-color:#ffff00;">RequestPresenter是响应前台请求的入口，通过“处理前、处理中、处理后”三个方法完成一个交易，这三个方法贯穿于整个交易</label>，由于每个api请求都可以配置RequestPresenter，因此你可以根据不同的需要，编写不同的RequestPresenter来处理。
-		<br><label style="font-weight:bold;">edk4j-demo中的可参考实现类</label>：com.edk4j.sdk.web.presenter.DefaultRequestPresenter，该类在<a href="javascript:window.open('../102/102.1.html', null, getWindowOpenFeature(200, 200));">edk4j-demos项目</a>中可以找到。也可以使用EDK4j可视化IDE为项目添加支持后，自动生成。
+		<br><label style="font-weight:bold;">配置到哪里</label>：定义接口的api文件中，详见<a href="javascript:openPage('../5/5.2.2.html')">5.2.2、接口定义文件</a>
+		<br><label style="font-weight:bold;">什么用：</label>RequestPresenter是响应交易的接口调用的处理器，完成解析请求数据、调用交易逻辑、组织返回数据。个性化的交易定制个性化的RequestPresenter，若未为交易配置RequestPresenter则会使用项目默认的处理器。
+		<br><label style="font-weight:bold;">在edk4j工作台中新建项目后，会为项目自动生成默认的RequestPresenter实现类</label>
 		<br/><a style="font-weight:bold;">▶&nbsp;&nbsp;必须实现的方法清单：</a>
 		<div class="contentDiv">
 			<pre class="prettyprint lang-java " id="javaCode1" style="padding-left:0.5rem;font-weight:bold;font-size:0.14rem;line-height:0.26rem;font-family: 'Verdana','微软雅黑','宋体';">

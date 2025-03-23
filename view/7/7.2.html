@@ -27,7 +27,7 @@
 		<label style="font-weight:bold;">接口</label>：com.edk4j.core.service.CacheService
 		<br/><label style="font-weight:bold;">什么用</label>：管理缓存数据，执行增删改查动作。实现方法中，可以根据需要调用相应的缓存服务器。如果你要集成二级缓存机制，也只需要在实现类里处理就好了。
 		<br/><label style="width:0.64rem;display:inline-block;"></label>对于缓存文件的配置，详见前面章节“edk中的配置文件概要说明”里，对于edk4j.properties关于缓存配置项的说明，以及对于ehCache3Config.xml的说明
-		<br/><label style="font-weight:bold;">edk中的默认实现类</label>：com.edk4j.edk4jdemos.service.impl.CacheServiceImpl
+		<br/><label style="font-weight:bold;">默认实现类</label>：新建edk4j项目，工作台会自动为项目生成一个默认实现类CacheServiceImpl
 		<br/><label style="font-weight:bold;">实现类中必须使用注解和beanName</label>：@Service("cacheService")，如果beanName没有这样设置，那么将会调用com.edk4j.core.service.impl.DefaultCacheService，这个默认实现类应该不够满足你的应用需求。
 		<br/><label style="font-weight:bold;">方法清单</label>：
 		<div class="contentDiv">
