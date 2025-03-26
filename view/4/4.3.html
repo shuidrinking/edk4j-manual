@@ -4,55 +4,40 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link type="text/css"  rel="stylesheet" href="../../css/dom.css"/>
 	<link type="text/css"  rel="stylesheet" href="../../css/sdTabControl.css"/>
+	<link type="text/css"  rel="stylesheet" href="../../css/sdImageViewer.css"/>
+	<script type="text/javascript" src="../../javascript/core/ajaxEngine.js"></script>
 	<script type="text/javascript" src="../../javascript/core/domUtil.js"></script>
 	<script type="text/javascript" src="../../javascript/components/SDTabControl.js"></script>
+	<script type="text/javascript" src="../../javascript/components/SDImageViewer.js"></script>
 	<script type="text/javascript">
 		function openPage(url){
 			window.open(url, null, getWindowOpenFeature(100,100));
 		}
+		function fillContent(htmlStr){
+			document.querySelector("#contentContainnerDiv").innerHTML=htmlStr;
+		}
 	</script>
+	<style type="text/css">
+		a{
+			color:#0059a6 !important;
+		}
+		a:hover {
+			background-color: unset !important;
+			text-decoration: none !important;
+			color:#D12D2D !important;
+		}
+	</style>
 </head>
-<body >
-	<div id="title" class="titleDiv">
-		4.3、安装并学习使用可视化开发脚手架：edk4j工作台
+<body onload="Server.fetchTextContent('../100/100.1.html', fillContent);">
+	<div style="background-color:#eef7ff;position:fixed;padding:0.05rem 0.2rem;border-radius:0.1rem;right:0.2rem;top:50%;line-height:0.4rem;border: 1px solid #0081b0;">
+		<a href="javascript:Server.fetchTextContent('../100/100.1.html', fillContent)">（1）edk4j工作台概要说明</a><br>
+		<a href="javascript:Server.fetchTextContent('../100/100.2.html', fillContent)">（2）下载</a><br>
+		<a href="javascript:Server.fetchTextContent('../100/100.3.html', fillContent)">（3）安装</a><br>
+		<a href="javascript:Server.fetchTextContent('../100/100.4.html', fillContent)">（4）创建项目</a><br>
+		<a href="javascript:Server.fetchTextContent('../100/100.6.html', fillContent)">（5）开发接口定义构件（api文件）</a><br>
+		<a href="javascript:Server.fetchTextContent('../100/100.5.html', fillContent)">（6）开发业务逻辑构件（bpm文件）</a>
 	</div>
-	<table class="across">
-		<colgroup><col style="width:0.5rem;"/><col style="width:3rem;"/><col/></colgroup>
-		<thead>
-			<tr><th>序号</th><th>课程</th><th>备注</th></tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>1</td>
-				<td><a href="javascript:openPage('../100/100.1.html')">edk4j工作台概要说明</a></td>
-				<td>“edk4j工作台”是一个eclipse插件</td>
-			</tr>
-			<tr>
-				<td>2</td>
-				<td><a href="javascript:openPage('../100/100.2.html')">下载</a></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td><a href="javascript:openPage('../100/100.3.html')">安装</a></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>4</td>
-				<td><a href="javascript:openPage('../100/100.4.html')">创建项目</a></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>5</td>
-				<td><a href="javascript:openPage('../100/100.6.html')">开发接口定义构件（api文件）</a></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>6</td>
-				<td><a href="javascript:openPage('../100/100.5.html')">开发业务逻辑构件（bpm文件）</a></td>
-				<td></td>
-			</tr>
-		</tbody>
-	</table>
+	<div id="contentContainnerDiv">
+	</div>
 </body>
 </html>
