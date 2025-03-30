@@ -23,6 +23,7 @@ Server.getXMLHttpRequest = function(){
 	}
 }
 let searchRequestDomain="https://search.edk4j.com";
+searchRequestDomain="http://120.26.168.13:19999/edk4jsearchdog/";
 /**
  * 发起ajax请求
  * @param ajaxRegist mvc.config-1.0.0.js中定义的注册项，ajaxRegister原型：{"someAjaxId":{model:"/someAjaxService",view:"some.html",script:"some.js"}, ...}
