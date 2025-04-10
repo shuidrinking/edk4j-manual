@@ -414,7 +414,7 @@ function init(){
 		{"menuCode":"m100-4","parentMenuCode":"m100","showText":"100.4、创建edk4j项目","url":"view/100/100.4.html"},
 		{"menuCode":"m100-5","parentMenuCode":"m100","showText":"100.5、创建并编辑bpm文件","url":"view/100/100.5.html"},
 		{"menuCode":"m100-6","parentMenuCode":"m100","showText":"100.6、创建并编辑api文件","url":"view/100/100.6.html"},
-		{"menuCode":"m100-7","parentMenuCode":"m100","showText":"100.7、一键生成模型的增删改查前后台套件","url":"view/100/100.7.html"}, 
+		{"menuCode":"m100-7","parentMenuCode":"m100","showText":"100.7、一键生成表单（模型）全套接口的构件","url":"view/100/100.7.html"}, 
 		{"menuCode":"m100-8","parentMenuCode":"m100","showText":"100.8、bpm文件编辑技巧","url":"view/100/100.8.html"}, 
 		{"menuCode":"m100-9","parentMenuCode":"m100","showText":"100.9、项目中定义action原型","url":"view/100/100.9.html"},
 		{"menuCode":"m100-10","parentMenuCode":"m100","showText":"100.10、项目中定义数据域字典","url":"view/100/100.10.html"},
