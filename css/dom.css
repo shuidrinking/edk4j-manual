@@ -679,6 +679,7 @@ tbody tr:hover td {
 	text-shadow: 0.01rem 0.01rem 0 #faff9b;
 	color: #d37e00;
 	border: 0.01rem solid #f49502;
+	border-radius:0.1rem;
 }
 
 /*因为nth-child里没有设置hover样式，不加!important会被nth-child里的定义覆盖*/
