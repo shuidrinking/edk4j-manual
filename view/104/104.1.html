@@ -15,9 +15,50 @@
 </head>
 <body onload="init();">
 	<div id="title" class="titleDiv">
-		104.1、maven库地址
+		104.1、maven库配置
 	</div>
-	<div class="tabTitleDiv">必须添加edk4j镜像库</div>
+	<div class="tabTitleDiv">需要添加到本地私库中的jar</div>
+	<p class="tabTitleLine"></p>
+	<table class="across">
+		<colgroup>
+			<col style="width:3rem;"/>
+			<col/>
+			<col style="width:5rem;"/>
+		</colgroup>
+		<thead>
+			<tr>
+				<th></th>
+				<th>说明</th>
+				<th>下载</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td style="font-weight:bold;">
+					edk4j平台系列jar
+				</td>
+				<td>
+					edk4j镜像库暂时无法访问，此处提供，下载后解压到本地maven的localRepository文件夹中
+				</td>
+				<td style="text-align:center;font-weight:bold;">
+					<a href="../../edk4j-appends/edk4j-jars.zip" download="edk4j平台系列jar" target="_blank">edk4j平台系列jar</a>
+				</td>
+			</tr>
+			<tr>
+				<td style="font-weight:bold;">
+					个别特殊的第三方依赖包
+				</td>
+				<td>
+					个别第三方jar在镜像私库中可能找不到，此处提供，下载后解压到本地maven的localRepository文件夹中
+				</td>
+				<td style="text-align:center;font-weight:bold;">
+					<a href="../../edk4j-appends/special-thirdpart-jars.zip" download="edk4j平台系列jar" target="_blank">个性化第三方jar</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<div class="tabTitleDiv">添加edk4j镜像库</div>
 	<p class="tabTitleLine"></p>
 	<table class="across">
 		<colgroup>
@@ -34,7 +75,7 @@
 			<tr>
 				<td style="text-align:center;font-weight:bold;">
 					edk4j镜像库<br>
-					<label style="font-weight:normal;color:#ff0000;font-size:0.14rem;'">（若不添加，则无法下载到edk4j平台的依赖包）</label>
+					<label style="font-weight:normal;color:#ff0000;font-size:0.14rem;">（若不添加，则无法下载到edk4j平台的依赖包）</label>
 				</td>
 				<td>
 <pre id="codeShow3"  class="prettyprint lang-xml">
@@ -47,62 +88,23 @@
 </pre>
 				</td>
 			</tr>
+			<tr>
+				<td colspan="2" style="text-align:center;font-weight:bold;">
+					<a href="../../edk4j-appends/settings.xml" download="settings-样例"  target="_blank">settings.xml配置文件样例</a>
+				</td>
+			</tr>
 		</tbody>
 	</table>
-	<div class="subTitleDiv addArrow">
-		settings.xml配置文件样例
-	</div>
-	<div class="subContentDiv addBorder">
-<pre id="codeShow3" class="prettyprint lang-xml" style="font-weight:bold;font-size:0.14rem;line-height:0.2rem;font-family: 'Verdana','微软雅黑','宋体';">
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd"&gt;
-	&lt;localRepository&gt;你本地的Maven库路径，例如D:\nexusLib\&lt;/localRepository&gt;
-	&lt;pluginGroups&gt;
-	&lt;/pluginGroups&gt;
-
-	&lt;proxies&gt;
-	&lt;/proxies&gt;
-
-	&lt;servers&gt;
-	&lt;/servers&gt;
-	&lt;mirrors&gt;
-		&lt;!-- 这里可以是贵公司的私库，或者阿里库等私库 --&gt;
-		&lt;mirror&gt;
-			&lt;id&gt;alimaven-public&lt;/id&gt;
-			&lt;name&gt;阿里库-public&lt;/name&gt;
-			&lt;url&gt;https://maven.aliyun.com/repository/public&lt;/url&gt;
-			&lt;mirrorOf&gt;public&lt;/mirrorOf&gt;        
-		&lt;/mirror&gt;
-		&lt;mirror&gt;
-			&lt;id&gt;alimaven-central&lt;/id&gt;
-			&lt;name&gt;阿里库-central&lt;/name&gt;
-			&lt;url&gt;https://maven.aliyun.com/repository/central&lt;/url&gt;
-			&lt;mirrorOf&gt;central&lt;/mirrorOf&gt;        
-		&lt;/mirror&gt;
-		&lt;!-- 
-			若贵公司私库里已经对edk4j库做了代理，则下面的mirror不需要添加，
-			否则，您必须添加edk4j库，否则无法下载edk4j平台系列依赖 
-		--&gt;
-		&lt;mirror&gt;
-			&lt;id&gt;edk4jMavenLib&lt;/id&gt;
-			&lt;name&gt;edk4j库&lt;/name&gt;
-			&lt;url&gt;http://www.edk4j.com/repository/maven-public/&lt;/url&gt;
-			&lt;mirrorOf&gt;*&lt;/mirrorOf&gt;        
-		&lt;/mirror&gt;
-		&lt;!-- 
-			可能出现的问题：
-				（1）在对项目做maven update操作时，会提示：无法从私库下载某依赖
-				（2）在run as中进行maven clean或install等操作时，error中会提示parent的relativePath错误
-			解决办法：
-				（1）先确定网络正常，能顺利连接到edk4j库
-				（2）在本地私库文件夹中搜索：*.lastUpdated 以及 _remote.repositories，将搜索到的文件全部清理，重新对项目进行maven update即可 
-		--&gt;
-	&lt;/mirrors&gt;
-	&lt;profiles&gt;
-	&lt;/profiles&gt;
-&lt;/settings&gt;
+	<div class="tabTitleDiv">maven构建时可能遇到的问题</div>
+	<div class="tabTitleLine"></div>
+	<div class="contentDiv">
+<pre id="codeShow3" class="prettyprint lang-xml" style="font-weight:bold;font-family: 'Verdana';">
+可能出现的问题：
+	（1）在对项目做maven update操作时，会提示：无法从私库下载某依赖
+	（2）在run as中进行maven clean或install等操作时，error中会提示parent的relativePath错误
+解决办法：
+	（1）确保settings.xml文件中mirrors配置正确
+	（2）在本地私库文件夹中搜索：*.lastUpdated 以及 _remote.repositories，将搜索到的文件全部清理，重新对项目进行maven update即可 
 </pre>
 	</div>
 	

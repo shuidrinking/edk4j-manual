@@ -3,4 +3,6 @@
 /.factorypath
 /.project
 /.settings/
-/edk4j-appends/
+/edk4j-appends/tracer/
+/edk4j-appends/mvnrepository/
+/edk4j-appends/edk-courseware/

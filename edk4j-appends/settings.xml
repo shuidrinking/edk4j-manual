@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+ <localRepository>D:\Java\maven-lib\</localRepository>
+  <pluginGroups>
+  </pluginGroups>
+  <proxies>
+  </proxies>
+  <servers>
+  </servers>
+
+  <mirrors>
+	<mirror>
+		<id>alimaven-public</id>
+		<name>alibaba-public</name>
+		<url>https://maven.aliyun.com/repository/public</url>
+		<mirrorOf>public</mirrorOf>
+	</mirror>
+	<mirror>
+		<id>alimaven-central</id>
+		<name>alibaba-central</name>
+		<url>https://maven.aliyun.com/repository/central</url>
+		<mirrorOf>central</mirrorOf>
+	</mirror>
+	<!-- https://mvnrepository.com -->
+	<mirror>
+		<id>central</id>
+		<name>Maven Repository Switchboard</name>
+		<url>https://repo1.maven.org/maven2/</url>
+		<mirrorOf>central</mirrorOf>
+	</mirror>
+	<!-- activit-explorer 依赖 vaadin 的一个绘图工具包-->
+    <mirror>
+      <id>vaadin</id>
+      <name>vaadin maven</name>
+      <url>http://maven.vaadin.com/vaadin-addons/</url>
+      <mirrorOf>*</mirrorOf>        
+    </mirror>
+  </mirrors>
+
+  <profiles>
+  </profiles>
+</settings>

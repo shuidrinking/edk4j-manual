@@ -7,10 +7,20 @@
 </head>
 <body >
 	<div id="title" class="titleDiv">
-		8.5、多数据源支持
+		8.5、数据库驱动的集成说明
 	</div>
-	<div class="subTitleDiv">
-		edk4j平台支持“在一个应用中能操作多个数据库，并且能统一管理事务”。可以按照下面章节介绍的应用套路，按步骤使用。
+	<div class="tabTitleDiv">oracle数据库</div>
+	<p class="tabTitleLine"></p>
+	<div class="contentDiv">
+		edj4j中默认提供的ojdbc8，支持的数据库版本包括 Oracle 19c、18c、12c、11g 等。可以根据需要更换为适用你的oracle版本的驱动。
+	</div>
+	<div class="tabTitleDiv">db2数据库</div>
+	<p class="tabTitleLine"></p>
+	<div class="contentDiv">
+		db2官方并没有将驱动包放到镜像库中！<br>
+		请登录官网选择与你的db2匹配的驱动，edk4j中默认集成的驱动仅适用于DB2 Version 11.5，可能与你的db2数据库不匹配<br>
+		<a href="https://www.ibm.com/support/pages/db2-jdbc-driver-versions-and-downloads" target="_blank">db2官网</a><br>
+		下载后，需要放置到你本地maven库或推送到公司的镜像库中。
 	</div>
 </body>
 </html>

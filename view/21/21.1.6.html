@@ -22,10 +22,15 @@
 	<p class="tabTitleLine"></p>
 	<div class="contentDiv stepsContainner">
 		<pre class="prettyprint lang-xml" id="codeShow1" style="font-weight:bold;color:#3f7f5f;">
-<!-- 重新申明spring内嵌tomcat，去掉<scope> -->
-<dependency>
+<!-- spring-boot内置tomcat  -->
+<!--<dependency>
 	<groupId>org.springframework.boot</groupId>
 	<artifactId>spring-boot-starter-tomcat</artifactId>
+</dependency>-->
+<!-- spring-boot内置undertow  -->
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-undertow</artifactId>
 </dependency>
 		</pre>
 	</div>
@@ -41,6 +46,17 @@ spring.application.name = ${yourApplicationName}
 server.servlet.context-path = /${yourProjectName}
 #3.springBoot内嵌服务器端口号，默认8080
 server.port = 8080
+server.session.timeout=30s
+#tomcat work dir
+server.tomcat.basedir=/tomcat_temp/
+
+#io.undertow.UndertowOptions
+server.undertow.enabled=true
+server.undertow.show-header-time=true
+#20MB 
+server.undertow.max-http-post-size=20971520
+server.undertow.worker-threads=30
+server.undertow.io-threads=1
 		</pre>
 	</div>
 	
