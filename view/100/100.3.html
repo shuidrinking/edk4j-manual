@@ -24,30 +24,20 @@
 					<div class="subTitleDiv addArrow">
 						方法1：
 					</div>
-					（1）解压下载的压缩包，解压后文件目录如下图，不要在文件夹外再套一层同名文件夹：<br/>
-					<p style="width:5rem;display:inline-block;">
-					<img src="../../image/business/100/100-2.1.png"/><br/>
-					<label style="font-size:0.15rem;margin-left:1rem;background-color:#00ff00;">正确的目录结构图</label>
-					</p>
-					<p style="width:4rem;display:inline-block;">
-					<img src="../../image/business/100/100-2.2.png"/><br/>
-					<label style="font-size:0.15rem;margin-left:1rem;background-color:#ff0000;">错误的目录结构图，解压时注意</label>
-					</p>
-					<br/>
-					（2）将解压后的文件夹，复制到eclipse安装目录下的dropins文件夹中，如下图所示：<br/>
-					<img src="../../image/business/100/100-2.3.png"/><br/>
+					（1）将下载的插件文件移动到eclipse根目录下的dropins文件夹中
+					<br>
+					（2）重启eclipse
 				</div>
 				<div>
 					<div class="subTitleDiv addArrow">
 						方法2：
 					</div>
-					
-					在eclipse/dropins目录下，新建一个文件，文件名自己起， 后缀名为".Ink"（注意是大写的i，不是小写的L），例如edkIde.Ink<br/>
-					用文本编辑器打开，输入下面内容：<br/>
+					（1）在eclipse/dropins目录下，新建一个文件，文件名自己起， 后缀名为".Ink"（注意是大写的i，不是小写的L），例如edkIde.Ink<br/>
+					（2）用文本编辑器打开，输入插件的保存位置，注意路径里用的是“/”，不是“\”：<br/>
 					<span style="background-color:#c4ffc4;">path=D:/eclipsePlugin/edk4j-ide-<span style="color:#cb0000">${具体版本号}</span></span><br/>
-					
-					这句的意思是，指定插件所在目录，注意路径里用的是“/”，不是“\”，别输错了<br>
-					样例如下：<br>path=D:/programs/eclipsePlugIn/edk4j-ide-1.0.0.20210301
+					（<span style="font-weight:bold;">例如</span>：path=D:/programs/eclipsePlugIn/com.edk4j.ide_2.0.2025018.jar）
+					<br>
+					（3）保存后重启eclipse即可
 				</div>
 			</div>
 			<div style="display:none;">
