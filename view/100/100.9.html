@@ -32,13 +32,13 @@
 	<div class="tabTitleDiv">第1步：找到Action原型配置文件</div>
 	<div class="tabTitleLine"></div>
 	<div class="contentDiv">
-		操作成功后，在自动为项目中创建的文件中，找到<label style="background-color:#00ff00">edk4jIdeSupport</label>文件夹<br/>
+		操作成功后，在自动为项目中创建的文件中，找到<label style="background-color:#00ff00">.edk4j</label>文件夹<br/>
 		<img src="../../image/business/100/100.8-1.png"/><br/>
 	</div>
 	<div class="tabTitleDiv">第2步：学习编辑规则</div>
 	<div class="tabTitleLine"></div>
 	<div class="contentDiv">
-		编辑<label style="background-color:#00ff00">edk4jIdeSupport</label>文件夹中的<label style="background-color:#ffff00">actionPrototype.xml</label>文件，该文件就是“定义action原型”的配置文件，语法规则在文件中有说明：<br/>
+		编辑<label style="background-color:#00ff00">.edk4j</label>文件夹中的<label style="background-color:#ffff00">actionPrototype.xml</label>文件，该文件就是“定义action原型”的配置文件，语法规则在文件中有说明：<br/>
 		 （1 ）标签的配置关系如下：<br/>
 		<pre class="prettyprint lang-xml" id="codeShow1" style="font-weight:bold;font-size:0.14rem;line-height:0.26rem;font-family: 'Verdana','微软雅黑','宋体';">
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
@@ -55,7 +55,7 @@
 			（3）&lt;actionGroup&gt;标签中值能放&lt;actionPrototype&gt;标签，每个action定义为一个&lt;actionPrototype&gt;标签<br/>
 			（4）&lt;actionPrototype&gt;标签中只能放&lt;property&gt;标签，每个属性定义为一个&lt;property&gt;标签<br/>
 			（5）配置action时，设置&lt;actionPrototype&gt;标签的icon属性，设置后该图片会体现在编辑器中，你可以参考“action原型定义可用icon清单.xlsx”中的内置图片<br/>
-					也可以自己制作png图片(48*16，左边至少24px空白），保存到edk4jIdeSupport/icons文件夹中，然后将icon的属性设置为 icon="icons/自制作图片.png"。<br/>
+					也可以自己制作png图片(48*16，左边至少24px空白），保存到.edk4j/icons文件夹中，然后将icon的属性设置为 icon="icons/自制作图片.png"。<br/>
 			【配置模板 】<br/>
 			<pre class="prettyprint lang-xml" id="codeShow2" style="font-weight:bold;font-size:0.14rem;line-height:0.26rem;font-family: 'Verdana','微软雅黑','宋体';">
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
