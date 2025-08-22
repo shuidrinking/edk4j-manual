@@ -14,17 +14,22 @@
 	</div>
 	<div class="subContentDiv">
 		<div class="subTitleDiv">
-		（1）在condition中直接写"exception &amp;&amp; 异常类的全名称"，以便指定按某种异常走特定的action，例如：
+			（1）在condition中写"exception "，所有异常都走这一条路由，例如：
 		</div>
 		<div class="subContentDiv">
-			condition="exception &amp;&amp; com.edk4j.core.exception.TranFailException"  toAction="xxxxx"
+			condition="exception"
 		</div>
 		<div class="subTitleDiv">
-			（2）在condition中写"exception &amp;&amp;其他条件"，例如：
+			（2）在condition中直接写"exception &amp;&amp; 异常类的全名称"，以便指定按某种异常走特定的action，例如：
 		</div>
 		<div class="subContentDiv">
-			condition="exception  &amp;&amp;  username='1'"  toAction="xxxxxx"<br/>
-			condition="exception" toAction="xxxxxx"<br/>
+			condition="exception &amp;&amp; com.edk4j.core.exception.TranFailException"
+		</div>
+		<div class="subTitleDiv">
+			（3）在condition中写"exception &amp;&amp; 其他条件"，例如：
+		</div>
+		<div class="subContentDiv">
+			condition="exception  &amp;&amp;  username=='zhangsan'" 
 		</div>
 	</div>
 	<div class="subTitleDiv addArrow">总之，<label  style="color:#ff1b00;">要把"exception" 写在最开始</label>，这样就会告诉edk4j：发生异常时对这条线路才进行判定。</div>
