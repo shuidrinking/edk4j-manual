@@ -204,6 +204,7 @@ function init(){
 		{"menuCode":"m7-7","parentMenuCode":"m7","showText":"7.7、RequestParamSafeChecker","url":"view/7/7.7.html"},
 		{"menuCode":"m7-8","parentMenuCode":"m7","showText":"7.8、以上接口的实现类都会自动生成","url":"view/7/7.8.html"},
 		{"menuCode":"m8","parentMenuCode":"0","showText":"8、数据源专题","url":"#"},
+		{"menuCode":"m8-0","parentMenuCode":"m8","showText":"8.0、mysql8.0以前版本的排序规则","url":"view/8/8.0.html"},
 		{"menuCode":"m8-1","parentMenuCode":"m8","showText":"8.1、禁用常规jdbc数据源","url":"view/8/8.1.html"},
 		{"menuCode":"m8-2","parentMenuCode":"m8","showText":"8.2、JNDI数据源","url":"view/8/8.2.html"},
 		{"menuCode":"m8-3","parentMenuCode":"m8","showText":"8.3、Druid数据源","url":"view/8/8.3.html"},

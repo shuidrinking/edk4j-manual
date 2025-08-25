@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css"  rel="stylesheet" href="../../css/dom.css"/>
+	<script type="text/javascript" src="../../javascript/core/domUtil.js"></script>
+</head>
+<body >
+	<div id="title" class="titleDiv">
+		8.0、mysql8.0以前版本的排序规则
+	</div>
+	<div class="subTitleDiv">
+		<label style="color:#ff0000;font-weight:bold;">utf8mb4_general_ci</label>适合简单场景，性能较优；在mysql8.0以前的旧版本中可以使用！<br>
+		<label style="color:#ff0000;font-weight:bold;">utf8mb4_0900_ai_ci</label>在mysql8.0及更高版本中默认使用，提供更精确的 Unicode 支持，适合国际化需求高的应用。选择排序规则时，应根据具体业务需求和性能要求进行权衡。
+	</div>
+	<div class="contentDiv">
+		对于utf8mb4_general_ci和utf8mb4_0900_ai_ci的区别可以自行搜索比对<br>
+		edk4j中生成的ddl中<label style="color:#ff0000;font-weight:bold;">默认均为utf8mb4_0900_ai_ci</label>，你可以根据实际mysql的版本对ddl中的collate进行修改！
+	</div>
+</body>
+</html>
