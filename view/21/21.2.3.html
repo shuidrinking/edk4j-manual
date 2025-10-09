@@ -18,6 +18,8 @@
 	<div id="title" class="titleDiv">
 		21.2.3、mvn打包resource插件配置
 	</div>
+	<div class="contentDiv">
+	<a href="https://maven.apache.org/plugins/maven-resources-plugin" target="_blank">apache官网说明</a>
 <pre class="prettyprint lang-xml" id="codeShow1" style="font-weight:bold;color:#3f7f5f;">
 <properties>
 		<java.version>1.8</java.version>
@@ -32,10 +34,23 @@
 		<version>3.3.1</version>
 		<configuration>
 			<encoding>${project.build.encoding}</encoding>
-			<charset>${project.build.encoding}</charset>
+			<nonFilteredFileExtensions>
+				<!--Additional file extensions to not apply filtering (already defined are : jpg, jpeg, gif, bmp, png)-->
+				<!-- 对以下后缀的文件无需编译、占位符filter等操作，而进行直接copy：字体文件、证书文件、excel模板等 -->
+				<nonFilteredFileExtension>woff</nonFilteredFileExtension>
+				<nonFilteredFileExtension>woff2</nonFilteredFileExtension>
+				<nonFilteredFileExtension>svg</nonFilteredFileExtension>
+				<nonFilteredFileExtension>ttf</nonFilteredFileExtension>
+				<nonFilteredFileExtension>ico</nonFilteredFileExtension>
+				<nonFilteredFileExtension>eot</nonFilteredFileExtension>
+				<nonFilteredFileExtension>xls</nonFilteredFileExtension>
+				<nonFilteredFileExtension>xlsx</nonFilteredFileExtension>
+				<nonFilteredFileExtension>pdf</nonFilteredFileExtension>
+			</nonFilteredFileExtensions>
 		</configuration>
 	</plugin>
 </plugins>
 </pre>
+</div>
 </body>
 </html>
