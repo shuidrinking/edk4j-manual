@@ -13,7 +13,7 @@ function init(){
 	//{"menuCode":"","showText":"","url":"","parentMenuCode":"","levelNo":"2"}
 	menuList=[
 		{"menuCode":"m1","parentMenuCode":"0","showText":"1、“edk4j开发平台”介绍","url":"#"},
-		{"menuCode":"m1-1","parentMenuCode":"m1","showText":"1.1、平台定义","url":"view/1/1.1.html"},
+		{"menuCode":"m1-1","parentMenuCode":"m1","showText":"1.1、平台定义","url":"view/welcome.html"},
 		{"menuCode":"m1-2","parentMenuCode":"m1","showText":"1.2、目标和理念","url":"view/1/1.2.html"},
 		{"menuCode":"m1-3","parentMenuCode":"m1","showText":"1.3、“软编码”开发模式","url":"view/1/1.3.html"},
 		{"menuCode":"m1-4","parentMenuCode":"m1","showText":"1.4、edk4j的低代码","url":"view/1/1.4.html"},
