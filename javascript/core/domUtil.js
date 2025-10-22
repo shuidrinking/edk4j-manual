@@ -95,7 +95,7 @@ function resetFontSize(increment){
 		var newFontSize = baseFontSize * (clientWidth / baseScreenWidth);
 		documentElement.style.fontSize = newFontSize + "px";
 		
-		console.info(`baseScreenWidth=${baseScreenWidth}, screenWidth=${screenWidth}, newFontSize=${newFontSize}`)
+		//console.info(`baseScreenWidth=${baseScreenWidth}, screenWidth=${screenWidth}, newFontSize=${newFontSize}`)
 	};
 	resetBaseFontSize();
 	window.addEventListener(reSizeEvent, resetBaseFontSize, false);
