@@ -78,19 +78,24 @@ function resetFontSize(increment){
 		if (clientWidth > 10000) {
 			clientWidth = 10000;
 		}
+		
 		//默认baseScreenWidth就是屏幕宽度
-		let baseScreenWidth = window.screen.availWidth;
+		/*let baseScreenWidth = window.screen.availWidth;
 		//屏幕宽度太窄，或者把页面缩放到太窄，将按750算宽度
 		if(baseScreenWidth<=1080 || clientWidth<=1080){
 			baseScreenWidth = 750;
-		}
+		}*/
 		var baseFontSize = 100;
 		if(sessionStorage.getItem("baseFontSize")){
 			baseFontSize=sessionStorage.getItem("baseFontSize");
 		}
+		var baseScreenWidth=1620;
+		var screenWidth=window.screen.availWidth;
+		
 		var newFontSize = baseFontSize * (clientWidth / baseScreenWidth);
-		ScreenRelativeScale = clientWidth / baseScreenWidth;
 		documentElement.style.fontSize = newFontSize + "px";
+		
+		console.info(`baseScreenWidth=${baseScreenWidth}, screenWidth=${screenWidth}, newFontSize=${newFontSize}`)
 	};
 	resetBaseFontSize();
 	window.addEventListener(reSizeEvent, resetBaseFontSize, false);

@@ -20,7 +20,7 @@
  * 添加屏幕宽高比的条件：
  * and (device-aspect-ratio:16/9)
  */
-@media screen and (min-width: 1080px) {
+/* @media screen and (min-width: 1080px) {
 	:root {
 		--body-font-size:16px;
 		--rem-common-font-size:0.16rem;
@@ -31,11 +31,15 @@
 @media screen and (max-width: 1080px) {
 	:root {
 		--body-font-size:26px;
-		--rem-common-font-size:0.26rem;
-		--input-font-size:0.26rem;
+		--rem-common-font-size:0.16rem;
+		--input-font-size:0.16rem;
 	}
+} */
+:root {
+	--body-font-size:26px;
+	--rem-common-font-size:0.16rem;
+	--input-font-size:0.16rem;
 }
-
 .inline-block{
 	display:inline-block;
 }

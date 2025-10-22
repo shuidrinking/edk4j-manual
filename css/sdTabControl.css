@@ -7,6 +7,9 @@
 	padding:0;
 	border-bottom:0.01rem solid #60a1ef;
 	color:#494773;
+	display:flex;
+	align-items: stretch;
+	justify-content: flex-start;
 }
 .sd_tab>:nth-child(n){
 	min-width:2rem;
@@ -27,9 +30,9 @@
 	background: -o-linear-gradient(0, #81baff, #e4fbfb); /* opera 11.1 - 12.0 */
 	background: -moz-linear-gradient(90deg, #81baff, #e4fbfb); /* mozila 3.6 - 15 */
 	background: linear-gradient(0, #81baff, #e4fbfb); /* 标准的语法 90度表示从左到右*/
-    text-shadow: -0.01rem 0.01rem 0.02rem #ffffff;
-    color: #141778;
-    font-weight: bold;
+	text-shadow: -0.01rem 0.01rem 0.02rem #ffffff;
+	color: #141778;
+	font-weight: bold;
 }
 .sd_tab_out{
 	background-color:transparent;
