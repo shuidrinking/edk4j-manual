@@ -26,14 +26,18 @@
 	<div style="margin:0.05rem;">
 		<div id="tabs" class="sd_tab">
 			<div class="sd_tab_in" onclick="SDTab.altTab(document.getElementById('tabs'), document.getElementById('tabContents'),1);">平台体系结构</div>
-			<div class="sd_tab_out" onclick="SDTab.altTab(document.getElementById('tabs'), document.getElementById('tabContents'),2);">EDK内核设计</div>
-			<div class="sd_tab_out" onclick="SDTab.altTab(document.getElementById('tabs'), document.getElementById('tabContents'),3);">子系统架构设计</div>
+			<div class="sd_tab_out" onclick="SDTab.altTab(document.getElementById('tabs'), document.getElementById('tabContents'),2);">技术架构</div>
+			<div class="sd_tab_out" onclick="SDTab.altTab(document.getElementById('tabs'), document.getElementById('tabContents'),3);">内核设计</div>
+			<div class="sd_tab_out" onclick="SDTab.altTab(document.getElementById('tabs'), document.getElementById('tabContents'),4);">子系统架构</div>
 		</div>
 		<div id="tabContents" class="tabContentDiv">
 			<div>
 				<img src="../../image/business/1/1.6-1.png" />
 			</div>
-			<div style="display:none;background:url(../../image/business/1/1.6-2.png) no-repeat calc(100vh - 0.1rem);background-size:40%;">
+			<div  style="display:none;">
+				<img src="../../image/business/1/1.5-1.png"/>
+			</div>
+			<div style="display:none;background:url(../../image/business/1/1.6-2.png) no-repeat calc(100vh - 0.5rem);background-size:40%;">
 				<ol style="width:55%;">
 					<li>数据结构设计完善，能很好的贯穿于交易过程中；</li>
 					<li>数据库引擎：目前支持oracle、mysql、db2这三种关系型数据库；</li>
@@ -61,7 +65,7 @@
 					<li>对于“个性化初始化动作”、“权限检查”、“请求数据解密”等动作，都有开放的接口，只需要实现接口，在配置中加以设置便可实现；</li>
 				</ol>
 			</div>
-			<div style="display:none;background:url(../../image/business/1/1.6-3.png) no-repeat top left;min-height:6rem;background-size:8rem;">
+			<div style="display:none;background:url(../../image/business/1/1.6-3.png) no-repeat top left;min-height:6rem;background-size:6rem;">
 				<ol style="width:55%; float:right;margin-top:0.2rem;">
 					<li>多数据源引擎：解决下面两个问题，<br>
 						<div style="padding-left:0.64rem;text-indent:0.32rem;display:inline-block">
