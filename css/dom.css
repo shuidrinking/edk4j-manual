@@ -415,6 +415,12 @@ pre {
 	padding:0.05rem;
 	margin:0.05rem;
 }
+.flex-box{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: calc(100% - 0.5rem);
+}
 .addBorder{
 	border:0.01rem solid #d1e2ff;
 	border-radius:0.06rem;
@@ -462,7 +468,7 @@ tbody tr:hover td {
 	background-color:#fafafa;
 }
 .across tr:hover td {
-	background-color: #fffaf0;
+	background-color: rgb(255, 242, 215);
 }
 .colorButtonDisable{
 	opacity:0.5;
@@ -677,9 +683,11 @@ tbody tr:hover td {
 	-moz-transition:-moz-transform .15s linear;
 	-o-transition:-o-transform .15s linear;
 	-webkit-transition:-webkit-transform .15s linear;
+	transition: transform .15s linear;
 	-webkit-transform:rotate(6deg);
 	-moz-transform:rotate(6deg);
 	-o-transform:rotate(6deg);
+	transform:rotate(6deg);
 	text-shadow: 0.01rem 0.01rem 0 #faff9b;
 	color: #d37e00;
 	border: 0.01rem solid #f49502;
@@ -709,6 +717,7 @@ tbody tr:hover td {
 	-webkit-transform:rotate(-4deg);
 	-moz-transform:rotate(-4deg);
 	-o-transform:rotate(-4deg);
+	transform:rotate(-4deg);
 	background-image: linear-gradient(#fffaed,#ffc773);
 	text-shadow: 0.01rem 0.01rem 0 #ffae6d;
 	color: #9b5d00;
@@ -718,6 +727,7 @@ tbody tr:hover td {
 	-webkit-transform:rotate(5deg);
 	-moz-transform:rotate(5deg);
 	-o-transform:rotate(5deg);
+	transform:rotate(5deg);
   	background-image: linear-gradient(#f4fbf1,#bcffbc);
   	text-shadow: 0.01rem 0.01rem 0 #c6ffa8;
 	color: #007a00;
@@ -727,6 +737,7 @@ tbody tr:hover td {
 	-webkit-transform:rotate(5deg);
 	-moz-transform:rotate(5deg);
 	-o-transform:rotate(5deg);
+	transform:rotate(5deg);
   	background-image: linear-gradient(#f5fcff,#b1f8ff);
   	text-shadow: 0.01rem 0.01rem 0 #9bfff9;
 	color: #005cd3;
@@ -736,11 +747,13 @@ tbody tr:hover td {
 	-webkit-transform:rotate(-4deg);
 	-moz-transform:rotate(-4deg);
 	-o-transform:rotate(-4deg);
+	transform:rotate(-4deg);
 }
 .note>div:nth-child(10n){
 	-webkit-transform:rotate(-4deg);
 	-moz-transform:rotate(-4deg);
 	-o-transform:rotate(-4deg);
+	transform:rotate(-4deg);
 	background:#ccfffd;
 }
 /*右方向粗箭头，html中&#10148;，css中\27A4*/
