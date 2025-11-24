@@ -825,3 +825,43 @@ tbody tr:hover td {
 	content: "（ " counter(orderSn) " ） ";
 	counter-increment: orderSn 1;
 }
+/* 隐藏summary前的默认三角 */
+::marker {
+	font-size:0;width:0;height:0;/*这是最有效的做法*/
+	display: none;/*无效*/
+}
+/*
+ * 默认是not([open])的状态，class名称前无需加前缀：
+ * details:not([open]) summary::after 等价于 summary::after 
+ * details[open] summary::after等价于 [open] summary::after
+ */
+summary {
+	/* user-select: none; */
+	outline: 0; /*消除轮廓*/
+	position: relative;
+	display: flex;/*垂直居中*/
+	justify-content: flex-start;
+	align-items: center;
+	padding: 0.1rem 0;
+	cursor:pointer;
+	font-weight:bold;
+}
+summary::after {
+	content:'';
+	position:absolute;
+	z-index:0;
+	right:0.2rem;
+	top:calc(50% - 0.03rem);
+	transition:0.2s;
+	transform:rotate(180deg);/*裁剪一个箭头形状*/
+	clip-path: polygon(100% 80%, 100% 100%, 50% 20%, 0 100%, 0 80%, 50% 0);
+	width: 0.12rem;
+	height: 0.06rem;
+	background-color: #757575;
+}
+[open] summary::after {
+	transform: rotate(0deg);/*打开明细时，箭头反向*/
+}
+/*详细解释说明样式定义*/
+details[open]::details-content {
+}
