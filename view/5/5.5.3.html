@@ -9,56 +9,56 @@
 	<div id="title" class="titleDiv">
 		5.5.3、配置参数怎么获取
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 			1、通过ApplicationConfig
 		</div>
 	<div class="subContentDiv">
 		类：com.edk4j.core.config.ApplicationConfig<br/>
 		将本类用@Autowired引入，并调用其get方法，可获取的参数见edk4j.properties文件中"application."前缀的配置
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		2、通过CacheConfig
 	</div>
 	<div class="subContentDiv">
 		类：com.edk4j.core.config.CacheConfig<br/>
 		将本类用@Autowired引入，并调用其get方法，可获取的参数见edk4j.properties文件中" cache."前缀的配置
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		3、通过DataBaseProperties
 	</div>
 	<div class="subContentDiv">
 		类：com.edk4j.core.config.DataBaseProperties<br/>
 		将本类用@Autowired引入，并调用其getDataBaseName()方法，可获取application.properties配置文件中的spring.jpa.database字段的值（数据库名称：ORACLE,MYSQL,DB2）
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		4、通过FileUploadConfig
 	</div>
 	<div class="subContentDiv">
 		类：com.edk4j.core.config.FileUploadConfig<br/>
 		将本类用@Autowired引入，并调用其get方法，可获取的参数见business.properties文件中" multiPartResolver."前缀的配置
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		5、通过RedisCacheConfig
 	</div>
 	<div class="subContentDiv">
 		类：com.edk4j.core.config.RedisCacheConfig<br/>
 		将本类用@Autowired引入，并调用其get方法，可获取的参数见application-{profile}.properties文件中" redis."前缀的配置
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		6、通过SessionConfig
 	</div>
 	<div class="subContentDiv">
 		类：com.edk4j.core.config.SessionConfig<br/>
 		将本类用@Autowired引入，并调用其get方法，可获取的参数见edk4j.properties文件中" sessionConfig."前缀的配置
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		7、通过ProxyConfig
 	</div>
 	<div class="subContentDiv">
 		类：com.edk4j.core.integration.config.ProxyConfig<br/>
 		将本类用@Autowired引入，并调用其get方法，可获取的参数见application-{profile}.properties文件中" proxy."前缀的配置
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		8、实现接口HttpIntegrationConfig
 	</div>
 	<div class="subContentDiv">
@@ -67,7 +67,7 @@
 		可获取的参数见application-{profile}.properties文件中"自定义具体接口的配置前缀."前缀的配置<br/>
 		edk-integration中对接口参数的调用都是通过接口的get方法获取的
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		9、实现接口SocketIntegrationConfig
 	</div>
 	<div class="subContentDiv">
@@ -77,7 +77,7 @@
 		edk-integration中对接口参数的调用都是通过接口的get方法获取的
 	</div>
 	
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		10、具体项目中还有扩展内容，需要怎么配置
 	</div>
 	<div class="subContentDiv">

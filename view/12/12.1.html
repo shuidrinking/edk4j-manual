@@ -18,7 +18,7 @@
 			（2）交易数据域Context，此时“边界”是指一次具体交易从前端发起到获得返回结果。其中的数据贯穿于单次交易的生命周期内。
 		</div>
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		1、sessionContext
 	</div>
 	<div class="subContentDiv">
@@ -40,7 +40,7 @@
 		</table>
 		除了上面的字段外，还会按照sessionContext.xml中的配置，添加其中的字段。
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		2、交易context
 	</div>
 	<div class="subContentDiv">
@@ -62,7 +62,7 @@
 		接收到前台请求后，edk4j内核会自动把requestToken的值设置到context中去，无论你的bpm里是否在输入字段中指定了这个字段名。<br>
 		同理，resultCode和resultMessage也会被自动添加到返回结果中，无论你在返回结果中是否指定了这2个字段。
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		3、Context具备上下级树形关系的能力
 	</div>
 	<div class="subContentDiv">
@@ -70,7 +70,7 @@
 		一旦建立了上下级关系，则对某字段的操作，是逐级上寻，寻到后操作。例如：context2是context1的上级，调用context1.get("feild1")时，先在context1里找field1字段，如果没找到，就会到context2里去找。<br>
 		<label style="color:#ff0000;">在edk4j平台中，交易context的parent是sessionContext，平台会自动维护他们的上下关系。</label>
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		4、Context类的常用方法
 	</div>
 	<div class="subContentDiv">

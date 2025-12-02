@@ -18,7 +18,7 @@
 	<div class="subContentDiv">
 		（3）因为每种实体类的职能不同，并不是说有些字段名字一样了就做一个大类混用。冗余会造成系统运行时的额外开销
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		1、在一个交易中有这么几个数据实体类(vo/pojo/entity之类的名字)：
 	</div>
 	<div class="subContentDiv">
@@ -27,7 +27,7 @@
 		（3）	返回给前段的类<br/>
 		（4）	hibernate查询条件类
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		2、这四种类的字段，一般简单的交易中差不多。但是这几个类的用途都是不一样的：
 	</div>
 	<div class="subContentDiv">
@@ -36,14 +36,14 @@
 		（3）	返回给前段的类将后台处理完的结果带给前段<br/>
 		（4）	查询条件类在查询时作为条件传给hibernate的jpa执行层
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		3、前端传入查询条件有时多有时少，返回对象也是一样道理
 	</div>
 	<div class="subContentDiv">
 		所以无论从程序结构上“分工明确”的角度讲，还是从“代码清晰、可维护性高”的角度讲，还是从应用场景的角度讲，这些类是需要各自独立出来的，<br/>
 		所以，严禁使用同一个类来负责多个层面的工作，即使各个层面需要的类中字段一样，也必须要把类分开。
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		4、所有的这些类,都要实现toString方法,必须实现,对日志只有好处没有坏处
 	</div>
 </body>

@@ -31,7 +31,7 @@
 	<div class="tabTitleDiv">3、如何实现配置文件自定义</div>
 	<div class="tabTitleLine"></div>
 	<div class="contentDiv">
-		<div class="subTitleDiv addArrow">
+		<div class="summary">
 			edk4j中的默认方案：<br>
 			在ApplicationBootConfig.java类中使用注解@PropertySource，例如：<br>
 <pre class="prettyprint lang-java" id="codeShow1" style="font-weight:bold;font-size:0.14rem;line-height:0.26rem;font-family: 'Verdana','微软雅黑','宋体';">
@@ -48,7 +48,7 @@
 	public class ApplicationBootConfig {
 	}
 </pre>
-		<div class="subTitleDiv addArrow">
+		<div class="summary">
 			springboot的另一个可选方案：<br>
 			在application.properties中指定多个profile文件，利用配置项 spring.profiles.include 进行申明，多个文件用逗号分隔，限制要求是这些文件都要以application-开头，例如：<br>
 			spring.profiles.include = one, two, three<br>

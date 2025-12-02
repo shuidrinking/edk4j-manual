@@ -4,24 +4,32 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link type="text/css"  rel="stylesheet" href="../../css/dom.css"/>
 	<script type="text/javascript" src="../../javascript/core/domUtil.js"></script>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/prettify.js"></script>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/util.js"></script>
+	<link rel="stylesheet" href="../../javascript/components/google-code-prettify/prettify.css" type="text/css"/>
+	<script type="text/javascript">
+		function init(){
+			PR.prettyPrint();
+		}
+	</script>
 </head>
-<body >
+<body onload="init()">
 	<div id="title" class="titleDiv">
 		98.2.2、启用NIO
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		tomcat8以及更高版本，默认都使用NIO模式，无需做改动。
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		tomcat8以下的版本，全部使用BIO的模式，性能极其底下，需要打开，方法如下：
 	</div>
-	<div class="subContentDiv">
-			修改${TOMCAT_HOME}/conf/server.xml里的&lt;Connector&gt;，添加属性protocol<br/>
-			&lt;Connector<br/>
-				port="8080" URIEncoding="UTF-8" protocol="HTTP/1.1"<br/>
-				onnectionTimeout="20000"<br/>
-				protocol="org.apache.coyote.http11.Http11NioProtocol"<br/>
-				redirectPort="8443" /&gt;
-	</div>
+	<pre class="prettyprint lang-xml">
+&lt;!--修改${TOMCAT_HOME}/conf/server.xml里的&lt;Connector&gt;，添加属性protocol--&gt;
+&lt;Connector
+	port="8080" URIEncoding="UTF-8" protocol="HTTP/1.1"
+	onnectionTimeout="20000"
+	protocol="org.apache.coyote.http11.Http11NioProtocol"
+	redirectPort="8443" /&gt;
+	</pre>
 </body>
 </html>

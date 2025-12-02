@@ -145,7 +145,7 @@ table tr td {
 	background-size: auto;
 	transition: all 0.2s linear 0s;
 	height: 1rem;
-	line-height: 1.05rem;
+	line-height: 1rem;
 	text-align: center;
 	width:0.1rem;
 }

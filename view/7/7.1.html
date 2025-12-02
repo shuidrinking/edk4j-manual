@@ -24,16 +24,13 @@
 	<div id="title" class="titleDiv">
 		7.1、RequestPresenter接口
 	</div>
-	<div class="tabTitleDiv">1、需要实现的接口</div>
-	<div class="tabTitleLine"></div>
-	<div class="contentDiv">
-		<label style="font-weight:bold;">接口</label>：com.edk4j.core.requestprocess.RequestPresenter
-		<br><label style="font-weight:bold;">配置到哪里</label>：定义接口的api文件中，详见<a href="javascript:openPage('../5/5.2.2.html')">5.2.2、接口定义文件</a>
-		<br><label style="font-weight:bold;">什么用：</label>RequestPresenter是响应交易的接口调用的处理器，完成解析请求数据、调用交易逻辑、组织返回数据。个性化的交易定制个性化的RequestPresenter，若未为交易配置RequestPresenter则会使用项目默认的处理器。
-		<br><label style="font-weight:bold;">在edk4j工作台中新建项目后，会为项目自动生成默认的RequestPresenter实现类</label>
-		<br/><a style="font-weight:bold;">▶&nbsp;&nbsp;必须实现的方法清单：</a>
-		<div class="contentDiv">
-			<pre class="prettyprint lang-java " id="javaCode1" style="padding-left:0.5rem;font-weight:bold;font-size:0.14rem;line-height:0.26rem;font-family: 'Verdana','微软雅黑','宋体';">
+	<div class="noborder-content-div">
+		<label style="font-weight:bold;">1、接口</label>：com.edk4j.core.requestprocess.RequestPresenter
+		<br><label style="font-weight:bold;">2、配置到哪里</label>：定义接口的api文件中，详见<a href="javascript:openPage('../5/5.2.2.html')">5.2.2、接口定义文件</a>
+		<br><label style="font-weight:bold;">3、功能个：</label>RequestPresenter是响应交易的接口调用的处理器，完成解析请求数据、调用交易逻辑、组织返回数据。个性化的交易定制个性化的RequestPresenter，若未为交易配置RequestPresenter则会使用项目默认的处理器。
+		<br><label style="font-weight:bold;">4、默认实现类：在edk4j工作台中新建项目后，会为项目自动生成默认的RequestPresenter实现类</label>
+		<br><label style="font-weight:bold;">5、必须实现的方法清单：</label>
+		<pre class="prettyprint lang-java " id="javaCode1" style="font-weight:bold;font-size:0.14rem;line-height:0.26rem;font-family: 'Verdana','微软雅黑','宋体';">
 /**
  * 调用doHandle服务方法前的处理逻辑，完成安全检查、权限检查等一系列动作，返回sessionContext
  * @param HttpServletRequest servletRequest
@@ -51,11 +48,9 @@ public abstract Context preHandle(HttpServletRequest servletRequest, Context con
  * @throws BaseException
  */
 public abstract String postHandle(HttpServletResponse response, Api api, Context context) throws BaseException;
-			</pre>
-		</div>
-		<br/><a style="font-weight:bold;">▶&nbsp;&nbsp;【非】必须实现的方法清单：</a>
-		<div class="contentDiv">
-			<pre class="prettyprint lang-java " id="javaCode2" style="padding-left:0.5rem;font-weight:bold;font-size:0.14rem;line-height:0.26rem;font-family: 'Verdana','微软雅黑','宋体';">
+		</pre>
+		<div class="summary">【非】必须实现的方法清单：</div>
+		<pre class="prettyprint lang-java " id="javaCode2" style="padding-left:0.5rem;font-weight:bold;font-size:0.14rem;line-height:0.26rem;font-family: 'Verdana','微软雅黑','宋体';">
 /**
  * 调用doHandle方法后的处理逻辑，完成sessionContext的保存处理等动作
  * 本方法与另一个postHandle方法的不同在于：本方法除了另一个postHandle中具备的功能外，还可以用于视图跳转。如果项目中有这种需求时，可以实现这个方法
@@ -69,12 +64,11 @@ public abstract String postHandle(HttpServletResponse response, Api api, Context
  * @throws BaseException
  */
 public Object postHandle(HttpServletRequest servletRequest, HttpServletResponse servletResponse, Api api, Context context) {
-			</pre>
-		</div>
+		</pre>
 	</div>
 	<div class="tabTitleDiv">7.1.2、如何组织返回结果数据</div>
 	<div class="tabTitleLine"></div>
-	<div class="contentDiv">
+	<div class="noborder-content-div">
 		<p>在&lt;businessLogic&gt;中配置好&lt;output&gt;之后，在postHandle方法中处理返回结果：</p>
 		<p>（1）返回json时这样写</p>
 		<p><span style="color:black">String </span><span style="color:#6a3e3e">result</span><span style="color:black"> = </span><strong><span style="color:#7f0055">super</span></strong><span style="color:black">.getResponse(BaseConstant.</span><strong><em><span style="color:#0000c0">JSON_ FORMAT</span></em></strong><span style="color:black">, </span><span style="color:#6a3e3e">api</span><span style="color:black">, </span><span style="color:#6a3e3e">context</span><span style="color:black">);</span></p>

@@ -4,53 +4,60 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link type="text/css"  rel="stylesheet" href="../../css/dom.css"/>
 	<script type="text/javascript" src="../../javascript/core/domUtil.js"></script>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/prettify.js"></script>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/util.js"></script>
+	<link rel="stylesheet" href="../../javascript/components/google-code-prettify/prettify.css" type="text/css"/>
+	<script type="text/javascript">
+		function init(){
+			//CodePrettyUtil.escapeInnerHTML('codeShow1', 'codeShow1');
+			PR.prettyPrint();
+		}
+	</script>
 </head>
-<body >
+<body onload="init()">
 	<div id="title" class="titleDiv">
 		7.4、CustDataService接口
 	</div>
-	<div class="tabTitleDiv">1、需要实现的接口</div>
-	<div class="tabTitleLine"></div>
-	<div class="contentDiv">
-		<label style="font-weight:bold;">接口</label>：com.edk4j.core.service.CustomerDataService
-		<br/><label style="font-weight:bold;">作用</label>：查询客户可操作的菜单列表、交易码表、客户的httpSessionId、客户ip
-		<br/><label style="font-weight:bold;">默认实现类</label>：新建edk4j项目，工作台会自动为项目生成一个默认实现类CustomerDataServiceImpl
-		<br/><label style="font-weight:bold;">实现类中必须使用注解和beanName</label>：<label style="background-color:#ffff00;">@Service("customerDataService")</label>，如果beanName没有这样设置，那么将会调用com.edk4j.core.service.impl.DefaultCustomerDataService，这个默认实现类应该不够满足你的应用需求。
-		<br/><label style="font-weight:bold;">方法说明</label>：
-		<div class="contentDiv">
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /**</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><span style="color:#3f5fbf">从缓存中获取客户菜单</span><span style="color:#3f5fbf">Map&lt;String,Menu&gt;</span><span style="color:#7f7f9f">&lt;br&gt;</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* sessionCustMenu</span><span style="color:#3f5fbf">字段在登录后缓存</span><span style="color:#3f5fbf">sessionContext</span><span style="color:#3f5fbf">时会缓存到缓存服务器</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><strong><span style="color:#7f9fbf">@param</span></strong><span style="color:#3f5fbf"> context</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><strong><span style="color:#7f9fbf">@return</span></strong> <span style="color:#3f3fbf">{@link HashMap}</span> <span style="color:#3f3fbf">{@link Menu}</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;*/</span></p>
-			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong><span style="color:#7f0055">public</span></strong><span style="color:black"> Map&lt;String,Menu&gt; getCustMenuMap(Context </span><span style="color:#6a3e3e">context</span><span style="color:black">);</span></p>
-			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:#3f5fbf">/**</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><span style="color:#3f5fbf">从缓存中获取客户可操作的业务编码</span><span style="color:#3f5fbf">Set</span><span style="color:#7f7f9f">&lt;br&gt;</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* sessionBusinessCodeSet</span><span style="color:#3f5fbf">字段在登录后缓存</span><span style="color:#3f5fbf">sessionContext</span><span style="color:#3f5fbf">时会缓存到缓存服务器</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><strong><span style="color:#7f9fbf">@param</span></strong><span style="color:#3f5fbf"> context</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><strong><span style="color:#7f9fbf">@return</span></strong> <span style="color:#3f3fbf">{@link HashSet}</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;*/</span></p>
-			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong><span style="color:#7f0055">public</span></strong><span style="color:black"> Set&lt;String&gt; getCustBusinessCodeSet(Context </span><span style="color:#6a3e3e">context</span><span style="color:black">);</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /**</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><span style="color:#3f5fbf">获取客户</span><span style="color:#3f5fbf">ip</span><span style="color:#7f7f9f">&lt;br&gt;</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><span style="color:#3f5fbf">如果是渠道端的，直接从</span><span style="color:#3f5fbf">request</span><span style="color:#3f5fbf">里取客户</span><span style="color:#3f5fbf">ip</span><span style="color:#7f7f9f">&lt;br&gt;</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><span style="color:#3f5fbf">渠道端正确的做法是，向统一平台传递这个参数值，统一平台再按约定的参数名接收</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><strong><span style="color:#7f9fbf">@param</span></strong><span style="color:#3f5fbf"> servletRequest</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><strong><span style="color:#7f9fbf">@param</span></strong><span style="color:#3f5fbf"> context</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><strong><span style="color:#7f9fbf">@return</span></strong></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;*/</span></p>
-			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong><span style="color:#7f0055">public</span></strong><span style="color:black"> String getClientIp(HttpServletRequest </span><span style="color:#6a3e3e">servletRequest</span><span style="color:black">, Context </span><span style="color:#6a3e3e">context</span><span style="color:black">);</span></p>
-			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:#3f5fbf">/**</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><span style="color:#3f5fbf">获取客户的</span><span style="color:#3f5fbf">httpSessionId</span><span style="color:#7f7f9f">&lt;br&gt;</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><span style="color:#3f5fbf">如果是渠道端的，直接从</span><span style="color:#3f5fbf">request</span><span style="color:#3f5fbf">里取</span><span style="color:#3f5fbf">httpSessionId</span><span style="color:#7f7f9f">&lt;br&gt;</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><span style="color:#3f5fbf">渠道端正确的做法是，向统一平台传递这个参数值，统一平台再按约定的参数名接收</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><strong><span style="color:#7f9fbf">@param</span></strong><span style="color:#3f5fbf"> servletRequest</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><strong><span style="color:#7f9fbf">@param</span></strong><span style="color:#3f5fbf"> context</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><strong><span style="color:#7f9fbf">@return</span></strong></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;*/</span></p>
-			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong><span style="color:#7f0055">public</span></strong><span style="color:black"> String getHttpSessionId(HttpServletRequest </span><span style="color:#6a3e3e">servletRequest</span><span style="color:black">, Context </span><span style="color:#6a3e3e">context</span><span style="color:black">);</span></p>
-		</div>
+	<div class="noborder-content-div">
+		<label style="font-weight:bold;">1、接口</label>：com.edk4j.core.service.CustomerDataService
+		<br/><label style="font-weight:bold;">2、功能</label>：查询客户可操作的菜单列表、交易码表、客户的httpSessionId、客户ip
+		<br/><label style="font-weight:bold;">3、默认实现类</label>：新建edk4j项目，工作台会自动为项目生成一个默认实现类CustomerDataServiceImpl
+		<br/><label style="font-weight:bold;">4、实现类中必须使用注解和beanName</label>：<label style="background-color:#ffff00;">@Service("customerDataService")</label>，如果beanName没有这样设置，那么将会调用com.edk4j.core.service.impl.DefaultCustomerDataService，这个默认实现类应该不够满足你的应用需求。
+		<br/><label style="font-weight:bold;">5、方法说明</label>：
+		<pre class="prettyprint lang-java" id="codeShow1" style="font-weight:bold;font-size:0.14rem;line-height:0.26rem;font-family: 'Verdana','微软雅黑','宋体';">
+/**
+* 从缓存中获取客户菜单Map<String,Menu>
+* sessionCustMenu字段在登录后缓存sessionContext时会缓存到缓存服务器
+* @param context
+* @return {@link HashMap} {@link Menu}
+*/
+public Map&lt;String,Menu&gt; getCustMenuMap(Context context);
+/**
+* 从缓存中获取客户可操作的业务编码Set
+* sessionBusinessCodeSet字段在登录后缓存sessionContext时会缓存到缓存服务器
+* @param context
+* @return {@link HashSet}
+*/
+public Set&lt;String&gt; getCustBusinessCodeSet(Context context);
+/**
+* 获取客户ip
+* 如果是渠道端的，直接从request里取客户ip
+* 渠道端正确的做法是，向统一平台传递这个参数值，统一平台再按约定的参数名接收
+* @param servletRequest
+* @param context
+* @return
+*/
+public String getClientIp(HttpServletRequest servletRequest, Context context);
+/**
+* 获取客户的httpSessionId
+* 如果是渠道端的，直接从request里取httpSessionId
+* 渠道端正确的做法是，向统一平台传递这个参数值，统一平台再按约定的参数名接收
+* @param servletRequest
+* @param context
+* @return
+*/
+public String getHttpSessionId(HttpServletRequest servletRequest, Context context);
+		</pre>
 	</div>
 </body>
 </html>

@@ -19,10 +19,9 @@
 	</div>
 	<div class="tabTitleDiv">定制化Http统一通信类</div>
 	<p class="tabTitleLine"></p>
-	<div class="contentDiv">
-		<p><b>下面以CallCenterServiceApi为例，这里仅展示集成链路跟踪的关键代码：</b></p>
-	<div  class="contentDiv">
-		<pre class="prettyprint lang-java" id="codeShow1" style="font-weight:bold;font-size:0.14rem;line-height:0.14rem;">
+	<div class="noborder-content-div">
+		<div class="summary">下面以CallCenterServiceApi为例，这里仅展示集成链路跟踪的关键代码：</div>
+		<pre class="prettyprint lang-java" >
 import org.springframework.beans.factory.ObjectProvider;
 import com.edk4j.track.engine.zipkin.report.ISpanProcessor;
 import com.edk4j.track.constant.EdkTraceConstant;
@@ -111,7 +110,6 @@ public class CallTaskServerServiceApi {
 	}
 }
 		</pre>
-	</div>
 		<p><b>经过以上代码配置，edk4j的Http通信类CallCenterServiceApi就纳入了全局链路跟踪。</b></p>
 	</div>
 </body>

@@ -4,29 +4,36 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link type="text/css"  rel="stylesheet" href="../../css/dom.css"/>
 	<script type="text/javascript" src="../../javascript/core/domUtil.js"></script>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/prettify.js"></script>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/util.js"></script>
+	<link rel="stylesheet" href="../../javascript/components/google-code-prettify/prettify.css" type="text/css"/>
+	<script type="text/javascript">
+		function init(){
+			//CodePrettyUtil.escapeInnerHTML('codeShow1', 'codeShow1');
+			PR.prettyPrint();
+		}
+	</script>
 </head>
-<body >
+<body onload="init()">
 	<div id="title" class="titleDiv">
 		7.5、BusinessVisitAuthChecker接口
 	</div>
-	<div class="tabTitleDiv">1、需要实现的接口</div>
-	<div class="tabTitleLine"></div>
-	<div class="contentDiv">
-		<label style="font-weight:bold;">接口</label>：com.edk4j.core.service.BusinessVisitAuthChecker
-		<br/><label style="font-weight:bold;">作用</label>：一般用在SessionService类中，检查客户是否有权限对指定交易码的交易进行操作。
-		<br/><label style="font-weight:bold;">默认实现类</label>：新建edk4j项目，工作台会自动为项目生成一个默认实现类BusinessVisitAuthCheckerImpl
-		<br/><label style="font-weight:bold;">实现类中必须使用注解和beanName</label>：<label style="background-color:#ffff00;">@Service("businessVisitAuthChecker")</label>，如果beanName没有这样设置，那么将会调用com.edk4j.core.service.impl.DefaultBusinessVisitAuthChecker，这个默认实现类应该不够满足你的应用需求。
-		<br/><label style="font-weight:bold;">方法说明</label>：
-		<div class="contentDiv">
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /**</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><span style="color:#3f5fbf">检查客户是否有权访问该交易</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><strong><span style="color:#7f9fbf">@param</span></strong><span style="color:#3f5fbf"> businessCode</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><strong><span style="color:#7f9fbf">@param</span></strong><span style="color:#3f5fbf"> sessionContext</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><strong><span style="color:#7f9fbf">@return</span></strong></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><strong><span style="color:#7f9fbf">@throws</span></strong><span style="color:#3f5fbf"> TranFailException</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;*/</span></p>
-			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong><span style="color:#7f0055">public</span></strong> <strong><span style="color:#7f0055">boolean</span></strong><span style="color:black"> <span style="background-color:silver">doCheck</span>(String </span><span style="color:#6a3e3e">businessCode</span><span style="color:black">,Context </span><span style="color:#6a3e3e">sessionContext</span><span style="color:black">) </span><strong><span style="color:#7f0055">throws</span></strong><span style="color:black"> TranFailException;</span></p>
-		</div>
+	<div class="noborder-content-div">
+		<label style="font-weight:bold;">1、接口</label>：com.edk4j.core.service.BusinessVisitAuthChecker
+		<br/><label style="font-weight:bold;">2、功能</label>：一般用在SessionService类中，检查客户是否有权限对指定交易码的交易进行操作。
+		<br/><label style="font-weight:bold;">3、默认实现类</label>：新建edk4j项目，工作台会自动为项目生成一个默认实现类BusinessVisitAuthCheckerImpl
+		<br/><label style="font-weight:bold;">4、实现类中必须使用注解和beanName</label>：<label style="background-color:#ffff00;">@Service("businessVisitAuthChecker")</label>，如果beanName没有这样设置，那么将会调用com.edk4j.core.service.impl.DefaultBusinessVisitAuthChecker，这个默认实现类应该不够满足你的应用需求。
+		<br/><label style="font-weight:bold;">6、方法说明</label>：
+		<pre class="prettyprint lang-java">
+/**
+ * 检查客户是否有权访问该交易
+ * @param businessCode
+ * @param sessionContext
+ * @return
+ * @throws TranFailException
+ */
+public boolean doCheck(String businessCode,Context sessionContext) throws TranFailException;
+		</pre>
 	</div>
 </body>
 </html>

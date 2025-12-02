@@ -9,21 +9,21 @@
 	<div id="title" class="titleDiv">
 		92.1、集成springboot2.7.x且使用jdk17或更高
 	</div>
-	<div class="tabTitleDiv">添加jvm运行参数</div>
-	<div class="tabTitleLine"></div>
-	<div class="contentDiv">
+	<div class="noborder-content-div">
+		<div class="summary">
+			高版本jdk需要解决的问题
+		</div>
 		<div class="subContentDiv">
 			spring-boot 2.7.x 会支持jdk17。
 		</div>
 		<div class="subContentDiv">
 			从jdk9开始引入了模块化系统，这可能会导致一些基于JDK 8的项目在升级后出现模块访问控制问题，类似异常“module 某java底层模块 does not "open java底层包" to unnamed module”
 		</div>
-		<div class="subTitleDiv addArrow">
+		<div class="summary">
 			不动代码的解决方法：在启动命令中加入vm参数，避免抛出
 		</div>
 		<div class="subContentDiv">
 			--add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED
 		</div>
-	</div>
 </body>
 </html>

@@ -21,16 +21,16 @@
 	<div class="subTitleDiv">
 		BusinessAction是java类，是业务流中业务逻辑执行的最小单元。
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		（1）<label style="font-weight:bold;">设计原则</label>：逻辑单元原子化，每个Action功能尽量单一
 	</div>
 	<div class="subContentDiv">
 		一个BusinessAction类里只完成一件事情，不做把一堆复杂的逻辑混到一个类里处理，能拆分时尽量拆分。遵守这个原则，你的Bpm文件中配置的BusinessLogic就会非常好维护，需要改动时往往只需要修改edm4jBpm 配置文件就可以了。
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		（2）编写BusinessAction类是开发的主要内容之一。
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		（3）必须继承com.edk4j.core.businessprocessmanage.BusinessAction类，并实现execute方法。
 	</div>
 	<div class="subContentDiv">
@@ -47,7 +47,7 @@
 public abstract String execute(Context context) throws TranFailException;
 </pre>
 		</div>
-		<div class="subTitleDiv addArrow">
+		<div class="summary">
 			（4）edk4j在BusinessAction抽象类里预置了两个返回常量：
 		</div>
 		<div class="subContentDiv addBorder">
@@ -63,7 +63,7 @@ public static final String ERROR="-1";
 </pre>
 在我们edk系统中 &quot;0&quot; 表示执行成功。
 		</div>
-		<div class="subTitleDiv addArrow">
+		<div class="summary">
 			（5）来个模板吧
 		</div>
 		<div class="subContentDiv addBorder">

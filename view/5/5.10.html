@@ -18,19 +18,19 @@
 	<div id="title" class="titleDiv">
 		5.10、后台跳转到响应视图怎么做
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		先要明确一下：对ajax请求，跳转动作是无意义的。跳转适用于get方式的访问或者form提交，后台负责跳转到新页面的场景。
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		首先，需要在api中设置responseView属性，将值设置为该api处理完成后要跳转到的视图页面。
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		其次，在具体的MvcControlle.postHandle方法中实现跳转动作。参照“<a href="../7/7.1.html">7.1、RequestPresenter接口</a>”章节中对RequestPresenter的介绍。
 	</div>
 	<div class="subContentDiv">
 		可参考实现类：com.edk4j.sdk.web.presenter.DefaultRequestPresenter，该类在<a href="javascript:window.open('../102/102.1.html', null, getWindowOpenFeature(200, 200));">edk4j-demos技术点样例项目</a>中可以找到。也可以使用EDK可视化IDE为项目添加支持后，自动生成。
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		RequestPresenter开发技巧
 	</div>
 	<div class="subContentDiv">
@@ -44,7 +44,7 @@
 			（3）样例代码：
 		</div>
 		<div class="subContentDiv">
-			<pre class="prettyprint lang-java" id="codeShow1" style="font-weight:bold;font-size:0.14rem;line-height:0.2rem;font-family: 'Verdana','微软雅黑','宋体';">
+			<pre class="prettyprint lang-java" id="codeShow1" style="font-weight:bold;font-size:0.14rem;font-family: 'Verdana','微软雅黑','宋体';">
 /**
  * 调用doHandle方法后的处理逻辑，完成sessionContext的保存处理等动作&lt;/br&gt;
  * 本方法与另一个postHandle方法的不同在于：本方法除了另一个postHandle中具备的功能外，还可以用于视图跳转&lt;/br&gt;

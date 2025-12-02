@@ -53,11 +53,11 @@
 	
 	<div class="tabTitleDiv">4、需要实现的接口</div>
 	<div class="tabTitleLine"></div>
-	<div class="contentDiv">
-		<label style="font-weight:bold;">接口</label>：com.edk4j.core.service.SessionService<br/>
-		<label style="font-weight:bold;">默认实现类</label>：新建edk4j项目，工作台会自动为项目生成一个默认实现类SessionServiceImpl<br/>
-		<label style="font-weight:bold;">实现类中必须使用注解和beanName</label>：@Service("sessionService")，如果beanName没有这样设置，那么将会调用com.edk4j.core.service.impl.DefaultSessionService，这个默认实现类应该不够满足你的应用需求。<br/>
-		<div class="item addArrow">方法清单：</div>
+	<div class="noborder-content-div">
+		<label style="font-weight:bold;">1、接口</label>：com.edk4j.core.service.SessionService<br/>
+		<label style="font-weight:bold;">2、默认实现类</label>：新建edk4j项目，工作台会自动为项目生成一个默认实现类SessionServiceImpl<br/>
+		<label style="font-weight:bold;">3、实现类中必须使用注解和beanName</label>：@Service("sessionService")，如果beanName没有这样设置，那么将会调用com.edk4j.core.service.impl.DefaultSessionService，这个默认实现类应该不够满足你的应用需求。<br/>
+		<label style="font-weight:bold;">4、方法清单：</label>
 		<table class="across">
 			<colgroup><col style="width:50%;"/><col/></colgroup>
 			<thead>
@@ -83,8 +83,7 @@
 				<tr><td>destorySessionWhenClientExit(String)</td><td>当客户端关闭时，销毁sessionContext</td></tr>
 			</tbody>
 		</table>
-		<div class="item addArrow">该接口的方法详细说明：</div>
-		<div class="contentDiv">
+		<label style="font-weight:bold;">5、方法详细说明：</label>
 			<pre class="prettyprint lang-java" id="codeShow1" style="font-weight:bold;font-size:0.14rem;line-height:0.26rem;font-family: 'Verdana','微软雅黑','宋体';">
 /**
  * 获取指定长度的随机码作为sessionToken
@@ -202,12 +201,7 @@ public void rollbackSessionToUnLogin(Context sessionContext);
  * @param sessionToken 未经过二次加密的sessionToken
  */
 public void destorySessionWhenClientExit(String sessionToken);
-			</pre>
-		</div>
-	</div>
-	<div class="contentDiv">
-	<a>7.3.5、接口中的方法在哪里被调用</a><br/>
-	基本上都是在 RequestPresenter的（1）创建sessionContext的方法
+		</pre>
 	</div>
 </body>
 </html>

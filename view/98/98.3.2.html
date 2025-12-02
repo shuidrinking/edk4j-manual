@@ -19,16 +19,16 @@
 	<div id="title" class="titleDiv">
 		98.3.2、“Mysql大数据分页查询”action
 	</div>
-	<div class="contentDiv">
+	<div class="noborder-content-div">
 		<p style="text-indent:0.32rem;">
 			该action在2020年2月份推出，必须将本地maven库中的edk-core.jar更新到不晚于2020年2月以后的版本，否则早期版本中没有这个action。
 		</p>
 		<p style="text-indent:0.32rem;">
 			该action采用的做法：“<label style="font-weight:bold;color:#00ffff">主查询的sql</label> + <label style="font-weight:bold;color:#ff0000"> inner join</label> + <label style="font-weight:bold;color:#0000ff">  (分页查出主表主键的sql)</label>”，其中“主查询的sql”在设计时，需要先找到一张表作为主表；inner join 是分页的关键，在inner join 内联查询中“已分页好的主表主键”；你必须将所有“主表的条件”写到“分页查出主表主键的sql”中。
 		</p>
-		<p style="text-indent:0.32rem;font-weight:bold;">
-			在介绍该action 前，我们针对这种查询手法，先举个例子。
-		</p>
+		<div class="summary">
+			1、在介绍该action 前，我们针对这种查询手法，先举个例子。
+		</div>
 		<table>
 			<tbody>
 				<tr>
@@ -190,9 +190,9 @@ LIMIT 0,10
 				</tr>
 			</tbody>
 		</table>
-		<p style="text-indent:0.32rem;font-weight:bold;">
-			下面我们介绍action，该action的实现类为“com.edk4j.core.repository.jdbc.PageQueryViaInnerJoinSQLAction”，在edk的ide中，可以直接使用。该action的说明如下：
-		</p>
+		<div class="summary">
+			2、下面我们介绍action，该action的实现类为“com.edk4j.core.repository.jdbc.PageQueryViaInnerJoinSQLAction”，在edk的ide中，可以直接使用。该action的说明如下：
+		</div>
 		<table>
 			<tbody>
 				<tr>

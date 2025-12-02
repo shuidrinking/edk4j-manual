@@ -30,7 +30,7 @@
 	<div class="tabTitleDiv">解决方案：pom中申明排除二进制文件，打包后再用jar命令将二进制文件合并进去</div>
 	<div class="tabTitleLine"></div>
 	<div class="contentDiv">
-		<div class="subTitleDiv addArrow">pom中如何排除</div>
+		<div class="summary">pom中如何排除</div>
 		<pre class="prettyprint lang-xml" id="codeShow1" style="font-weight:bold;color:#3f7f5f;">
 &lt;build&gt;
 	&lt;resources&gt;
@@ -52,7 +52,7 @@
 	&lt;/resources&gt;
 &lt;/build&gt;
 		</pre>
-		<div class="subTitleDiv addArrow">如何对jar内容进行局部更新</div>
+		<div class="summary">如何对jar内容进行局部更新</div>
 		<pre>
 #局部更新jar中文件的手法：将要更新的文件，按jar内的目录结构，把最外层文件夹复制到与jar平级，执行更新脚本
 jar uvf xxxx.jar 单个文件在jar内的相对路径

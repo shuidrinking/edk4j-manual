@@ -42,10 +42,10 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 	<div class="tabTitleDiv">3、加载顺序说明</div>
 	<div class="tabTitleLine"></div>
 	<div class="contentDiv">
-		<div class="subTitleDiv addArrow">
+		<div class="summary">
 			spring.factories加载的顺序在spring中是最优先的，它比@ComponentScan的顺序高
 		</div>
-		<div class="subTitleDiv addArrow">
+		<div class="summary">
 			spring.factories加载的组件中如果依赖了@ConditionalOnProperty标注的组件类，则配置属性的值还没又被设置进去
 		</div>
 	</div>

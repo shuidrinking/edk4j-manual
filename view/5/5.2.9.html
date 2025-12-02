@@ -9,20 +9,20 @@
 	<div id="title" class="titleDiv">
 		5.2.9、edk4j中的异常定义，以及已有的异常类
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		edk4j中的异常包含两个不可缺少的属性：errorCode和errorMessage
 	</div>
 	<div class="subContentDiv">
 		在系统抛出异常后，通过errorCode获取errorMessage，算法为：根据errorCode到pub_errcode表中查询，如果没有查到，则在i18n 的message.properties文件找查找，如果没找到，则取errorMessage
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		为开发人员，需要记住2条原则：
 	</div>
 	<div class="subContentDiv">
 		<div class="item">（1）所有抛出的异常必须是BaseException的子类，并且errorCode和errorMessage必须指定</div>
 		<div class="item">（2）action中只允许抛出TranFailException，不允许你抛出其他类型的异常</div>
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		下面列出edk4j中已有的异常类及其说明，除了TranFailException以外，其他异常一般不需要开发人员人为抛出：
 	</div>
 	<div class="subContentDiv">

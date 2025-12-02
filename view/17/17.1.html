@@ -17,7 +17,7 @@
 	<div id="title" class="titleDiv">
 		17.1、文件上传怎么做
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		（1）前端提交上传文件
 	</div>
 	<div class="subContentDiv">
@@ -37,7 +37,7 @@
 		    </div>
 		</div>
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		（2）在business.properties中做好规则配置
 	</div>
 	<div class="subContentDiv addBorder">
@@ -57,13 +57,13 @@ multiPartResolver.uploadFileRootPath=/home/fileUpload/uploads
 /test/uploadFile=fileUploadDemo,200,^(txt|html)$
 		</pre>
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		（3）上传的文件保存位置
 	</div>
 	<div class="subContentDiv">
 		例如在20180306号上传调用了/test/uploadFile，上传了文件aaa.html，那么在/home/fileUpload/uploads/fileUploadDemo/20180306/ 文件夹中能找到刚上传的文件，但是文件名并不是aaa.html，而是HHmmssSSS+3位随机数.html
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		（4）如何从context中获得提交的上传文件信息
 	</div>
 	<div class="subContentDiv">
@@ -99,7 +99,7 @@ private String originalFileName;
 			</tbody>
 		</table>
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		（5）文件上传的样例
 	</div>
 	<div class="subContentDiv">

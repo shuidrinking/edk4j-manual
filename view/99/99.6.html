@@ -20,7 +20,7 @@
 	<div class="tabTitleDiv">一、后台方案</div>
 	<div class="tabTitleLine"></div>
 	<div class="contentDiv">
-		<div class="subTitleDiv addArrow">1/2、新增一个Filter类，在报文头中允许所有的Origin请求，代码如下</div>
+		<div class="summary">1/2、新增一个Filter类，在报文头中允许所有的Origin请求，代码如下</div>
 		<pre class="prettyprint lang-java" id="codeShow1" style="font-weight:bold;color:#3f7f5f;">
 package com.yourdomain.web.filter;
 import java.io.IOException;
@@ -47,7 +47,7 @@ public class CorsFilter implements Filter {
 	}
 }
 		</pre>
-		<div class="subTitleDiv addArrow">2/2、将新增的Filter注册到web容器中，spring-boot中注册的代码如下：</div>
+		<div class="summary">2/2、将新增的Filter注册到web容器中，spring-boot中注册的代码如下：</div>
 		<pre class="prettyprint lang-java" id="codeShow1" style="font-weight:bold;color:#3f7f5f;">
 package com.yourdomain.config;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -70,9 +70,10 @@ public class FilterConfig {
 	<div class="tabTitleDiv">二、nginx配置方案</div>
 	<div class="tabTitleLine"></div>
 	<div class="contentDiv">
-		<div class="subTitleDiv addArrow">
+		<div class="summary">
 			浏览器跨域访问的策略：先对跨域地址发起一个OPTIONS类型的请求，当得到回复码204且报文头里是Access-Control-Allow-Origin:*时，才发起正式请求，因此，对于OPTIONS类型的请求不需要转发到后台，直接在ngixn中答复浏览器即可，配置样例如下：
-			<pre class="prettyprint lang-properties" id="codeShow1" style="font-weight:bold;color:#3f7f5f;">
+		</div>
+		<pre class="prettyprint lang-properties" id="codeShow1" style="font-weight:bold;color:#3f7f5f;">
 server {
 	listen 443 ssl;
 	server_name  xxxx.com;
@@ -106,8 +107,7 @@ server {
 		add_header 'Access-Control-Allow-Header' 'Content-Type,*'; #支持的媒体类型
 	}
 }
-			</pre>
-		</div>
+		</pre>
 	</div>
 </body>
 </html>

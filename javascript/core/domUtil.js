@@ -5,6 +5,13 @@ decription: provide dom element operate functions
 @email: shuidrinking@126.com
 @date: 2018-09-18
 */
+!function(){
+	if(typeof(Worker) == "undefined"){
+		writeWarn("您的浏览器版本过低，请使用edge、chrome、firefox等浏览器！");
+		return;
+	}
+}();
+
 /*
  * 服务器定义
  */
@@ -45,6 +52,49 @@ document.ready = function (callback) {
 		callback();
 	}
 }
+
+/**
+ * 判断是否移动端
+ * 调用必须使用 await isMobile()，否则获取的是一个Promise
+ * 被async修饰的函数必须使用await调用，否则获取到的永远是一个Promise
+ */
+async function isMobile(){
+	if (navigator.userAgentData) {
+		const result = await navigator.userAgentData.getHighEntropyValues(["architecture","bitness","formFactor","fullVersionList","model","platformVersion","uaFullVersion","wow64"])
+			.then(ua => {
+				return ua.mobile;
+			});
+		return result;
+	}
+	else{
+		const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+		const isUserAgentMobile = /android|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent.toLowerCase());
+		const isMediaQueryMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
+		const canToutch = 'ontouchstart' in document.documentElement; //这个并不标准，有pc设备浏览器也支持拖拽
+		return isUserAgentMobile || isMediaQueryMobile || canToutch;
+	}
+}
+
+function writeWarn(message){
+	if(!message){
+		message = "stop render, but no message !"
+	}
+	//知识内容结构丰富，建议您在PC浏览器中阅读！
+	//您的浏览器不支持html5，请使用高版本的浏览器！
+	return`<div style="text-align: center;display: flex;align-items: center;height: 100%;width: 100%;justify-content: center;font-weight:bold;color:#0049a4;font-size:20px;">
+	${message}
+	</div>`;
+}
+(async () => {
+	const mobile = await isMobile();
+	if(mobile){
+		document.documentElement.style.setProperty('--title-div-align', 'center');
+		document.documentElement.style.setProperty('--title-div-fontsize', '0.6rem');
+		document.documentElement.style.setProperty('--title-div-height', '0.6rem');
+		document.documentElement.style.setProperty('--content-line-height', '0.5rem');
+	}
+})();
+
 /* 
  * 浏览器缩放，整页内容按比例也缩放
  * 将本函数抽取出来，不以匿名函数方式执行，原因是：可以在页面上提供 +-按钮，点击时调用本函数，让客户自定义显示大小

@@ -28,14 +28,14 @@
 	<div class="tabTitleDiv">smart-doc用法</div>
 	<div class="tabTitleLine"></div>
 	<div class="contentDiv">
-		<div class="subTitleDiv addArrow">在项目中新建配置文件：${项目根目录}/src/main/resources/smart-doc.json</div>
+		<div class="summary">在项目中新建配置文件：${项目根目录}/src/main/resources/smart-doc.json</div>
 <pre class="prettyprint properties" id="codeShow1" style="font-weight:bold;color:#3f7f5f;">
 	#smart-doc.json文件内容：
 	{
 	   "outPath": "绝对路径文件夹或者项目下的相对路径，例如：./target/api-doc"
 	}
 </pre>
-	<div class="subTitleDiv addArrow">在pom文件中使用smart-doc插件</div>
+	<div class="summary">在pom文件中使用smart-doc插件</div>
 <pre class="prettyprint lang-xml" id="codeShow2" style="font-weight:bold;color:#3f7f5f;">
 	......
 	<properties>
@@ -66,7 +66,7 @@
 		</executions>
 	</plugin>
 </pre>
-	<div class="subTitleDiv addArrow">使用maven命令生成文档</div>
+	<div class="summary">使用maven命令生成文档</div>
 <pre class="prettyprint lang-xml" id="codeShow2" style="font-weight:bold;color:#3f7f5f;">
 	//生成html
 	mvn -Dfile.encoding=UTF-8 smart-doc:html

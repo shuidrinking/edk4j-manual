@@ -23,17 +23,17 @@
 		<label style="color:#ff8600">配置原则：</label>一个bpm文件中，可以定义多个业务逻辑，可以将一组或者一个模块的业务逻辑配置到一个文件里。<br>
 		<label style="color:#ff8600">XML格式内容：</label>edk4j中的业务逻辑在bpm文件中，在edk4j工作台中该文件以绘图方式为开发者呈现，该文件的内容是xml格式的，你可以使用xml编辑器打开。下面是对xml内容的说明。
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		（1）.bpm是“业务逻辑”配置文件，这与传统编码方式不同，传统硬编码中是把业务逻辑都写到一个service类中。
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		（2）可视化开发ide可自动生成.bpm的文件内容。
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		（3）.bpm配置文件内容是按照xml规范编写的，如果没有ide，你可以直接用文本编辑器打开手工处理，bpm文件内容模板以及解释如下：
 	</div>
 	<div class="subContentDiv addBorder">
-<pre class="prettyprint lang-xml" id="codeShow1" style="font-weight:bold;font-size:0.14rem;line-height:0.2rem;font-family: 'Verdana','微软雅黑','宋体';">
+<pre class="prettyprint lang-xml" id="codeShow1" style="font-weight:bold;font-size:0.14rem;font-family: 'Verdana','微软雅黑','宋体';">
 &lt;?xml version="1.0" encoding="UTF-8" ?&gt;
 &lt;!DOCTYPE BusinessLogicGroup SYSTEM "../../dtd/bpm.dtd"&gt;
 &lt;BusinessLogicGroup id="业务流分组ID，必配属性" label="建议按功能将一组业务流放到同一个bpm文件中，也就是说一个BusinessLogicGroup标签中可以有多个BusinessLogic标签"&gt;

@@ -7,7 +7,6 @@
 	<script type="text/javascript" src="../../javascript/components/google-code-prettify/prettify.js"></script>
 	<script type="text/javascript" src="../../javascript/components/google-code-prettify/util.js"></script>
 	<link rel="stylesheet" href="../../javascript/components/google-code-prettify/prettify.css" type="text/css"/>
-	<script type="text/javascript" src="../../javascript/core/domUtil.js"></script>
 	<script type="text/javascript">
 		function init(){
 			PR.prettyPrint();
@@ -20,7 +19,6 @@
 	</div>
 	<div class="contentDiv">
 		<pre class="prettyprint lang-properties" id="codeShow1" style="font-weight:bold;font-size:0.12rem;font-family: 'Verdana','微软雅黑','宋体';">
-<code>
 #配置中需要注意的：当设置了所有静态资源交给ngixn处理，但是有些静态资源被打包到jar里面时，需要对这些处于jar中的url做额外配置，否则404
 #location ^~/my-application-a/some_static_injar/ {
 #	proxy_pass http://my-application-a;
@@ -274,7 +272,6 @@ http {
         }
     }
 }
-</code>
  		</pre>
 	</div>
 </body>

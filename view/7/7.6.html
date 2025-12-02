@@ -4,32 +4,39 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link type="text/css"  rel="stylesheet" href="../../css/dom.css"/>
 	<script type="text/javascript" src="../../javascript/core/domUtil.js"></script>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/prettify.js"></script>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/util.js"></script>
+	<link rel="stylesheet" href="../../javascript/components/google-code-prettify/prettify.css" type="text/css"/>
+	<script type="text/javascript">
+		function init(){
+			//CodePrettyUtil.escapeInnerHTML('codeShow1', 'codeShow1');
+			PR.prettyPrint();
+		}
+	</script>
 </head>
-<body >
+<body onload="init()">
 	<div id="title" class="titleDiv">
 		7.6、BizLogger接口
 	</div>
-	<div class="tabTitleDiv">1、需要实现的接口</div>
-	<div class="tabTitleLine"></div>
-	<div class="contentDiv">
-		<label style="font-weight:bold;">接口</label>：com.edk4j.core.log.BizLogger
-		<br/><label style="font-weight:bold;">作用</label>：用于实施交易过程中的交易记录动作
-		<br/><label style="font-weight:bold;">默认实现类</label>：新建edk4j项目，工作台会自动为项目生成一个默认实现类BizLoggerImpl
-		<br/><label style="font-weight:bold;">实现类中必须使用注解和beanName</label>: <label style="background-color:#ffff00;">@Service(value="bizLogger")</label>，如果没有这样设置，那么将会调用com.edk4j.core.log.DefaultBizLoggerImpl，这个默认实现类不能很好的满足你项目的需要。
-		<br/><label style="font-weight:bold;">方法说明</label>：
-		<div class="contentDiv">
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /**</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><span style="color:#3f5fbf">实施日志记录，该方法的调用，必须放在</span><span style="color:#3f5fbf">service</span><span style="color:#3f5fbf">方法的</span><span style="color:#3f5fbf">finally</span><span style="color:#3f5fbf">中</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><strong><span style="color:#7f9fbf">@param</span></strong><span style="color:#3f5fbf"> requestNo </span><span style="color:#3f5fbf">请求编号</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><strong><span style="color:#7f9fbf">@param</span></strong><span style="color:#3f5fbf"> context </span><span style="color:#3f5fbf">本次交易上下文</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><strong><span style="color:#7f9fbf">@param</span></strong><span style="color:#3f5fbf"> bizName BusinessLogic</span><span style="color:#3f5fbf">的</span><span style="color:#3f5fbf">id</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><strong><span style="color:#7f9fbf">@param</span></strong><span style="color:#3f5fbf"> logDefine&nbsp; </span><span style="color:#3f5fbf">日志定义</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><strong><span style="color:#7f9fbf">@param</span></strong><span style="color:#3f5fbf"> throwable </span><span style="color:#3f5fbf">执行逻辑过程中抛出的异常</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><strong><span style="color:#7f9fbf">@param</span></strong><span style="color:#3f5fbf"> useMillis businessLogic</span><span style="color:#3f5fbf">执行耗时</span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;* </span><strong><span style="color:#7f9fbf">@throws</span></strong><span style="color:#3f5fbf"> Exception </span></p>
-			<p><span style="color:#3f5fbf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;*/</span></p>
-			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong><span style="color:#7f0055">public</span></strong> <strong><span style="color:#7f0055">void</span></strong><span style="color:black"> log(String </span><span style="color:#6a3e3e">requestNo</span><span style="color:black">, Context </span><span style="color:#6a3e3e">context</span><span style="color:black">, String </span><span style="color:#6a3e3e">bizName</span><span style="color:black">, LogDefine </span><span style="color:#6a3e3e">logDefine</span><span style="color:black">, Throwable </span><span style="color:#6a3e3e">throwable</span><span style="color:black">, </span><strong><span style="color:#7f0055">long</span></strong> <span style="color:#6a3e3e">useMillis</span><span style="color:black">);</span></p>
-		</div>
+	<div class="noborder-content-div">
+		<label style="font-weight:bold;">1、接口</label>：com.edk4j.core.log.BizLogger
+		<br/><label style="font-weight:bold;">2、功能</label>：用于实施交易过程中的交易记录动作
+		<br/><label style="font-weight:bold;">3、默认实现类</label>：新建edk4j项目，工作台会自动为项目生成一个默认实现类BizLoggerImpl
+		<br/><label style="font-weight:bold;">4、实现类中必须使用注解和beanName</label>: <label style="background-color:#ffff00;">@Service(value="bizLogger")</label>，如果没有这样设置，那么将会调用com.edk4j.core.log.DefaultBizLoggerImpl，这个默认实现类不能很好的满足你项目的需要。
+		<br/><label style="font-weight:bold;">5、方法说明</label>：
+		<pre class="prettyprint lang-java">
+ /**
+ * 实施日志记录，该方法的调用，必须放在service方法的finally中
+ * @param requestNo 请求编号
+ * @param context 本次交易上下文
+ * @param bizName BusinessLogic的id
+ * @param logDefine  日志定义
+ * @param throwable 执行逻辑过程中抛出的异常
+ * @param useMillis businessLogic执行耗时
+ * @throws Exception
+ */
+public void log(String requestNo, Context context, String bizName, LogDefine logDefine, Throwable throwable, long useMillis);
+		</pre>
 	</div>
 </body>
 </html>

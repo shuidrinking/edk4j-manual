@@ -21,7 +21,7 @@
 	<div class="subTitleDiv">
 		有些客户的服务器访问外网时必须通过代理服务器，在我们的edk4j-integration（接口调用引擎）里提供了对代理服务器配置的支持，需要按下面的套路做：
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		（1）在application-{profile}.properties中设置代理服务器信息
 	</div>
 	<div class="contentDiv">
@@ -30,13 +30,13 @@
 		<p><span style="color:black">integration.proxy.userName = </span><span style="color:#2a00ff">代理服务器授权用户名</span></p>
 		<p><span style="color:black">integration.proxy.password = </span><span style="color:#2a00ff">代理服务器授权密码</span></p>
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		（2）在application-{profile}.properties中打开代理服务器开关
 	</div>
 	<div class="contentDiv">
 		<p><span style="background-color:yellow"><span style="color:black">integration.</span></span><span style="background-color:yellow"><span style="color:black">服务器</span></span><span style="color:black">.useProxy=</span><span style="color:#2a00ff">true</span></p>
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		（3）在具体接口调用的服务类中设置代理
 	</div>
 	<div class="contentDiv">

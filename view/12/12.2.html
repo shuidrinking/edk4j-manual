@@ -9,20 +9,20 @@
 	<div id="title" class="titleDiv">
 		12.2、sessionContext专题
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		1、保存在哪里
 	</div>
 	<div class="subContentDiv">
 		<p style="text-indent:0.32rem;">对于单机形态的系统而言，session只会保存在本机内存中，简单的系统直接保存在servletSession中，稍微复杂的系统自己设计了数据结构，例如使用hashMap等保存起来。</p>
 		<p style="text-indent:0.32rem;">edk4j中的session是采用context数据结构处理的，一个session对应一个Context的对象，称为sessionContext，支持单机和集群的服务器形态，sessionContext是保存在“缓存服务器”中的，对于缓存服务器,前面章节有介绍。对于集群服务器而言，必须保存在Redis中，否则集群节点之间不能共享session。</p>
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		2、会话管理时序图
 	</div>
 	<div class="subContentDiv">
 		<img src="../../image/business/12/12.2-1.jpg"/>
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		3、怎么创建会话
 	</div>
 	<div class="subContentDiv">
@@ -40,19 +40,19 @@
 		<p style="text-indent:0.32rem;">缓存服务器中，除了缓存上面说的字段外，还会单独拎出几个字段的<strong>值，</strong>与sessionContext平行的保存到缓存服务器上，而没有保存在sessionContext里，sessionContext里的这几个字段中保存的是缓存服务器上的key！这些字段是可以在edk4j.properties里配置的，拎出来的原因是：这些数据本身的特点是要么一产生就不变，要么量很大会频繁的变，携带在sessionContext里会严重浪费与缓存服务器交互的成本，所以这几个字段的缓存维护由各个交易自己维护，<strong><span style="background-color:#f1c40f">sessionDynamicData</span></strong>维护方法见前5.6章节面讲的关于动态数据域的章节！</p>
 		<p style="text-indent:0.32rem;">创建后，需要把sessionContext跟交易的具体context链接起来，详见样例RequestPresenter中的做法。</p>
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		4、怎么更新会话数据
 	</div>
 	<div class="subContentDiv">
 		<p style="text-indent:0.32rem;">在RequestPresenter的postHandle方法中，调用SessionService.updateSessionContext方法，对sessionContext进行更新。对于平行缓存的字段，在你的businessLogic里自行维护。</p>
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		5、怎么获得会话数据
 	</div>
 	<div class="subContentDiv">
 		<p style="text-indent:0.32rem;">确保sessionContext被创建的情况下，你就可以在RequestPresenter的preHandle方法中，使用前台客户端传来的requestToken，调用SessionService.getSessionContextBySessionToken方法获得。</p>
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		6、怎么销毁会话
 	</div>
 	<div class="subContentDiv">

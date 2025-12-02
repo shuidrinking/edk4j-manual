@@ -4,33 +4,43 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link type="text/css"  rel="stylesheet" href="../../css/dom.css"/>
 	<script type="text/javascript" src="../../javascript/core/domUtil.js"></script>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/prettify.js"></script>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/util.js"></script>
+	<link rel="stylesheet" href="../../javascript/components/google-code-prettify/prettify.css" type="text/css"/>
+	<script type="text/javascript">
+		function init(){
+			PR.prettyPrint();
+		}
+	</script>
 </head>
-<body >
+<body onload="init()">
 	<div id="title" class="titleDiv">
 		98.2.5、关闭DNS查询和AJP连接
 	</div>
-	<div class="contentDiv">
-		<a style="font-weight:bold;">▶&nbsp;&nbsp;关闭DNS查询</a><br/>
-		修改${TOMCAT_HOME}/conf/server.xml里的http的&lt;Connector&gt;，设置属性enableLookups="false"<br/>
-		<div style="margin-left:0.32rem;border:1px solid #d4d4d4;padding:0.1rem;">
-			&lt;Connector <br/>
-				executor="tomcatThreadPool"<br/>
-				port="8080" URIEncoding="UTF-8" protocol="HTTP/1.1"<br/>
-				onnectionTimeout="20000"<br/>
-				protocol="org.apache.coyote.http11.Http11NioProtocol"<br/>
-				redirectPort="8443" <br/>
-				enableLookups="false"<br/>
-			/&gt;
-		</div>
-		要说明的是，如果为true，则可以通过调用request.getRemoteHost()进行DNS查询来得到远程客户端的实际主机名，若为false则不进行DNS查询，而是返回其ip地址<br/>
-		<a style="font-weight:bold;">▶&nbsp;&nbsp;关闭AJP连接</a><br/>
+	<div class="noborder-content-div">
+		<div class="summary">关闭DNS查询</div>
+		<pre class="prettyprint lang-xml">
+&lt;!--
+修改${TOMCAT_HOME}/conf/server.xml里的http的&lt;Connector&gt;，
+设置属性enableLookups="false"，如果为true，则可以通过调用request.getRemoteHost()进行DNS查询来得到远程客户端的实际主机名，若为false则不进行DNS查询，而是返回其ip地址
+--&gt;
+&lt;Connector 
+	executor="tomcatThreadPool"
+	port="8080" URIEncoding="UTF-8" protocol="HTTP/1.1"
+	onnectionTimeout="20000"
+	protocol="org.apache.coyote.http11.Http11NioProtocol"
+	redirectPort="8443"
+	enableLookups="false"
+/&gt;
+		</pre>
+		<div class="summary">关闭AJP连接</div>
 		目前的tomcat集群不是依靠这个连接器来做的。<br/>
 		修改${TOMCAT_HOME}/conf/server.xml里的AJP的&lt;Connector&gt;节点，直接注释掉<br/>
-		<div style="margin-left:0.32rem;border:1px solid #d4d4d4;padding:0.1rem;">
-			&lt;!--<br/>
-			Connector port="8009" protocol="AJP/1.3" redirectPort="8443" /><br/>
-			--&gt;
-		</div>
+		<pre class="prettyprint lang-xml">
+&lt;!--
+Connector port="8009" protocol="AJP/1.3" redirectPort="8443" />
+--&gt;
+		</pre>
 	</div>
 </body>
 </html>

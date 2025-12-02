@@ -20,9 +20,9 @@
 	<div class="tabTitleDiv">1、spring-boot1.x版本的套路</div>
 	<div class="tabTitleLine"></div>
 	<div class="contentDiv">
-		<div class="subTitleDiv addArrow">继承接口BeanFactoryAware, EnvironmentAware</div>
-		<div class="subTitleDiv addArrow">将配置值设置到bean，是抄袭该方法的内容：org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor#postProcessBeforeInitialization(Object, String)</div>
-		<div class="subTitleDiv addArrow">样例代码：</div>
+		<div class="summary">继承接口BeanFactoryAware, EnvironmentAware</div>
+		<div class="summary">将配置值设置到bean，是抄袭该方法的内容：org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor#postProcessBeforeInitialization(Object, String)</div>
+		<div class="summary">样例代码：</div>
 <pre class="prettyprint lang-java" id="codeShow1" style="font-weight:bold;color:#3f7f5f;">
 
 import org.springframework.beans.factory.BeanFactory;
@@ -85,9 +85,9 @@ public SomeBootAutoConfigClass implements BeanFactoryAware, EnvironmentAware {
 	<div class="tabTitleDiv">2、spring-boot2.x版本的套路</div>
 	<div class="tabTitleLine"></div>
 	<div class="contentDiv">
-		<div class="subTitleDiv addArrow">spring-boot2删除了PropertiesConfigurationFactory类，属性值绑定的工作则被委派给了ConfigurationPropertiesBindingPostProcessor内的静态ConfigurationPropertiesBinder类</div>
-		<div class="subTitleDiv addArrow">实现源码见：org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor#postProcessBeforeInitialization(Object, String)</div>
-		<div class="subTitleDiv addArrow">
+		<div class="summary">spring-boot2删除了PropertiesConfigurationFactory类，属性值绑定的工作则被委派给了ConfigurationPropertiesBindingPostProcessor内的静态ConfigurationPropertiesBinder类</div>
+		<div class="summary">实现源码见：org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor#postProcessBeforeInitialization(Object, String)</div>
+		<div class="summary">
 			在Spring Boot 2.0不再直接使用现有的PropertySource接口进行绑定，而是引入了一个新的ConfigurationPropertySource接口。<br>
 			同时提供了一个合理的方式来实施放松绑定规则，这些规则以前是活页夹的一部分。<br>
 			该接口的主要API非常简单： ConfigurationProperty getConfigurationProperty(ConfigurationPropertyName name);<br>
@@ -95,7 +95,7 @@ public SomeBootAutoConfigClass implements BeanFactoryAware, EnvironmentAware {
 			通过使用以下代码 Iterable&lt;ConfigurationPropertySource&gt; sources = ConfigurationPropertySources.get(environment); 可以获取外部源数据；<br>
 			或者根据需要，还提供一个简单的MapConfigurationPropertySource实现
 		</div>
-		<div class="subTitleDiv addArrow">从environment读取配置，创建配置bean的样例代码：</div>
+		<div class="summary">从environment读取配置，创建配置bean的样例代码：</div>
 <pre class="prettyprint lang-java" id="codeShow2" style="font-weight:bold;color:#3f7f5f;">
 	private Object bindConfigValueToConfigrationBean(Class clazz, String prefix) {
 		Iterable&lt;ConfigurationPropertySource&gt; sources = ConfigurationPropertySources.get(environment);
@@ -106,7 +106,7 @@ public SomeBootAutoConfigClass implements BeanFactoryAware, EnvironmentAware {
 		return targetBean;
 	}
 </pre>
-<div class="subTitleDiv addArrow">从报文中读取配置，创建配置bean的样例代码：</div>
+<div class="summary">从报文中读取配置，创建配置bean的样例代码：</div>
 <pre class="prettyprint lang-java" id="codeShow3" style="font-weight:bold;color:#3f7f5f;">
   // 筛选头信息
   Map<String, Object> headerMap = Collections.list(request.getHeaderNames())

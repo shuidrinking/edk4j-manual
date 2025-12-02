@@ -4,13 +4,21 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link type="text/css"  rel="stylesheet" href="../../css/dom.css"/>
 	<script type="text/javascript" src="../../javascript/core/domUtil.js"></script>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/prettify.js"></script>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/util.js"></script>
+	<link rel="stylesheet" href="../../javascript/components/google-code-prettify/prettify.css" type="text/css"/>
+	<script type="text/javascript">
+		function init(){
+			PR.prettyPrint();
+		}
+	</script>
 </head>
-<body >
+<body onload="init()">
 	<div id="title" class="titleDiv">
 		98.2.3、设置并发参数
 	</div>
-	<div class="contentDiv">
-		<a style="font-weight:bold;">▶&nbsp;&nbsp;修改${TOMCAT_HOME}/conf/server.xml里的http的&lt;Connector&gt;，设置并发相关的属性</a><br/>
+	<div class="noborder-content-div">
+		<div class="summary">修改${TOMCAT_HOME}/conf/server.xml里的http的&lt;Connector&gt;，设置并发相关的属性</div>
 		<a href="https://tomcat.apache.org/tomcat-8.5-doc/config/http.html" target="_blank">tomcat8.5官方配置文档</a><label style="margin-left:0.1rem;color:#ff0000;">网上资料杂乱错，不如直接看官方文档</label>
 		<table class="across">
 			<colgroup>
@@ -48,22 +56,22 @@
 				</tr>
 			</tbody>
 		</table>
-		<a style="font-weight:bold;">▶&nbsp;&nbsp;超高并发时使用ARP</a><br/>
-		（1）修改${TOMCAT_HOME}/conf/server.xml里的http的&lt;Connector&gt;，设置protocol属性的值为org.apache.coyote.http11.Http11AprProtocol<br/>
-		<div style="margin-left:0.32rem;border:1px solid #d4d4d4;padding:0.1rem;">
-			&lt;Connector<br/>
-			port="8080" URIEncoding="UTF-8" protocol="HTTP/1.1"<br/>
-			onnectionTimeout="20000"<br/>
-			protocol="org.apache.coyote.http11.Http11AprProtocol"<br/>
-			redirectPort="8443" /&gt;<br/>
-		</div>
-		（2）修改${TOMCAT_HOME}/conf/server.xml，添加Listener<br/>
-		<div style="margin-left:0.32rem;border:1px solid #d4d4d4;padding:0.1rem;">
-			&lt;Listener className="org.apache.catalina.core.AprLifecycleListener" SSLEngine="on" /&gt;
-		</div>
-		（3）安装ARP，参考https://yq.aliyun.com/articles/551390<br/>
-		<label style="padding-left:0.32rem;font-weigth:bold;font-size:0.18rem;color:#ff0000;">服务器要使用ARP时，必须自行安装，TOMCAT里仅仅自带了tomcat-native用来调用ARP</label>
-		<div style="margin-left:0.32rem;border:1px solid #d4d4d4;padding:0.1rem;">
+		<div class="summary">超高并发时使用ARP</div>
+		<div class="subtitle">（1）修改${TOMCAT_HOME}/conf/server.xml里的http的&lt;Connector&gt;，设置protocol属性的值为org.apache.coyote.http11.Http11AprProtocol</div>
+		<pre class="prettyprint lang-xml">
+&lt;Connector
+port="8080" URIEncoding="UTF-8" protocol="HTTP/1.1"
+onnectionTimeout="20000"
+protocol="org.apache.coyote.http11.Http11AprProtocol"
+redirectPort="8443" /&gt;
+		</pre>
+		<div class="subtitle">（2）修改${TOMCAT_HOME}/conf/server.xml，添加Listener</div>
+		<pre class="prettyprint lang-xml">
+&lt;Listener className="org.apache.catalina.core.AprLifecycleListener" SSLEngine="on" /&gt;
+		</pre>
+		<div class="subtitle">（3）安装ARP，参考https://yq.aliyun.com/articles/551390</div>
+		<div class="subContentDiv">
+		<label style="font-weigth:bold;font-size:0.18rem;color:#ff0000;">服务器要使用ARP时，必须自行安装，TOMCAT里仅仅自带了tomcat-native用来调用ARP</label><br/>
 		对于ARP，以下是网上资料：<br/>
 		APR(Apache Portable Runtime)是一个高可移植库，它是Apache HTTP Server 2.x的核心。APR有很多用途，包括访问高级 IO功能(例如sendfile,epoll和OpenSSL)，OS级别功能(随机数生成，系统状态等等)，本地进程管理(共享内存，NT管道和UNIX sockets)。这些功能可以使Tomcat作为一个通常的前台WEB服务器，能更好地和其它本地web技术集成，总体上让Java更有效率作为一个高性能web服务器平台而不是简单作为后台容器。
 		<br/><br/>简单理解，就是从操作系统级别解决异步IO问题，大幅度的提高服务器的处理和响应性能， 也是Tomcat运行高并发应用的首选模式

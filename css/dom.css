@@ -15,12 +15,16 @@
 	--marrsgreen:#01847e;
 	--yellow:#ffbf50;
 	--common-text-color:#585858;
+	--title-div-align:left;
+	--title-div-fontsize:0.2rem;
+	--title-div-height:0.4rem;
+	--content-line-height:0.3rem;
 }
 /**
  * 添加屏幕宽高比的条件：
  * and (device-aspect-ratio:16/9)
  */
-/* @media screen and (min-width: 1080px) {
+@media screen and (min-width: 760px) {
 	:root {
 		--body-font-size:16px;
 		--rem-common-font-size:0.16rem;
@@ -28,18 +32,18 @@
 	}
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 760px) {
 	:root {
-		--body-font-size:26px;
-		--rem-common-font-size:0.16rem;
-		--input-font-size:0.16rem;
+		--body-font-size:0.3rem;
+		--rem-common-font-size:0.3rem;
+		--input-font-size:0.3rem;
 	}
-} */
-:root {
-	--body-font-size:26px;
+}
+/* :root {
+	--body-font-size:0.20rem;
 	--rem-common-font-size:0.16rem;
 	--input-font-size:0.16rem;
-}
+} */
 .inline-block{
 	display:inline-block;
 }
@@ -67,7 +71,7 @@ html,body{
 body {
 	font-size: var(--body-font-size);
 	line-height: 100%;
-	font-family: "Verdana","微软雅黑","宋体";
+	font-family: "Verdana","微软雅黑","宋体","shuidrinking";
 	counter-reset: filedSets 0 stepsCounterSN 0 orderSn 0;
 	letter-spacing: 0.01rem;
 	color: #5e5e5e;
@@ -85,7 +89,7 @@ div {
 	margin:0;
 }
 p{
-	line-height:0.3rem;
+	line-height:var(--content-line-height);
 }
 a{
 	text-decoration: none;
@@ -317,7 +321,7 @@ textArea{
 pre {
 	font-weight:bold;
 	font-size:0.14rem;
-	line-height:0.2rem;
+	line-height:var(--content-line-height);
 	font-family: 'Verdana','微软雅黑','宋体';
 	white-space: pre-wrap;
 	word-wrap: break-word;
@@ -369,12 +373,12 @@ pre {
 }
 .titleDiv{
 	color:#04003e;
-	font-size:0.20rem;
-	text-align:left;
+	font-size: var(--title-div-fontsize);
+	text-align:var(--title-div-align);
 	font-weight:bold;
 	border-bottom:0.01rem solid #d1e2ff;
-	height:0.4rem;
-	line-height:0.4rem;
+	height: var(--title-div-height);
+	line-height:var(--title-div-height);
 	vertical-align:middle;
 	padding:0.05rem;
 	margin:0 0.05rem;
@@ -392,7 +396,7 @@ pre {
 .subContentDiv{
 	text-align:left;
 	border:0;
-	line-height:0.3rem;
+	line-height:var(--content-line-height);
 	padding: 0.05rem;
 	margin: 0 0.05rem 0 0.3rem;
 }
@@ -410,11 +414,21 @@ pre {
 	border:0.01rem solid #d1e2ff;
 	border-radius:0.06rem;
 	border-top-left-radius:0;
-	line-height:0.3rem;
+	line-height:var(--content-line-height);
 	width: calc(100% - 0.22rem);
 	padding:0.05rem;
 	margin:0.05rem;
 }
+.noborder-content-div{
+	text-align:left;
+	border-radius:0.06rem;
+	border-top-left-radius:0;
+	line-height:var(--content-line-height);
+	width: calc(100% - 0.22rem);
+	padding:0.05rem;
+	margin:0.05rem;
+}
+
 .flex-box{
 	display: flex;
 	align-items: center;
@@ -429,7 +443,7 @@ table{
 	width:calc(100% - 0.1rem);
 	border-collapse:collapse;/*collapse时,radius不生效 separate时圆角生效 相当于cellspacing=0*/
 	border-spacing:0;
-	margin:0.05rem 0 0.05rem 0.05rem;
+	/* margin:0.05rem 0 0.05rem 0.05rem; */
 	border:0.01rem solid #d1e2ff;
 }
 thead tr
@@ -456,7 +470,7 @@ tbody tr td {
 	font-size: 0.18rem;
 	border-right:0.01rem dashed #d1e2ff;
 	padding:0 0.05rem;
-	line-height:0.3rem;
+	line-height:var(--content-line-height);
 }
 tbody tr:hover td {
 	background-color: #fffaf0;
@@ -575,7 +589,7 @@ tbody tr:hover td {
 	word-wrap : break-word ;
 	border-bottom:0.01rem solid #d3d3d3;
 	text-indent :0.32rem;
-	line-height:0.3rem;
+	line-height:var(--content-line-height);
 }
 .dialogBottom {
 	text-align: center;
@@ -674,7 +688,7 @@ tbody tr:hover td {
 	display:inline-block;
 	min-height:2rem;
 	line-height:0.2rem;
-	width:2rem;
+	width:3rem;
 	padding:0.1rem;
 	margin:0.2rem 0.5rem;
 	-moz-box-shadow:0.05rem 0.05rem 0.07rem #8c8c8c;
@@ -761,7 +775,7 @@ tbody tr:hover td {
 	font-weight:bold;
 	padding:0.1rem;
 	min-height:0.3rem;
-	line-height:0.3rem;
+	line-height:var(--content-line-height);
 	letter-spacing: 0.02rem;
 }
 .item:hover{
@@ -864,4 +878,29 @@ summary::after {
 }
 /*详细解释说明样式定义*/
 details[open]::details-content {
+}
+
+/*标题行*/
+.summary{
+	outline: 0;
+	position: relative;
+	display: flex;/*垂直居中*/
+	justify-content: flex-start;
+	align-items: center;
+	padding: 0.05rem 0.15rem;
+	cursor:pointer;
+	font-weight:bold;
+	overflow: hidden;
+	border-radius: 0.04rem;
+	min-height: 0.3rem;
+	margin: 0.2rem 0;
+}
+.summary::before{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0.04rem;
+	height: 100%;
+	background-color: #dbdbdb;
 }

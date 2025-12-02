@@ -9,7 +9,7 @@
 	<div id="title" class="titleDiv">
 		98.2.6、设置合理的session-timeout
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		打开具体项目的web.xml，设置节点，单位为分钟
 	</div>
 	<div class="subContentDiv">
@@ -17,10 +17,10 @@
 		<label style="margin-left:0.32rem;">&lt;session-timeout&gt;30&lt;/session-timeout&gt; </label>   <br/> 
 		&lt;/session-config&gt;
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		对于需要保持客户回话的系统，一般设置为30分钟，如果是EDK项目，则此值需要和session的缓存时间一致！
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		如果是接口型无状态的项目，请设置为1分钟足矣，否则时间太长而内存又小的时候，导致httpSession一直堆在内存里不能回收，造成httpSession泄露，这点很重要。
 	</div>
 </body>

@@ -9,7 +9,7 @@
 	<div id="title" class="titleDiv">
 		15、用户访问、登录、退出、关闭客户端专题
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		1、游客访问要做什么
 	</div>
 	<div class="subContentDiv">
@@ -20,7 +20,7 @@
 		客户端有禁止cookie的可能，所以通用性的做法是：后台提供专门建立sessionContext的URL，前台提供一个所有页面都需要应用的js，这个js里实现在页面加载时如果判定没有requestToken的话就获取一次。
 		</div>
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		2、登录要做些什么
 	</div>
 	<div class="subContentDiv">
@@ -37,7 +37,7 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		3、退出要做些什么
 	</div>
 	<div class="subContentDiv">
@@ -45,7 +45,7 @@
 		调用SessionService.rollBackSessionToUnLogin方法，将session回退到未登录状态，要把登录相关的数据都恢复掉，例如修改登录状态为"false"，将可操作的菜单和可操作的businessCode恢复到“游客级别”，将平行缓存的数据内容也恢复到“游客级别”，也就是说，登录要做的动作，在这里要逆着做！
 		</p>
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		4、关闭客户端时要干些什么
 	</div>
 	<div class="subContentDiv">

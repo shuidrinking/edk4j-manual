@@ -19,13 +19,13 @@
 		5.4、具体项目的个性化初始化怎么做
 	</div>
 	
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		项目中如果需要做一些额外的初始化动作，比如“初始化系统菜单、业务编码表、启动任务引擎”等等，这些动作要怎么做？
 	</div>
 	<div class="subContentDiv">
 		我们edk中提供了一个接口：com.edk4j.core.config.ApplicationInitializerInterface，实现这个接口，在其中实现初始化动作便可。实现类必须用@Service注解标注为spring的服务类。
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		样例代码：
 	</div>
 	<div class="contentDiv addBorder">

@@ -27,16 +27,16 @@
 		</div>
 	<div id="tabContents" class="tabContentDiv">
 		<div>
-				<div class="subTitleDiv addArrow">
+				<div class="summary">
 					明确配置文件中哪些配置项的值需要被加密后存储在文件中
 				</div>
-				<div class="subTitleDiv addArrow">
+				<div class="summary">
 					需要将密钥配置到edk4j/edk4j.properties或者application.properties中，配置项为：application.configValueCryptoKey以及application.configValueCryptoIv，配置值长度必须为16个字符
 				</div>
-				<div class="subTitleDiv addArrow">
+				<div class="summary">
 					被加密的值需要被MASK()标注，范式：配置项key=MASK(加密值value)
 				</div>
-				<div class="subTitleDiv addArrow">
+				<div class="summary">
 					在上线前提前在工具网页里利用aes加解密插件进行加密，或者，手工编写加密工具类调用com.edk4j.core.util.AESUtil.encrypt方法进行加密
 				</div>
 		</div>
@@ -50,14 +50,14 @@
 			<div class="tabTitleLine"></div>
 			<div class="contentDiv">
 				如果你自定义了加密套路，还需要自定义实现解密组件，下面是实现的套路：
-				<div class="subTitleDiv addArrow">实现org.springframework.boot.env.EnvironmentPostProcessor接口，EnvironmentPostProcessor 用于在 Spring 应用程序的环境准备阶段执行一些自定义的环境处理逻辑，可以在项目启动之前从非标准springboot配置文件中读取相关的配置并填充到springboot上下文中。它允许你在Spring应用程序的Environment（环境）被创建和配置之后，但在应用程序上下文被刷新之前，对其进行编程式的修改。这个接口的一个常见用途是解密配置值，特别是在配置值被加密存储（例如，在配置文件或环境变量中）时。</div>
-				<div class="subTitleDiv addArrow">在springboot3之前的版本中，
+				<div class="summary">实现org.springframework.boot.env.EnvironmentPostProcessor接口，EnvironmentPostProcessor 用于在 Spring 应用程序的环境准备阶段执行一些自定义的环境处理逻辑，可以在项目启动之前从非标准springboot配置文件中读取相关的配置并填充到springboot上下文中。它允许你在Spring应用程序的Environment（环境）被创建和配置之后，但在应用程序上下文被刷新之前，对其进行编程式的修改。这个接口的一个常见用途是解密配置值，特别是在配置值被加密存储（例如，在配置文件或环境变量中）时。</div>
+				<div class="summary">在springboot3之前的版本中，
 				<a href="https://docs.spring.io/spring-boot/docs/2.7.18/reference/htmlsingle/#howto.application.customize-the-environment-or-application-context" target="_blank">官方文档</a>
 				通过spring.factories文件配置这个接口的实现类：</div>
 				<pre class="prettyprint lang-properties" id="codeShow1" style="font-weight:bold;color:#3f7f5f;">
 org.springframework.boot.env.EnvironmentPostProcessor=com.xxx.SafetyEncryptProcessor
 				</pre>
-				<div class="subTitleDiv addArrow">在springboot3之后的版本中，弃用spring.factories文件，自定义的EnvironmentPostProcessor注册手法包括但不限于：<br>
+				<div class="summary">在springboot3之后的版本中，弃用spring.factories文件，自定义的EnvironmentPostProcessor注册手法包括但不限于：<br>
 					（1）直接在你的EnvironmentPostProcessor类上添加 @Component或@Configuration 注解<br>
 					（2）在配置类中或者主类中通过@Bean注解注册
 				</div>
@@ -264,10 +264,10 @@ public class ConfigValueDecryptEnvironmentPostProcessor implements EnvironmentPo
 		</div>
 		<div style="display:none;">
 			除了使用“EDK平台内置的加解密”手法外，还有一种比较原始的加解密套路，这种做法中，加解密规则由你自定义。通过手工编写映射类的set方法实现解密。
-			<div class="subTitleDiv addArrow">
+			<div class="summary">
 				在映射类中，在其set方法中调用com.edk4j.core.util.AESUtil.decrypt方法进行解密，解密后再设置到映射字段中。
 			</div>
-			<div class="subTitleDiv addArrow">
+			<div class="summary">
 				局限性：这种做法适用于对项目中业务配置中的字段解密，但是由于第三方的映射类被封装在jar里，故不能对集成第三方的配置内容进行解密。
 			</div>
 		</div>

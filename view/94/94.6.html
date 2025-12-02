@@ -19,19 +19,17 @@
 	</div>
 	<div class="tabTitleDiv">1、通过配置文件设置</div>
 	<div class="tabTitleLine"></div>
-	<div class="contentDiv">
-		<div class="subTitleDiv addArrow">在spring-boot的配置文件中设置：</div>
+	<div class="summary">在spring-boot的配置文件中设置：</div>
 	<pre class="prettyprint lang-properties" id="codeShow1" style="font-weight:bold;color:#3f7f5f;">
 #系列配置申明于：org.springframework.boot.autoconfigure.web.ServerProperties#Tomcat
 #设置tomcat临时文件夹创建的位置
 server.tomcat.basedir=/tomcat_temp/
 	</pre>
-	</div>
+
 	<div class="tabTitleDiv">2、编程式配置</div>
-		<div class="tabTitleLine"></div>
-		<div class="contentDiv">
-			<div class="subTitleDiv addArrow">生成WebServerFactoryCustomizer实例bean：</div>
-	<pre class="prettyprint lang-java" id="codeShow2" style="font-weight:bold;">.
+	<div class="tabTitleLine"></div>
+	<div class="summary">生成WebServerFactoryCustomizer实例bean：</div>
+	<pre class="prettyprint lang-java" id="codeShow2" style="font-weight:bold;">
 import java.io.File;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.server.WebServerFactoryCustomizer;
@@ -54,6 +52,5 @@ public class TomcatConfig {
 	}
 }
 	</pre>
-		</div>
 </body>
 </html>

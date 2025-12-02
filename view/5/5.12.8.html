@@ -9,7 +9,7 @@
 	<div id="title" class="titleDiv">
 		6.8、edk4j中的开发约定，开发人员必须记牢
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		1、edk4j返回给前端的内容格式约定
 	</div>
 	<div class="subContentDiv">
@@ -18,19 +18,19 @@
 	<div class="subContentDiv">
 		（2） 返回结果中有两个必有的字段，默认是 resultCode 和 resultMessage，当处理正确时resultCode="0"，resultMessage="ok"。当然，也不是非要这两个字段，edk4j中可以很灵活的处理：你可以在businessLogic的输出字段中定义，或者在RequestPresenter.postHandle方法中设置
 	</div> 
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		2、edk4j中Action类返回结果的约定
 	</div>
 	<div class="subContentDiv">
 		正确情况下返回 "0" ，如果返回其他值，默认不认为是正确的，除非在你的业务逻辑里有做对这些特殊结果的判定。
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		3、edk4j中Action类的抛出异常约定
 	</div>
 	<div class="subContentDiv">
 		execute方法抛出的异常必须是TranFailException，因为在action这个层面，就是交易层面，明确告诉客户什么业务做不下去，出什么问题了，而不是给客户抛出一些莫名其妙的客户不理解的异常。
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		4、edk4j存储过程出参的约定
 	</div>
 	<div class="subContentDiv">
@@ -39,43 +39,43 @@
 	<div class="subContentDiv">
 		对这个字段的值是否正确，这个判定动作也在businessLogic里自定义处理，调用存储过程的Action组件里不会处理的。
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		5、api文件命名约定
 	</div>
 	<div class="subContentDiv">
 		文件名必须以 .api结尾
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		6、业务逻辑分组中具体的BusinessLogic命名约定
 	</div>
 	<div class="subContentDiv">
 		文件名必须以.bpm结尾
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		7、Action类命名约定
 	</div>
 	<div class="subContentDiv">
 		类名必须以Action 后缀结尾
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		8、Repository类命名约定
 	</div>
 	<div class="subContentDiv">
 		必须以Repository后缀结尾
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		9、RequestPresenter类命名约定
 	</div>
 	<div class="subContentDiv">
 		必须以RequestPresenter后缀结尾
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		10、Service类命名约定
 	</div>
 	<div class="subContentDiv">
 		接口定义必须以Service后缀结尾，如果是service接口的实现类，一般必须以ServiceImpl后缀结尾
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		11、报文配置类命名约定
 	</div>
 	<div class="subContentDiv">
@@ -84,7 +84,7 @@
 	<div class="subContentDiv">
 		答复报文实体类必须以Response后缀结尾，一般写成“接口编号+Response”，例如CB0001Response
 	</div>
-	<div class="subTitleDiv addArrow">
+	<div class="summary">
 		12、Context和SessionContext的管理约定
 	</div>
 	<div class="subContentDiv">

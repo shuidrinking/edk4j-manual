@@ -4,47 +4,47 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link type="text/css"  rel="stylesheet" href="../../css/dom.css"/>
 	<script type="text/javascript" src="../../javascript/core/domUtil.js"></script>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/prettify.js"></script>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/util.js"></script>
+	<link rel="stylesheet" href="../../javascript/components/google-code-prettify/prettify.css" type="text/css"/>
+	<script type="text/javascript">
+		function init(){
+			PR.prettyPrint();
+		}
+	</script>
 </head>
-<body >
+<body onload="init();">
 	<div id="title" class="titleDiv">
 		98.2.1、设置JVM
 	</div>
-	<div class="contentDiv">
-		<p style="text-indent:0.32rem;">
-			<a style="font-weight:bold;">▶&nbsp;&nbsp;打开 ${TOMCAT_HOEM}/bin/catalina.sh 文件，在文件最开始添加一行：</a>
-		</p>
-		<div style="margin-left:0.32rem;border:1px solid #d4d4d4;padding:0.1rem;">
-			JAVA_OPTS="-Xms256m -Xmx512m -XX:MaxNewSize=64m -XX:PermSize=80m -XX:MaxPermSize=128m -XX:+UseConcMarkSweepGC -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=目录自己设置/youAppName_oom.dump"
-			<br>
-			<label style="background-color:#ffff00">PermSize和MaxPermSize两个属性从JDK1.8开始就废弃了，应该使用MetaspaceSize和MaxMetaspaceSize</label>
-			<br>
-			<label style="background-color:#ffff00">如果使用JDK1.8或更高版本的jdk时，需要设置为：</label>
-			<br>
-			JAVA_OPTS="-Xms256m -Xmx512m -XX:MaxNewSize=64m -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=256m -XX:+UseConcMarkSweepGC -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=目录自己设置/youAppName_oom.dump"
-		</div>
+	<div class="noborder-content-div">
+		<div class="summary">打开 ${TOMCAT_HOEM}/bin/catalina.sh 文件，在文件最开始添加一行：</div>
+		<pre class="prettyprint lang-properties">
+JAVA_OPTS="-Xms256m -Xmx512m -XX:MaxNewSize=64m -XX:PermSize=80m -XX:MaxPermSize=128m -XX:+UseConcMarkSweepGC -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=目录自己设置/youAppName_oom.dump"
+#PermSize和MaxPermSize两个属性从JDK1.8开始就废弃了，应该使用MetaspaceSize和MaxMetaspaceSize
+#如果使用JDK1.8或更高版本的jdk时，需要设置为：
+JAVA_OPTS="-Xms256m -Xmx512m -XX:MaxNewSize=64m -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=256m -XX:+UseConcMarkSweepGC -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=目录自己设置/youAppName_oom.dump"
+		</pre>
 		
-		<p style="text-indent:0.32rem;">
-			<a style="font-weight:bold;">▶&nbsp;&nbsp;优化点解释：</a>
-		</p>
-		<div style="padding-left:0.64rem;">
+		<div class="summary">优化点解释：</div>
+		<div class="noborder-content-div">
 			设置堆内存，edk项目最小内存一般128m就够了；最大内存，可以根据项目的具体并发量和交易消耗需求来设置；不要把最小值和最大值设置的一样！<br/>
 			设置永代区为80m，最大128m，不要设置更高，够用就行，不要把最小值和最大值设置的一样！<br/>
 			使用CMS垃圾回收器；<br/>
 			设置当内存溢出时自动抓取dump；<br/>
 		</div>
-		<p style="text-indent:0.32rem;">
-			<a style="font-weight:bold;">▶&nbsp;&nbsp;OOM时抓取dump的设置语法，在不同版本的jvm中也不同，具体如下：</a>
-		</p>
-		<div style="padding-left:0.64rem;">
-			（1）Oracle JVM <br/>
-			-XX:+HeapDumpOnOutOfMemoryError <br/>
-			-XX:HeapDumpPath=文件绝对路径<br/>
-			（2）HP JVM <br/>
-			-XX:+HeapDumpOnOutOfMemoryError  -XX:+HeapDumpOnCtrlBreak   <br/>
-			-XX:HeapDumpPath=文件绝对路径<br/>
-			（3）IBM JVM <br/>
-			-Xdump:heap:events=user,file=目录/pid%uid%pid.phd
-		</div>
+		
+		<div class="summary">OOM时抓取dump的设置语法，在不同版本的jvm中也不同，具体如下：</div>
+		<pre class="prettyprint lang-properties">
+#（1）Oracle JVM
+-XX:+HeapDumpOnOutOfMemoryError 
+-XX:HeapDumpPath=文件绝对路径
+#（2）HP JVM
+-XX:+HeapDumpOnOutOfMemoryError  -XX:+HeapDumpOnCtrlBreak
+-XX:HeapDumpPath=文件绝对路径
+#（3）IBM JVM
+-Xdump:heap:events=user,file=目录/pid%uid%pid.phd
+		</pre>
 	</div>
 </body>
 </html>

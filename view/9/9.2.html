@@ -32,12 +32,12 @@
 	<div class="tabTitleLine"></div>
 	<div class="contentDiv">
 		<label style="font-weight:bold;">提交DataCell：</label><br>
-		<pre class="prettyprint lang-html" style="font-weight:bold;font-size:0.14rem;line-height:0.2rem;font-family: 'Verdana','微软雅黑','宋体';">
+		<pre class="prettyprint lang-html" style="font-weight:bold;font-size:0.14rem;font-family: 'Verdana','微软雅黑','宋体';">
 	&lt;input type="text" name="fieldId"/&gt;
 	&lt;input type="file" name="fieldId"/&gt;
 </pre>
 			<label style="font-weight:bold;">提交列表Listx：</label><br>
-			<pre class="prettyprint lang-html" style="font-weight:bold;font-size:0.14rem;line-height:0.2rem;font-family: 'Verdana','微软雅黑','宋体';">
+			<pre class="prettyprint lang-html" style="font-weight:bold;font-size:0.14rem;font-family: 'Verdana','微软雅黑','宋体';">
 	&lt;input name="listxId.field1Id"/&gt;<br>
 	&lt;input name="listxId.field2Id"/&gt;<br>
 	......<br>
@@ -57,7 +57,7 @@
 	<div class="tabTitleDiv">提交格式3：json格式提交</div>
 	<div class="tabTitleLine"></div>
 	<div class="contentDiv">
-	<pre class="prettyprint lang-json" style="font-weight:bold;font-size:0.14rem;line-height:0.2rem;font-family: 'Verdana','微软雅黑','宋体';">
+	<pre class="prettyprint lang-json" style="font-weight:bold;font-size:0.14rem;font-family: 'Verdana','微软雅黑','宋体';">
 {
 	"someFieldId" : "fieldValue",
 	"someListxId" :[
@@ -72,7 +72,7 @@
 	<div class="tabTitleLine"></div>
 	<div class="contentDiv">
 		<label style="font-weight:bold;">格式一、以规范的edk中context标签发送，范式如下：</label><br>
-		<pre class="prettyprint lang-xml" style="font-weight:bold;font-size:0.14rem;line-height:0.2rem;font-family: 'Verdana','微软雅黑','宋体';">
+		<pre class="prettyprint lang-xml" style="font-weight:bold;font-size:0.14rem;font-family: 'Verdana','微软雅黑','宋体';">
 &lt;xml&gt;
 	&lt;dataCell id="someDcId" value="someValue"/&gt;
 	&lt;listx id="someListxId"&gt;
@@ -87,7 +87,7 @@
 </pre>
 		<br><br>
 		<label style="font-weight:bold;">格式二、以自定义的方式发送，标签名作为context中数据域元素的id，范式如下：</label><br>
-		<pre class="prettyprint lang-xml" style="font-weight:bold;font-size:0.14rem;line-height:0.2rem;font-family: 'Verdana','微软雅黑','宋体';">
+		<pre class="prettyprint lang-xml" style="font-weight:bold;font-size:0.14rem;font-family: 'Verdana','微软雅黑','宋体';">
 &lt;xml&gt;
 	&lt;someDcId&gt;&lt;![CDATA[someValue]]&gt;&lt;/someDcId&gt;
 	&lt;someListxId&gt;

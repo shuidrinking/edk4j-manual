@@ -4,27 +4,35 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link type="text/css"  rel="stylesheet" href="../../css/dom.css"/>
 	<script type="text/javascript" src="../../javascript/core/domUtil.js"></script>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/prettify.js"></script>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/util.js"></script>
+	<link rel="stylesheet" href="../../javascript/components/google-code-prettify/prettify.css" type="text/css"/>
+	<script type="text/javascript">
+		function init(){
+			PR.prettyPrint();
+		}
+	</script>
 </head>
-<body >
+<body onload="init()">
 	<div id="title" class="titleDiv">
 		98.2.4、启用共享线程池
 	</div>
-	<div class="subTitleDiv addArrow">
-		在文件${TOMCAT_HOME}/conf/server.xml中找到&lt;Executor&gt;节点，修改一些默认属性值，其中maxIdleTime属性是指最大空闲时间，单位是毫秒
+	<div class="summary">
+		1、在文件${TOMCAT_HOME}/conf/server.xml中找到&lt;Executor&gt;节点，修改一些默认属性值，其中maxIdleTime属性是指最大空闲时间，单位是毫秒
 	</div>
-	<div class="subContentDiv">
-		&lt;Executor name="tomcatThreadPool" namePrefix="yourAppName-exec-" maxThreads="500" minSpareThreads="100" maxIdleTime="60000" /&gt;
+	<pre class="prettyprint lang-xml">
+&lt;Executor name="tomcatThreadPool" namePrefix="yourAppName-exec-" maxThreads="500" minSpareThreads="100" maxIdleTime="60000" /&gt;
+	</pre>
+	<div class="summary">
+		2、在http的&lt;Connector&gt;节点中加入线程池属性executor="tomcatThreadPool"，如下：
 	</div>
-	<div class="subTitleDiv addArrow">
-		然后，在http的&lt;Connector&gt;节点中加入线程池属性executor="tomcatThreadPool"，如下：
-	</div>
-	<div class="subContentDiv">
-		&lt;Connector <br/>
-		executor="tomcatThreadPool" <br/>
-		port="8080" URIEncoding="UTF-8" protocol="HTTP/1.1" <br/>
-		onnectionTimeout="20000" <br/>
-		protocol="org.apache.coyote.http11.Http11NioProtocol" <br/>
-		redirectPort="8443" /&gt;
-	</div>
+	<pre class="prettyprint lang-xml">
+&lt;Connector 
+executor="tomcatThreadPool" 
+port="8080" URIEncoding="UTF-8" protocol="HTTP/1.1" 
+onnectionTimeout="20000" 
+protocol="org.apache.coyote.http11.Http11NioProtocol" 
+redirectPort="8443" /&gt;
+	</pre>
 </body>
 </html>
