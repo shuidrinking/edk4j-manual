@@ -894,6 +894,7 @@ details[open]::details-content {
 	border-radius: 0.04rem;
 	min-height: 0.3rem;
 	margin: 0.2rem 0;
+	color:#00157e;
 }
 .summary::before{
 	content: '';
@@ -902,5 +903,5 @@ details[open]::details-content {
 	left: 0;
 	width: 0.04rem;
 	height: 100%;
-	background-color: #dbdbdb;
+	background-color: #ff9f56;
 }
