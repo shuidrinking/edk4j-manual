@@ -56,14 +56,16 @@
 	outline: 0;
 	vertical-align: baseline;
 	background: transparent;
-	word-wrap: break-word;
-	word-break: break-all;
+	word-wrap: keep-word;
+	word-break: break-word;
+	scroll-behavior: smooth;
 	/**清除元素的默认浏览器样式，例如input的顶部内黑线，select的下拉框，number的增减箭头等
 	appearance:none;
 	-moz-appearance:none;
 	-webkit-appearance:none;
 	select::-ms-expand { display: none; }IE的select要单独定义这一句**/
 }
+
 html,body{
 	width:100%;
 	height:100%;
@@ -126,21 +128,6 @@ table tr td {
 	background: #fbfbfb;
 }
 
-*{
-	margin: 0;
-	padding: 0;
-	border: 0;
-	outline: 0;
-	vertical-align: baseline;
-	background: transparent;
-	word-wrap: break-word;
-	word-break: break-all;
-	/**清除元素的默认浏览器样式，例如input的顶部内黑线，select的下拉框，number的增减箭头等
-	appearance:none;
-	-moz-appearance:none;
-	-webkit-appearance:none;
-	select::-ms-expand { display: none; }IE的select要单独定义这一句**/
-}
 ::-ms-browse, [type='file'] {
 	line-height: 0.25rem;
 	border:0.01rem solid #E76262;
