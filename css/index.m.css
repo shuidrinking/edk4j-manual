@@ -99,7 +99,7 @@ table tr td {
 	position:fixed;
 	left:0;
 	transition: left 0.2s linear 0s;
-	z-index: 1000;
+	z-index: 998;
 	background-color: #ffffff;
 }
 .menuDivHidden{

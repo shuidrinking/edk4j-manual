@@ -85,7 +85,7 @@ function toggleMenu(){
 		}
 	}
 	else{
-		$("menuToggleDiv").style.left="3.5rem";
+		$("menuToggleDiv").style.left="calc(50% - 1.2rem)";
 		_arrow.classList.remove("arrow-right");
 		_arrow.classList.add("arrow-left");
 		$("leftDiv").classList.remove("menuDivHidden");
