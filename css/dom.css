@@ -56,7 +56,7 @@
 	outline: 0;
 	vertical-align: baseline;
 	background: transparent;
-	word-wrap: keep-word;
+	word-wrap: break-word;
 	word-break: break-word;
 	scroll-behavior: smooth;
 	/**清除元素的默认浏览器样式，例如input的顶部内黑线，select的下拉框，number的增减箭头等
