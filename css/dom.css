@@ -93,6 +93,25 @@ div {
 p{
 	line-height:var(--content-line-height);
 }
+blockquote{
+	margin : 0.1rem 0;
+	font-size: 0.14rem;
+	font-weight: bold;
+	color:#00157e;
+	padding-left:0.2rem;
+	border-radius: 0.04rem;
+	overflow: hidden;
+	position:relative;
+}
+blockquote::before{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0.04rem;
+	height: 100%;
+	background-color: #ff9f56;
+}
 a{
 	text-decoration: none;
 	color:#D12D2D;
