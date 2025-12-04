@@ -4,7 +4,7 @@ Client.context.isMobile=false;
 async function init(){
 	let _link=document.querySelector("#indexcss");
 	let _arrowLink=document.querySelector("#arrowcss");
-	Client.context.isMobile = !await isMobile();
+	Client.context.isMobile = await isMobile();
 	if(Client.context.isMobile){
 		_link.href="css/index.m.css";
 		_arrowLink.href="css/arrow.m.css";
