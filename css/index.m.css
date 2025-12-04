@@ -139,7 +139,7 @@ table tr td {
 	position: fixed;
 	top: 0;
 	left: 3.5rem;
-	z-index: 999;
+	z-index: 997;
 	background-color: transparent;
 	display:flex;
 	align-items: flex-end;
@@ -150,4 +150,7 @@ table tr td {
 }
 .menu-display-toggle-bar:hover{
 	opacity: 1;
+}
+.showMenuIcon{
+	left:calc(50% - 1.2rem);
 }

@@ -167,3 +167,6 @@ table tr td {
 .menu-display-toggle-bar:hover{
 	opacity: 1;
 }
+.showMenuIcon{
+	left:0;
+}

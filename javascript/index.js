@@ -4,7 +4,7 @@ Client.context.isMobile=false;
 async function init(){
 	let _link=document.querySelector("#indexcss");
 	let _arrowLink=document.querySelector("#arrowcss");
-	Client.context.isMobile = await isMobile();
+	Client.context.isMobile = !await isMobile();
 	if(Client.context.isMobile){
 		_link.href="css/index.m.css";
 		_arrowLink.href="css/arrow.m.css";
@@ -76,22 +76,22 @@ function gotoView(menuCode, _element){
 function toggleMenu(){
 	let _arrow=document.querySelector(".arrow");
 	if(_arrow.classList.contains("arrow-left")){
-		$("menuToggleDiv").style.left="0";
 		_arrow.classList.remove("arrow-left");
 		_arrow.classList.add("arrow-right");
 		$("leftDiv").classList.add("menuDivHidden");
 		if(!Client.context.isMobile){
 			$("workAreaDiv").classList.add("workAreaDivMax");
 		}
+		$("menuToggleDiv").classList.add("showMenuIcon");
 	}
 	else{
-		$("menuToggleDiv").style.left="calc(50% - 1.2rem)";
 		_arrow.classList.remove("arrow-right");
 		_arrow.classList.add("arrow-left");
 		$("leftDiv").classList.remove("menuDivHidden");
 		if(!Client.context.isMobile){
 			$("workAreaDiv").classList.remove("workAreaDivMax");
 		}
+		$("menuToggleDiv").classList.remove("showMenuIcon")
 	}
 }
 
