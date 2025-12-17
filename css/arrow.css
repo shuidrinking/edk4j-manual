@@ -1,4 +1,4 @@
-.arrow{
+-to.arrow{
 	display:inline-block;
 	width: 0;
 	height: 0;
@@ -12,11 +12,11 @@
 	border-top-color: #878787;
 	margin-bottom: -0.05rem;
 }
-.arrow-right{
+.arrow-to-right{
 	border-left-color: #878787;
 	margin-right: -0.1rem;
 }
-.arrow-left{
+.arrow-to-left{
 	border-right-color: #878787;
 	margin-left: -0.1rem;
 }

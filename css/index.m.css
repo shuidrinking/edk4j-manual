@@ -138,8 +138,8 @@ table tr td {
 	height: calc(100vh - 0.2rem);
 	position: fixed;
 	top: 0;
-	left: 3.5rem;
-	z-index: 997;
+	left: 0;
+	z-index: 1000;
 	background-color: transparent;
 	display:flex;
 	align-items: flex-end;

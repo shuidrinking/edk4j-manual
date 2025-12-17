@@ -4,15 +4,14 @@ Client.context.isMobile=false;
 async function init(){
 	let _link=document.querySelector("#indexcss");
 	let _arrowLink=document.querySelector("#arrowcss");
-	Client.context.isMobile = await isMobile();
+	Client.context.isMobile = !await isMobile();
 	if(Client.context.isMobile){
 		_link.href="css/index.m.css";
 		_arrowLink.href="css/arrow.m.css";
 		document.querySelector("#workAreaDiv").classList.add("workAreaDivMax");
 		document.querySelector("#leftDiv").classList.add("menuDivHidden");
-		document.querySelector("#menuToggleDiv").style.left="0";
-		document.querySelector(".arrow").classList.remove("arrow-left");
-		document.querySelector(".arrow").classList.add("arrow-right");
+		document.querySelector(".arrow").classList.remove("arrow-to-left");
+		document.querySelector(".arrow").classList.add("arrow-to-right");
 	}
 	else{
 		_link.href="css/index.css";
@@ -75,23 +74,21 @@ function gotoView(menuCode, _element){
  */
 function toggleMenu(){
 	let _arrow=document.querySelector(".arrow");
-	if(_arrow.classList.contains("arrow-left")){
-		_arrow.classList.remove("arrow-left");
-		_arrow.classList.add("arrow-right");
+	if(_arrow.classList.contains("arrow-to-left")){
+		_arrow.classList.replace("arrow-to-left", "arrow-to-right");
 		$("leftDiv").classList.add("menuDivHidden");
 		if(!Client.context.isMobile){
 			$("workAreaDiv").classList.add("workAreaDivMax");
 		}
-		$("menuToggleDiv").classList.add("showMenuIcon");
+		$("menuToggleDiv").classList.remove("showMenuIcon");
 	}
 	else{
-		_arrow.classList.remove("arrow-right");
-		_arrow.classList.add("arrow-left");
+		_arrow.classList.replace("arrow-to-right", "arrow-to-left");
 		$("leftDiv").classList.remove("menuDivHidden");
 		if(!Client.context.isMobile){
 			$("workAreaDiv").classList.remove("workAreaDivMax");
 		}
-		$("menuToggleDiv").classList.remove("showMenuIcon")
+		$("menuToggleDiv").classList.add("showMenuIcon")
 	}
 }
 

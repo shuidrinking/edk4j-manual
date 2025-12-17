@@ -37,9 +37,9 @@
 	border-top-color: #878787;
 	margin-bottom: -0.05rem;
 }
-.arrow-right{
+.arrow-to-right{
 }
-.arrow-left{
+.arrow-to-left{
 }
 @property --k {
 	syntax: "<number>";
