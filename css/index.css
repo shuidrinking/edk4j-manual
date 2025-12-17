@@ -160,13 +160,13 @@ table tr td {
 	display:flex;
 	flex-direction: column;
 	justify-content: center;
-	opacity: 0.1;
+	opacity: 0.3;
 	transition: all 0.2s linear 0s;
 	cursor: pointer;
 }
 .menu-display-toggle-bar:hover{
 	opacity: 1;
 }
-.showMenuIcon{
+.toggle-bar-move-with-menu{
 	left:0;
 }

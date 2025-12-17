@@ -151,6 +151,6 @@ table tr td {
 .menu-display-toggle-bar:hover{
 	opacity: 1;
 }
-.showMenuIcon{
+.toggle-bar-move-with-menu{
 	left:calc(50% - 1.2rem);
 }
