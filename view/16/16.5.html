@@ -43,8 +43,7 @@
 		因为我们目前使用的是httpClient4.x的框架进行http通信，因此可以参考官网给出的样例：<br/>
 		http://hc.apache.org/httpcomponents-client-4.5.x/httpclient/examples/org/apache/http/examples/client/ClientProxyAuthentication.java<br/>
 		下面是我们的样例模板：
-		<div class="subContentDiv">
-			<pre class="prettyprint lang-java" style="font-weight:bold;font-size:0.14rem;line-height:0.26rem;font-family: 'Verdana','微软雅黑','宋体';">
+		<pre class="prettyprint lang-java"  style="border:0.01rem solid #eeeeee; font-weight:bold;font-size:0.14rem;line-height:0.26rem;font-family: 'Verdana','微软雅黑','宋体';">
 //首先，需要在RequestConfig被构造时，设置代理服务器的ip和端口
 HttpHost proxy = new HttpHost(proxyConfig.getHost(), proxyConfig.getPort());
 requestConfigBuilder.setProxy(proxy);
@@ -56,7 +55,6 @@ credsProvider.setCredentials(
     new UsernamePasswordCredentials(proxyConfig.getUserName(),proxyConfig.getPassword()));
 CloseableHttpClient httpClient =HttpClients.custom().setDefaultCredentialsProvider(credsProvider).build();
 </pre>
-		</div>
 	</div>
 </body>
 </html>

@@ -15,9 +15,9 @@
 </head>
 <body onload="init();">
 	<div id="title" class="titleDiv">
-		8.4、Druid JNDI数据源
+		8.4、Druid JNDI数据源（tomcat环境）
 	</div>
-	<div class="tabTitleDiv">Jndi参考配置</div>
+	<div class="tabTitleDiv">Jndi参考配置（tomcat环境）</div>
 	<div class="tabTitleLine"></div>
 	<div class="summary">
 		<a href="https://blog.csdn.net/hj7jay/article/details/51686418">网上参考资料</a>
@@ -26,7 +26,7 @@
 		将Druid的jar包，复制到服务器的lib文件夹中，然后配置jndi如下：	
 	</div>
 	<div class="contentDiv">
-		<pre class="prettyprint lang-xml" id="javaCode1" style="padding-left:0.5rem;font-weight:bold;font-size:0.14rem;line-height:0.26rem;font-family: 'Verdana','微软雅黑','宋体';">
+		<pre class="prettyprint lang-xml" id="javaCode1" style="font-weight:bold;font-size:0.14rem;line-height:0.26rem;font-family: 'Verdana','微软雅黑','宋体';">
 &lt;!--
 	在tomcat8.0及以上的版本中，启动的时候会报下面警告，请参照警告对相应的属性名称进行替换：
 	Property maxActive is not used in DBCP2, use maxTotal instead

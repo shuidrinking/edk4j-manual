@@ -27,6 +27,7 @@
 	color:#004e9c;
 	cursor: pointer;
 	line-height: 0.2rem;
+	font-size: clamp(0.12rem, 100% * 0.8, 0.2rem);
 }
 .treeControl ul li a:hover {
 	color: #ffffff;

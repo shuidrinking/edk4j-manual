@@ -28,31 +28,31 @@
 	<div class="tabTitleLine"></div>
 	<div class="contentDiv">
 		<pre class="prettyprint language-properties" style="font-weight:bold;font-size:0.14rem;line-height:0.26rem;font-family: 'Verdana','微软雅黑','宋体';">
-	#=======================
-	# Configure TaskEngine 
-	#=======================
-	#taskEngine.clusterManagerClass = com.edk4j.taskengine.defaultimpl.ClusterScheduleManagerViaQuartz
-	#taskEngine.taskManagerClass = com.edk4j.taskengine.defaultimpl.TaskManagerViaQuartz
-	#taskEngine.DBDelegateClass = com.edk4j.taskengine.defaultimpl.DBDelegateViaQuartz
-	taskEngine.WarnManagerClass = com.edk4j.taskengine.defaultimpl.WarnManager
-	#taskEngine.DBConnectionProviderClass = com.edk4j.taskengine.defaultimpl.DBConnectionProviderViaQuartzJNDI
-	taskEngine.runningTaskAbnormalVoterClass = com.edk4j.taskengine.defaultimpl.TaskAbnormalVoter
-	taskEngine.warnAndDisableAutoScheduleFlag= true
-	taskEngine.warnFileSavePath= /home/edk4j-task/taskWarnFiles/
-	taskEngine.clearJobStoreWhenStart = true
-	taskEngine.logTaskRunStateHistory = true
-	#taskEngine.scanTasksInterval = 300000
-	#taskEngine.clusterWarnInterval = 300000
-	#taskEngine.businessFrameWorkName= SPRING
-	taskEngine.ScheduleFramework.tablePrefix= QRTZ_
-	#please change to  java:comp/env/jdbc/task_ds in tomcat
-	taskEngine.JNDI=java:comp/env/jdbc/your_jndi_ds
-	#taskEngine.dbUrl=
-	#taskEngine.dbDriverClassName=com.mysql.cj.jdbc.Driver
-	#taskEngine.dbUsername=
-	#taskEngine.dbPassword=
-	#taskEngine.maxConnection=1
-	#taskEngine.hostIp = xxx.xxx.xxx.xxx
+#=======================
+# Configure TaskEngine 
+#=======================
+#taskEngine.clusterManagerClass = com.edk4j.taskengine.defaultimpl.ClusterScheduleManagerViaQuartz
+#taskEngine.taskManagerClass = com.edk4j.taskengine.defaultimpl.TaskManagerViaQuartz
+#taskEngine.DBDelegateClass = com.edk4j.taskengine.defaultimpl.DBDelegateViaQuartz
+taskEngine.WarnManagerClass = com.edk4j.taskengine.defaultimpl.WarnManager
+#taskEngine.DBConnectionProviderClass = com.edk4j.taskengine.defaultimpl.DBConnectionProviderViaQuartzJNDI
+taskEngine.runningTaskAbnormalVoterClass = com.edk4j.taskengine.defaultimpl.TaskAbnormalVoter
+taskEngine.warnAndDisableAutoScheduleFlag= true
+taskEngine.warnFileSavePath= /home/edk4j-task/taskWarnFiles/
+taskEngine.clearJobStoreWhenStart = true
+taskEngine.logTaskRunStateHistory = true
+#taskEngine.scanTasksInterval = 300000
+#taskEngine.clusterWarnInterval = 300000
+#taskEngine.businessFrameWorkName= SPRING
+taskEngine.ScheduleFramework.tablePrefix= QRTZ_
+#please change to  java:comp/env/jdbc/task_ds in tomcat
+taskEngine.JNDI=java:comp/env/jdbc/your_jndi_ds
+#taskEngine.dbUrl=
+#taskEngine.dbDriverClassName=com.mysql.cj.jdbc.Driver
+#taskEngine.dbUsername=
+#taskEngine.dbPassword=
+#taskEngine.maxConnection=1
+#taskEngine.hostIp = xxx.xxx.xxx.xxx
 </pre>
 	</div>
 </body>

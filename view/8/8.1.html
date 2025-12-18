@@ -4,19 +4,27 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link type="text/css"  rel="stylesheet" href="../../css/dom.css"/>
 	<script type="text/javascript" src="../../javascript/core/domUtil.js"></script>
+	<link type="text/css" rel="stylesheet" href="../../javascript/components/google-code-prettify/prettify.css"/>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/prettify.js"></script>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/util.js"></script>
+	<script type="text/javascript">
+		function init(){
+			PR.prettyPrint();
+		}
+	</script>
 </head>
-<body >
+<body onload="init()">
 	<div id="title" class="titleDiv">
 		8.1、项目中严禁使用下面这种常规的jdbc数据源配置
 	</div>
 	<div class="subTitleDiv">
 		项目中<label style="color:#ff0000;font-weight:bold;">严禁使用</label>这种数据源，因为普通的数据库连接，没有连接池，像下面这样是禁止的！
 	</div>
-	<div class="contentDiv">
-		<p><span style="color:black">spring.datasource.driverClassName = </span><span style="color:#2a00ff">oracle.jdbc.driver.OracleDriver</span></p>
-		<p><span style="color:black">spring.datasource.url = </span><span style="color:#2a00ff">jdbc:oracle:thin:@localhost:1521:XE</span></p>
-		<p><span style="color:black">spring.datasource.username = </span><span style="color:#2a00ff">edk4j_foo</span></p>
-		<p><span style="color:black">spring.datasource.password = </span><span style="color:#2a00ff">xxxxxxxx</span></p>
-	</div>
+	<pre class="prettyprint language-properties" style="border:1px solid #eeeeee;">
+spring.datasource.driverClassName = oracle.jdbc.driver.OracleDriver
+spring.datasource.url = jdbc:oracle:thin:@localhost:1521:XE
+spring.datasource.username = edk4j_foo
+spring.datasource.password = xxxxxxxx
+</pre>
 </body>
 </html>

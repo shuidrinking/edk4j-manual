@@ -21,8 +21,7 @@
 	<div class="summary">
 		任务定义样例脚本：
 	</div>
-	<div class="subContentDiv">
-		<pre class="prettyprint language-sql" style="font-weight:bold;font-size:0.14rem;line-height:0.26rem;font-family: 'Verdana','微软雅黑','宋体';">
+	<pre class="prettyprint language-sql" style="border:0.01rem solid #eeeeee;font-weight:bold;font-size:0.14rem;line-height:0.26rem;font-family: 'Verdana','微软雅黑','宋体';">
 delete from task_define;
 
 insert into task_define (Task_Group, Task_ID, Task_Version, Task_Name, Task_Description, Task_Type, Task_Max_Expense_Time, Task_Concurrent_Flag, Task_Recovery_Flag, Task_Biz_Type, Task_Execute_Class_Name, Task_Biz, Task_Schedule_Effective_Time, Task_Expression, Task_Workday_Execute, Task_Holiday_Execute, Task_State, Task_Log_RunStatus_History) 
@@ -30,7 +29,6 @@ values ('taskDemoGroup', 'moduleTask', '1.0', '测试任务', '执行biz业务�
 
 insert into task_define (Task_Group, Task_ID, Task_Version, Task_Name, Task_Description, Task_Type, Task_Max_Expense_Time, Task_Concurrent_Flag, Task_Recovery_Flag, Task_Biz_Type, Task_Execute_Class_Name, Task_Biz, Task_Schedule_Effective_Time, Task_Expression, Task_Workday_Execute, Task_Holiday_Execute, Task_State, Task_Log_RunStatus_History) 
 values ('taskDemoGroup', 'module3Task', '1.0', '测试任务', '执行service服务类', '1', '-1', '0', '0', '1', 'com.edk4j.taskengine.executor.TaskExecutorDisallowConcurrentViaQuartzAndSpring', 'module3TaskService', null, '0/20 * * * * ?', '1', '1', '1', '1');
-		</pre>
-	</div>
+	</pre>
 </body>
 </html>

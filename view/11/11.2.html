@@ -63,22 +63,22 @@
 	<div class="subContentDiv">
 		<label style="color:#ff0000;">这个动作开发人员必须掌握</label><br/>
 		在需要记录交易日志的businessLogic里，第一步就设置为记录交易日志，如下：
-		<div style="border:1px solid #eeeeee;">
-			<p><span style="color:teal">&lt;</span><span style="background-color:silver"><span style="color:#3f7f7f">start</span></span><span style="color:teal">&gt;</span></p>
-			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:teal">&lt;route</span> <span style="color:#7f007f">toAction</span><span style="color:black">=</span><em><span style="color:#2a00ff">&quot;logDefineStep&quot;</span></em><span style="color:teal">/&gt;</span></p>
-			<p><span style="color:teal">&lt;/</span><span style="background-color:silver"><span style="color:#3f7f7f">start</span></span><span style="color:teal">&gt;</span></p>
-			<p><span style="color:teal">&lt;</span><span style="color:#3f7f7f">action</span> <span style="color:#7f007f">className</span><span style="color:black">=</span><em><span style="color:#2a00ff">&quot;com.edk4j.core.action.BizLogDefineAction&quot;</span></em> <span style="color:#7f007f">id</span><span style="color:black">=</span><em><span style="color:#2a00ff">&quot;logDefineStep&quot;</span></em><span style="color:teal">&gt;</span></p>
-			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:teal">&lt;</span><span style="color:#3f7f7f">property</span> <span style="color:#7f007f">id</span><span style="color:black">=</span><em><span style="color:#2a00ff">&quot;businessCode&quot;&nbsp;</span></em><span style="color:#7f007f">value</span><span style="color:black">=</span><em><span style="color:#2a00ff">&quot;</span></em><em><span style="color:#2a00ff">交易码，这个属性一般不要添加进来，因为api配置时已经有指定交易码了！只有在这种场景下才设置：某个bl被好几个api公用。</span></em><em><span style="color:#2a00ff">&quot;</span></em> <span style="color:teal">/&gt;</span></p>
-			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:teal">&lt;</span><span style="color:#3f7f7f">property</span> <span style="color:#7f007f">id</span><span style="color:black">=</span><em><span style="color:#2a00ff">&quot;loggerContentFormat&quot;&nbsp;</span></em><span style="color:#7f007f">value</span><span style="color:black">=</span><em><span style="color:#2a00ff">&quot;</span></em><em><span style="color:#2a00ff">日志内容表达式，例如：内容内容内容内容，某业务值：</span></em><em><span style="color:#2a00ff">${field1}，${field2}....</span></em><em><span style="color:#2a00ff">把这个交易的关键信息记录都进去</span></em><em><span style="color:#2a00ff">&quot;</span></em> <span style="color:teal">/&gt;</span></p>
-			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:teal">&lt;route</span> <span style="color:#7f007f">toAction</span><span style="color:black">=</span><em><span style="color:#2a00ff">&quot;</span></em><em><span style="color:#2a00ff">下一个</span></em><em><span style="color:#2a00ff">Step&quot;</span></em><span style="color:teal">/&gt;</span></p>
-			<p><span style="color:teal">&lt;/</span><span style="color:#3f7f7f">action</span><span style="color:teal">&gt;</span></p>
-		</div>
+<pre class="prettyprint language-xml" style="border:0.01rem solid #eeeeee; font-weight:bold;font-size:0.14rem;line-height:0.26rem;font-family: 'Verdana','微软雅黑','宋体';" id="codeShow1">
+&lt;start&gt;
+	&lt;route toAction="logDefineStep"/&gt;
+&lt;/start&gt;
+&lt;action className="com.edk4j.core.action.BizLogDefineAction" id="logDefineStep"&gt;
+	&lt;property id="businessCode" value="交易码，这个属性一般不要添加进来，因为api配置时已经有指定交易码了！只有在这种场景下才设置：某个bl被好几个api公用。" /&gt;
+	&lt;property id="loggerContentFormat" value="日志内容表达式，例如：内容内容内容内容，某业务值：${field1}，${field2}....把这个交易的关键信息记录都进去" /&gt;
+	&lt;route toAction="下一个Step"/&gt;
+&lt;/action&gt;
+</pre>
 	</div>
 	<div class="summary">
 		6、传统开发模式下，spring组件中交易日志怎么做
 	</div>
-	<div class="contentDiv">
-		<pre class="prettyprint language-java" style="padding-left:0.5rem;font-weight:bold;font-size:0.14rem;line-height:0.26rem;font-family: 'Verdana','微软雅黑','宋体';" id="codeShow1">
+	<div class="subContentDiv">
+		<pre class="prettyprint language-java" style="border:0.01rem solid #eeeeee; font-weight:bold;font-size:0.14rem;line-height:0.26rem;font-family: 'Verdana','微软雅黑','宋体';" id="codeShow1">
 import com.edk4j.core.log.BizLogger;
 import com.edk4j.core.log.LogDefine;
 import com.edk4j.core.businessprocessmanage.BusinessAction;

@@ -4,31 +4,38 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link type="text/css"  rel="stylesheet" href="../../css/dom.css"/>
 	<script type="text/javascript" src="../../javascript/core/domUtil.js"></script>
+	
+	<link type="text/css" rel="stylesheet" href="../../javascript/components/google-code-prettify/prettify.css"/>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/prettify.js"></script>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/util.js"></script>
+	<script type="text/javascript">
+		function init(){
+			PR.prettyPrint();
+		}
+	</script>
 </head>
-<body >
+<body onload="init()">
 	<div id="title" class="titleDiv">
 		11.1.1、各profile分开配置
 	</div>
 	<div class="tabTitleDiv">按profile分开的好处</div>
 	<div class="tabTitleLine"></div>
 	<div class="contentDiv">
-		<p style="text-indent:0.32rem;">
-			对于application.properties我们提供了按不同的profile进行配置的做法。对于运行日志文件也同样提供了套路，因为，不同环境保存日志的位置一般都不同，而且level要求也不同。
-		</p>
-		<p style="text-indent:0.32rem;">
-			按profile分开配置的好处：对下面标红的部分，你不用每次发布前都手工改一遍。
-		</p>
-		<div class="subContentDiv">
-			<p><span style="color:teal">&lt;</span><span style="color:#3f7f7f">Properties</span><span style="color:teal">&gt;</span></p>
-			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:teal">&lt;</span><span style="color:#3f7f7f">Property</span> <span style="color:#7f007f">name</span><span style="color:black">=</span><em><span style="color:#2a00ff">&quot;LOG_HOME&quot;</span></em><span style="color:teal">&gt;</span></p>
-			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:black;background-color:#ff0000;"> /home/applicationLogs/yourProjectName-dev</span></p>
-			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:teal">&lt;/</span><span style="color:#3f7f7f">Property</span><span style="color:teal">&gt;</span></p>
-			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:teal">&lt;</span><span style="color:#3f7f7f">Property</span> <span style="color:#7f007f">name</span><span style="color:black">=</span><em><span style="color:#2a00ff">&quot;PROJECT_NAME&quot;</span></em><span style="color:teal">&gt;</span></p>
-			<p><span style="color:black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; yourProjectName</span></p>
-			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:teal">&lt;/</span><span style="color:#3f7f7f">Property</span><span style="color:teal">&gt;</span></p>
-			<p><span style="color:teal">&lt;/</span><span style="color:#3f7f7f">Properties</span><span style="color:teal">&gt;</span></p>
-			.....<label style="background:#ff0000;">level="DEBUG"</label>....
-		</div>
+		<pre class="prettyprint language-xml" style="border:1px solid #eeeeee;">
+&lt;!--
+对于application.properties我们提供了按不同的profile进行配置的做法。对于运行日志文件也同样提供了套路，因为，不同环境保存日志的位置一般都不同，而且level要求也不同。
+按profile分开配置的好处：对下面标红的部分，你不用每次发布前都手工改一遍。
+--&gt;
+...
+&lt;Properties&gt;
+	&lt;Property name="LOG_HOME"&gt;
+		 保存日志的文件夹，例如：/home/applicationLogs/yourProjectName-dev
+	&lt;/Property&gt;
+	&lt;Property name="PROJECT_NAME"&gt;
+		 日志文件名，例如：yourProjectName
+	&lt;/Property&gt;
+&lt;/Properties&gt;
+...</pre>
 	</div>
 	<div class="tabTitleDiv">按profile分开的套路步骤</div>
 	<div class="tabTitleLine"></div>

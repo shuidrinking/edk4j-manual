@@ -3,26 +3,31 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link type="text/css"  rel="stylesheet" href="../../css/dom.css"/>
+	
 	<script type="text/javascript" src="../../javascript/core/domUtil.js"></script>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/prettify.js"></script>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/util.js"></script>
+	<link rel="stylesheet" href="../../javascript/components/google-code-prettify/prettify.css" type="text/css"/>
+	<script type="text/javascript">
+		function init(){
+			PR.prettyPrint();
+		}
+	</script>
 </head>
-<body >
+<body onload="init()">
 	<div id="title" class="titleDiv">
 		17.2、文件上传规则怎么制定
 	</div>
-	<div class="contentDiv">
-		<p style="font-weight:bold;">
-			在business.properties文件中<br/>
-			定义了总的上传目录
-		</p>
-		multiPartResolver.uploadFileRootPath=<label style="background-color:#00ff00;">/home/fileUpload/uploads</label><br/><br/>
-
-		还定义了某url上传的规则，例如：<br/>
-		/xxxBusiness/fileUpload=<label style="background-color:#ffff00;">xxxxBusinessUploadFiles</label>,200,^(txt|html)$<br/><br/>
-		
-		那么请求/xxxBusiness/fileUpload上传一个文件时，会有下面三个方面的规则：<br/>
-		（1）文件上传后保存到这个地方 <label style="background-color:#00ff00;">/home/fileUpload/uploads</label><label style="background-color:#ffff00;">/xxxxBusinessUploadFiles</label><label style="background-color:#00ffff;">/yyyyMMdd/上传时间毫秒值+3位随机数.文件后缀</label><br/>
-		（2）文件最大允许200K<br/>
-		（3）只允许上传txt文件和html文件<br/>
-	</div>
+	<div class="summary">在business.properties文件配置范式：</div>
+	<pre class="prettyprint language-properties">
+#定义了总的上传目录
+multiPartResolver.uploadFileRootPath=/home/fileUpload/uploads
+#还定义了某url上传的规则，例如：
+/xxxBusiness/fileUpload=xxxxBusinessUploadFiles,200,^(txt|html)$
+#那么请求/xxxBusiness/fileUpload上传一个文件时，会有下面三个方面的规则：
+#（1）文件上传后保存到这个地方 /home/fileUpload/uploads/xxxxBusinessUploadFiles/yyyyMMdd/上传时间毫秒值+3位随机数.文件后缀
+#（2）文件最大允许200K
+#（3）只允许上传txt文件和html文件	
+</pre>
 </body>
 </html>

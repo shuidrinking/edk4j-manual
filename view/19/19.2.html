@@ -4,27 +4,29 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link type="text/css"  rel="stylesheet" href="../../css/dom.css"/>
 	<script type="text/javascript" src="../../javascript/core/domUtil.js"></script>
+	
+	<script type="text/javascript" src="../../javascript/core/domUtil.js"></script>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/prettify.js"></script>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/util.js"></script>
+	<link rel="stylesheet" href="../../javascript/components/google-code-prettify/prettify.css" type="text/css"/>
+	<script type="text/javascript">
+		function init(){
+			PR.prettyPrint();
+		}
+	</script>
 </head>
-<body >
+<body onload="init()">
 	<div id="title" class="titleDiv">
 		19.2、导入依赖包
 	</div>
 	<div class="subTitleDiv">
 		在项目的pom文件里引入 edk4j-task-engine（定时任务引擎）
 	</div>
-	<div class="subContentDiv addBorder">
-		<p style="padding-left:0.4rem;color:#3f7f5f">
-		&lt;dependency&gt;
-		</p>
-		<p style="padding-left:0.8rem;color:#3f7f5f">
-			&lt;groupId&gt;com.edk4j&lt;/groupId&gt;
-		</p>
-		<p style="padding-left:0.8rem;color:#3f7f5f">
-			&lt;artifactId&gt;edk4j-task-engine&lt;/artifactId&gt;
-		</p>
-		<p style="padding-left:0.4rem;color:#3f7f5f">
-			&lt;/dependency&gt;
-		</p>
-	</div>
+	<pre class="prettyprint language-properties" style="border:0.01rem solid #eeeeee">
+&lt;dependency&gt;
+	&lt;groupId>com.edk4j&lt;/groupId&gt;
+	&lt;artifactId&gt;edk4j-task-engine&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</pre>
 </body>
 </html>

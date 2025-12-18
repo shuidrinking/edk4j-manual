@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta charset="UTF-8">
 	<link type="text/css"  rel="stylesheet" href="../../css/dom.css"/>
 	<script type="text/javascript" src="../../javascript/core/domUtil.js"></script>
+	
+	<link type="text/css" rel="stylesheet" href="../../javascript/components/google-code-prettify/prettify.css"/>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/prettify.js"></script>
+	<script type="text/javascript" src="../../javascript/components/google-code-prettify/util.js"></script>
+	<script type="text/javascript">
+			function init(){
+				PR.prettyPrint();
+			}
+		</script>
 </head>
-<body >
+<body onload="init()">
 	<div id="title" class="titleDiv">
 		13、权限检查专题
 	</div>
@@ -16,11 +25,11 @@
 		<label style="font-weight:bold;">首先</label>，我们edk4j中要求：每个交易都要有一个交易码。<br/>
 		<label style="font-weight:bold;">其次</label>，菜单和交易没有关系，点击菜单只不过是进入交易的页面，进入到页面后，可以向后台发起多个交易，比如页面上有好多个按钮，每个按钮对应后台的一个交易。<br/>
 		<label style="font-weight:bold;">再次</label>，注意，我们系统里至少有1个与sessionContext平行缓存的字段是<label style="color:#0000ff">sessionDynamicData</label> ，如果你的项目需要有其他字段也并行缓存，那么在edk4j.properties中配置一下：<br/>
-		<div class="subContentDiv">
-			cache.parallelCachedFieldsInSessionContext[0] = <label style="color:#0000ff">sessionDynamicData</label><br/>
-			cache.parallelCachedFieldsInSessionContext[1] = <label style="color:#0000ff">sessionXxxxxxx1Data</label><br/>
-			cache.parallelCachedFieldsInSessionContext[2] = <label style="color:#0000ff">sessionXxxxxxx2Data</label><br/>
-		</div>
+		<pre class="prettyprint language-properties" style="border:1px solid #eeeeee;">
+	cache.parallelCachedFieldsInSessionContext[0] = sessionDynamicData
+	cache.parallelCachedFieldsInSessionContext[1] = sessionData1
+	cache.parallelCachedFieldsInSessionContext[2] = sessionData2
+		</pre>
 
 	</div>
 	<div class="tabTitleDiv">如何检查菜单访问权限</div>
@@ -35,14 +44,14 @@
 		sessionContext中的 <label style="color:#0000ff">sessionCustBusiness</label>就是客户可以进行的交易码集合的字符串，其值是我们约定用双竖线||分隔（多个菜单编号）的字符串，
 		<label style="background-color:#ffff00;">在我们的系统中，每个交易都有一个交易码，你必须在具体api的businessCode属性中配置同时再配置checkBusinessCodeAccess属性</label>，交易码也分为两种：第一种是游客可以进行的交易，比如申请信用卡之类的交易；另一种是客户必须登录后才能进行的交易，比如转账汇款。这两种交易码的维护机制，跟上面的用户可操作菜单的维护机制一样的！
 		<br/>按照前面章节的要求，你必须要实现接口BusinessVisitAuthChecker，检查客户是否有权限进行交易。每次当客户端发来请求后，你必须在requestPresenter的preHandle方法中调用实现的接口进行检查，例如edk4j-demos中的DefaultRequestPresenter中的实现：
-		<div style="border:1px solid #eeeeee;">
-			<p>....</p>
-			<p><span style="color:#3f7f5f">//</span><span style="color:#3f7f5f">检查客户是否有权进行</span><span style="color:#3f7f5f">businessCode</span><span style="color:#3f7f5f">对应的交易，要实现</span><span style="color:#3f7f5f">BusinessVisitAuthChecker</span><span style="color:#3f7f5f">服务接口，并且把你的实现类标注为</span><span style="color:#3f7f5f">@Service(&quot;businessVisitAuthChecker&quot;)</span></p>
-			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong><span style="color:#7f0055">if</span></strong><span style="color:black">(</span><span style="color:#6a3e3e">api</span><span style="color:black">!=</span><strong><span style="color:#7f0055">null</span></strong><span style="color:black"> &amp;&amp; </span><span style="color:#6a3e3e">api</span><span style="color:black">.isCheckBusinessCodeAccess()) {</span></p>
-			<p>&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:#0000c0">businessVisitAuthChecker</span><span style="color:black">.doCheck(</span><span style="color:#6a3e3e">api</span><span style="color:black">.getBusinessCode(), </span><span style="color:#6a3e3e">sessionContext</span><span style="color:black">);</span></p>
-			<p><span style="color:black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span></p>
-			<p><span style="color:black">....</span></p>
-		</div>
+		<pre class="prettyprint language-java" style="border:1px solid #eeeeee;">
+....
+//检查客户是否有权进行businessCode对应的交易，要实现BusinessVisitAuthChecker服务接口，并且把你的实现类标注为@Service("businessVisitAuthChecker")
+if(api!=null && api.isCheckBusinessCodeAccess()) {
+	businessVisitAuthChecker.doCheck(api.getBusinessCode(), sessionContext);
+}
+....
+		</pre>
 	</div>
 </body>
 </html>
