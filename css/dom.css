@@ -364,7 +364,7 @@ pre {
 	border-top-right-radius: 0.05rem;
 	border-top-left-radius: 0.05rem;
 	padding: 0 0.1rem;
-	margin-top: 0.05rem;
+	margin: 0.05rem 0 0 0.05rem;
 	height: 0.4rem;
 	min-width: 2rem;
 	line-height: 0.4rem;
@@ -376,6 +376,7 @@ pre {
 	width: calc(100% - 0.1rem);
 	background: linear-gradient(90deg, #60a1ef, #ffffff 30%);
 	margin-bottom: 0.01rem;
+	margin-left: 0.05rem;
 }
 .titleDiv{
 	color:#04003e;
