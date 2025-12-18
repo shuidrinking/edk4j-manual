@@ -900,7 +900,7 @@ details[open]::details-content {
 	overflow: hidden;
 	border-radius: 0.04rem;
 	min-height: 0.3rem;
-	margin: 0.2rem 0;
+	margin: 0.2rem 0 0.2rem 0.05rem;
 	color:#00157e;
 }
 .summary::before{

@@ -79,6 +79,7 @@ table tr td {
 	padding:0 0.1rem;
 	overflow:auto;
 	height:calc(100vh - 0.51rem);
+	width: 94%;
 }
 .activeMenu{
 	color: #ffffff !important;

@@ -32,26 +32,24 @@
 		如何设置要使用的缓存服务器
 	</div>
 	<div class="subContentDiv">
-		<div class="subContentDiv">
-			在application-{profile}.properties配置文件中，设置cache.providerName的值 ：<br>
-			#要使用的缓存服务器名称设置，多个值之间用逗号分割<br>
-			cache.providerName=redis, ehcache<br>
-			<label style="font-weight:bold">#具体取值说明：</label>
-			<div class="item">
-				（1）cache.providerName=ehcach，此时只用ehCache：这种情况下，缓存只是进程缓存，也就是说，缓存内容只在单台服务器中有效，不能在集群中共享（edk4j不支持ehcache集群）
-			</div>
-			<div class="item">
-				（2）cache.providerName=redis，此时只用redis：这种情况下，缓存内容被保存在redis服务器，因此应用服务器集群的场景下，缓存是通用的。
-			</div>
-			<div class="item">
-				（3）cache.providerName=redis, ehcach，此时，需要打开二级缓存开关，即同时启用redi和ehCache
-			</div>
+		在application-{profile}.properties配置文件中，设置cache.providerName的值 ：<br>
+		#要使用的缓存服务器名称设置，多个值之间用逗号分割<br>
+		cache.providerName=redis, ehcache<br>
+		<label style="font-weight:bold">#具体取值说明：</label>
+		<div class="item">
+			（1）cache.providerName=ehcach，此时只用ehCache：这种情况下，缓存只是进程缓存，也就是说，缓存内容只在单台服务器中有效，不能在集群中共享（edk4j不支持ehcache集群）
+		</div>
+		<div class="item">
+			（2）cache.providerName=redis，此时只用redis：这种情况下，缓存内容被保存在redis服务器，因此应用服务器集群的场景下，缓存是通用的。
+		</div>
+		<div class="item">
+			（3）cache.providerName=redis, ehcach，此时，需要打开二级缓存开关，即同时启用redi和ehCache
 		</div>
 	</div>
 	<div class="summary">
 		二级缓存使用套路
 	</div>
-	<div class="subContentDiv" style="padding-left:0.32rem;">
+	<div class="subContentDiv" >
 		<label style="font-weight:bold">第一步：设置配置</label><br>
 		#application-{profile}.properties文件中配置二级缓存<br>
 		#打开二级缓存开关<br>
@@ -59,7 +57,7 @@
 		#设置二级缓存的mq服务器<br>
 		cache.l2CacheMqServer=redis<br>
 	</div>
-	<div class="subContentDiv" style="padding-left:0.32rem;">
+	<div class="subContentDiv">
 		<label style="font-weight:bold">第二步：实现缓存数据同步接口</label><br>
 		（1）com.edk4j.core.service.CacheSynchronizeReceiver<br>
 		（2）com.edk4j.core.service.CacheSynchronizeSender<br>
