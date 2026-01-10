@@ -48,6 +48,8 @@ server.servlet.context-path = /${yourProjectName}
 #3.springBoot内嵌服务器端口号，默认8080
 server.port = 8080
 server.session.timeout=30s
+#上传临时文件夹配置，值等于business.properties文件中的配置项multiPartResolver.tempFileRootPath
+spring.servlet.multipart.location=/home/file-upload/webide/temps
 #tomcat work dir
 server.tomcat.basedir=/tomcat_temp/
 
@@ -56,8 +58,41 @@ server.undertow.enabled=true
 server.undertow.show-header-time=true
 #20MB 
 server.undertow.max-http-post-size=20971520
-server.undertow.worker-threads=30
+#server.undertow.threads.io	I/O 线程数。默认值为可用的处理器数量。	
+#server.undertow.threads.worker	Worker 线程数。默认为 I/O 线程数的 8 倍。	
 server.undertow.io-threads=1
+#是否分配的直接内存(NIO直接分配的堆外内存)
+server.undertow.direct-buffers=true
+# use http2
+server.undertow.enabled-http2=true
+#server.undertow.options.server.*	在 io.undertow.UndertowOptions类 中定义的服务器选项。	
+#server.undertow.options.socket.*	在 org.xnio.Options类 中定义的 socket 选项。	
+
+##以下是undertow的可配置参数项说明
+#server.undertow.accesslog.dir	Undertow 访问日志目录。	
+#server.undertow.accesslog.enabled	是否启用访问日志。	false
+#server.undertow.accesslog.pattern	访问日志的格式。	common
+#server.undertow.accesslog.prefix	日志文件前缀。	access_log.
+#server.undertow.accesslog.rotate	是否开启日志滚动。	true
+#server.undertow.accesslog.suffix	日志文件后缀。	log
+#server.undertow.always-set-keep-alive	是否应在所有响应中添加 Connection: keep-alive Header，即使 HTTP 规范没有要求。	true
+#server.undertow.buffer-size	每个 buffer 的大小。默认大小是根据 JVM 可用的最大内存确定的。	
+#server.undertow.decode-slash	是否应解码已编码的斜线字符（%2F）。如果前端代理不执行相同的解码，解码可能会导致安全问题。只有在传统应用程序需要时才启用。设置后，server.undertow.allow-encoded-slash 无效。	
+#server.undertow.decode-url	是否对 URL 进行解码。禁用时，URL 中的百分比编码字符将保持原样。	true
+#server.undertow.direct-buffers	是否在 Java 堆外分配 buffer。默认大小是根据 JVM 可用的最大内存确定的。	
+#server.undertow.eager-filter-init	是否应在启动时初始化 servlet Filter	true
+#server.undertow.max-cookies	允许的最大 cookie 数量。这一限制是为了防止基于哈希碰撞的 DOS 攻击。	200
+#server.undertow.max-headers	允许的最大 header 数量。这一限制是为了防止基于哈希碰撞的 DOS 攻击。	
+#server.undertow.max-http-post-size	HTTP post content 的最大大小。当值为-1（默认值）时，大小为无限。	-1B
+#server.undertow.max-parameters	允许查询或路径参数的最大数量。这一限制是为了防止基于哈希碰撞的 DOS 攻击。	
+#server.undertow.no-request-timeout	在服务器关闭连接之前，连接在不处理请求的情况下闲置的时间。	
+#server.undertow.options.server.*	在 io.undertow.UndertowOptions类 中定义的服务器选项。	
+#server.undertow.options.socket.*	在 org.xnio.Options类 中定义的 socket 选项。	
+#server.undertow.preserve-path-on-forward	转发请求时是否保留请求路径。	false
+#server.undertow.threads.io	I/O 线程数。默认值为可用的处理器数量。	
+#server.undertow.threads.worker	Worker 线程数。默认为 I/O 线程数的 8 倍。	
+#server.undertow.url-charset	用于解码 URL 的字符集。	UTF-8
+
 		</pre>
 	</div>
 	
