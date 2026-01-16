@@ -107,6 +107,42 @@ server {
 		add_header 'Access-Control-Allow-Header' 'Content-Type,*'; #支持的媒体类型
 	}
 }
+
+
+server{
+	listen       9090;
+	server_name  localhost;
+	charset UTF-8;
+	expires -1;
+	access_log  logs/host.access-9090.log;
+	location /webide/ {
+		if ($request_method = 'OPTIONS') {
+			# 对于OPTIONS，不保存请求日志到日志文件
+			access_log off;
+			# 这里配置允许跨域的域名，* 代表所有，也可以写域名：http://www.xxx.com 或者IP+端口 http://192.168.1.10
+			add_header 'Access-Control-Allow-Origin' '*';
+			# 允许的请求类型
+			add_header 'Access-Control-Allow-Methods' 'GET, POST, PUT, DELETE, OPTIONS';
+			add_header 'Access-Control-Allow-Credentials' true;
+			add_header 'Access-Control-Allow-Headers' 'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type';
+			# 允许跨域的最大时间，超过这个时间又会重发一次OPTIONS请求获取新的认证
+			add_header 'Access-Control-Max-Age' 1728000;
+			add_header 'Content-Type' 'text/plain charset=UTF-8';
+			add_header 'Content-Length' 0;
+			# 直接在这里返回204响应，不转发到后台服务程序
+			return 204;
+		}
+		proxy_pass http://127.0.0.1:8080/webide/;
+		proxy_set_header    Host             $host; #保留代理之前的host
+		proxy_set_header    X-Real-IP        $remote_addr; #保留代理之前的真实客户端ip, 如果使用了CDN产品, 则是CDN节点IP
+		proxy_set_header    X-Forwarded-For  $proxy_add_x_forwarded_for;
+		proxy_set_header    HTTP_X_FORWARDED_FOR $remote_addr; #在多级代理的情况下，记录每次代理之前的客户端真实ip
+		proxy_redirect      default; #指定修改被代理服务器返回的响应头中的location头域跟refresh头域数值
+		add_header 'Access-Control-Allow-Origin' '*'; #允许来自所有的访问地址
+		add_header 'Access-Control-Allow-Methods' 'GET,POST'; #支持的请求方式
+		add_header 'Access-Control-Allow-Header' 'Content-Type,*'; #支持的媒体类型
+	}
+}
 		</pre>
 	</div>
 </body>
